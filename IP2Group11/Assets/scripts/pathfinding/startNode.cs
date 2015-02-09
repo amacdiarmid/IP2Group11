@@ -28,9 +28,9 @@ public class startNode : pathNodes {
 			if (hitUpS)
 			{
 				Up = false;
-				hitUpS.collider.GetComponent<pathNodes>().Down = true;
-				hitUpS.collider.GetComponent<pathNodes>().path = path;
-				hitUpS.collider.GetComponent<pathNodes>().recieveRay();
+				var tile = hitUpS.collider.GetComponentInChildren<pathNodes>();
+				tile.Down = true;
+				sendPath(tile);	
 			}
 		}
 		//send ray down
@@ -42,9 +42,9 @@ public class startNode : pathNodes {
 			if (hitDownS)
 			{
 				Down = false;
-				hitDownS.collider.GetComponent<pathNodes>().Up = true;
-				hitDownS.collider.GetComponent<pathNodes>().path = path;
-				hitDownS.collider.GetComponent<pathNodes>().recieveRay();
+				var tile = hitDownS.collider.GetComponentInChildren<pathNodes>();
+				tile.Up = true;
+				sendPath(tile);	
 			}
 		}
 		//send ray left
@@ -56,9 +56,9 @@ public class startNode : pathNodes {
 			if (hitLeftS)
 			{
 				Left = false;
-				hitLeftS.collider.GetComponent<pathNodes>().Right = true;
-				hitLeftS.collider.GetComponent<pathNodes>().path = path;
-				hitLeftS.collider.GetComponent<pathNodes>().recieveRay();
+				var tile = hitLeftS.collider.GetComponentInChildren<pathNodes>();
+				tile.Right = true;
+				sendPath(tile);				
 			}
 		}
 		//send ray right
@@ -70,9 +70,9 @@ public class startNode : pathNodes {
 			if (hitRightS)
 			{
 				Right = false;
-				hitRightS.collider.GetComponent<pathNodes>().Left = true;
-				hitRightS.collider.GetComponent<pathNodes>().path = path;
-				hitRightS.collider.GetComponent<pathNodes>().recieveRay();
+				var tile = hitRightS.collider.GetComponentInChildren<pathNodes>();
+				tile.Left = true;
+				sendPath(tile);	
 			}
 		}
 	}
