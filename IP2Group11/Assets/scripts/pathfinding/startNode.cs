@@ -27,6 +27,8 @@ public class startNode : pathNodes {
 			RaycastHit2D hitUpS = Physics2D.Raycast(origin + size, Vector2.up);
 			if (hitUpS)
 			{
+				Up = false;
+				hitUpS.collider.GetComponent<pathNodes>().Down = true;
 				hitUpS.collider.GetComponent<pathNodes>().path = path;
 				hitUpS.collider.GetComponent<pathNodes>().recieveRay();
 			}
@@ -39,6 +41,8 @@ public class startNode : pathNodes {
 			RaycastHit2D hitDownS = Physics2D.Raycast(origin - size, -Vector2.up);
 			if (hitDownS)
 			{
+				Down = false;
+				hitDownS.collider.GetComponent<pathNodes>().Up = true;
 				hitDownS.collider.GetComponent<pathNodes>().path = path;
 				hitDownS.collider.GetComponent<pathNodes>().recieveRay();
 			}
@@ -51,6 +55,8 @@ public class startNode : pathNodes {
 			RaycastHit2D hitLeftS = Physics2D.Raycast(origin - size, -Vector2.right);
 			if (hitLeftS)
 			{
+				Left = false;
+				hitLeftS.collider.GetComponent<pathNodes>().Right = true;
 				hitLeftS.collider.GetComponent<pathNodes>().path = path;
 				hitLeftS.collider.GetComponent<pathNodes>().recieveRay();
 			}
@@ -63,6 +69,8 @@ public class startNode : pathNodes {
 			RaycastHit2D hitRightS = Physics2D.Raycast(origin + size, Vector2.right);
 			if (hitRightS)
 			{
+				Right = false;
+				hitRightS.collider.GetComponent<pathNodes>().Left = true;
 				hitRightS.collider.GetComponent<pathNodes>().path = path;
 				hitRightS.collider.GetComponent<pathNodes>().recieveRay();
 			}

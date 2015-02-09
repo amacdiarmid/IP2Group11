@@ -18,6 +18,10 @@ public class endNode : pathNodes {
 
 	public override void recieveRay()
 	{
-		Debug.Log("end path");
+		if (GotRay == false)
+		{
+			GotRay = true;
+			Debug.Log("end path");
+		}	
 	}
 }
