@@ -29,6 +29,7 @@ public class pathNodes : MonoBehaviour {
 		{		
 			Vector2 origin;
 			Vector2 size;
+			path.Add(transform.position);
 			//send ray up
 			if (Up == true)
 			{
@@ -40,8 +41,7 @@ public class pathNodes : MonoBehaviour {
 					Up = false;
 					var tile = hitUp.collider.GetComponentInChildren<pathNodes>();
 					tile.Down = false;
-					tile.path = path;
-					tile.recieveRay();
+					sendPath(tile);
 				}				
 			}
 			//send ray down
@@ -55,8 +55,7 @@ public class pathNodes : MonoBehaviour {
 					Down = false;
 					var tile = hitDown.collider.GetComponentInChildren<pathNodes>();
 					tile.Up = false;
-					tile.path = path;
-					tile.recieveRay();
+					sendPath(tile);
 				}
 			}
 			//send ray left
@@ -70,8 +69,7 @@ public class pathNodes : MonoBehaviour {
 					Left = false;
 					var tile = hitLeft.collider.GetComponentInChildren<pathNodes>();
 					tile.Right = false;
-					tile.path = path;
-					tile.recieveRay();
+					sendPath(tile);
 				}
 			}
 			//send ray right
@@ -85,11 +83,11 @@ public class pathNodes : MonoBehaviour {
 					Right = false;
 					var tile = hitRight.collider.GetComponentInChildren<pathNodes>();
 					tile.Left = false;
-					tile.path = path;
-					tile.recieveRay();
+					sendPath(tile);
 				}
 			}
-			SendRay = false;			
+			SendRay = false;
+			//path.Clear();
 		}
 	}
 
@@ -150,9 +148,14 @@ public class pathNodes : MonoBehaviour {
 		//Debug.Log("node hit" + transform.position.x + transform.position.y);
 		if (GotRay == false)
 		{
-			path.Add(transform.position);
 			SendRay = true;
 			GotRay = true;
 		}		
+	}
+
+	public virtual void sendPath(pathNodes tile)
+	{
+		tile.path = this.path;
+		tile.recieveRay();
 	}
 }
