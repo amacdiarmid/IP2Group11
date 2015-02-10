@@ -4,13 +4,12 @@ using System.Collections.Generic;
 
 public class pathNodes : MonoBehaviour {
 
-	public bool Up;
-	public bool Down;
-	public bool Left;
-	public bool Right;
+	[HideInInspector] public bool Up;
+	[HideInInspector] public bool Down;
+	[HideInInspector] public bool Left;
+	[HideInInspector] public bool Right;
 	public bool Wall;
-	protected bool GotRay;
-	protected bool SendRay;
+	[HideInInspector] public bool GotRay;
 
 	public List<Vector2> path = new List<Vector2>();
 
@@ -24,71 +23,6 @@ public class pathNodes : MonoBehaviour {
 	void Update () 
 	{
 
-		//on recieving first raycast
-		if (SendRay == true)
-		{		
-			Vector2 origin;
-			Vector2 size;
-			path.Add(transform.position);
-			//send ray up
-			if (Up == true)
-			{
-				origin = new Vector2(this.transform.position.x,this.transform.position.y);
-				size = new Vector2(0, (collider2D.bounds.size.y / 2) + 0.1f);
-				RaycastHit2D hitUp = Physics2D.Raycast(origin + size, Vector2.up);
-				if (hitUp)
-				{
-					Up = false;
-					var tile = hitUp.collider.GetComponentInChildren<pathNodes>();
-					tile.Down = false;
-					sendPath(tile);
-				}				
-			}
-			//send ray down
-			if (Down == true)
-			{
-				origin = new Vector2(this.transform.position.x, this.transform.position.y);
-				size = new Vector2(0, (collider2D.bounds.size.y / 2) + 0.1f);
-				RaycastHit2D hitDown = Physics2D.Raycast(origin - size, -Vector2.up);
-				if (hitDown)
-				{
-					Down = false;
-					var tile = hitDown.collider.GetComponentInChildren<pathNodes>();
-					tile.Up = false;
-					sendPath(tile);
-				}
-			}
-			//send ray left
-			if (Left == true)
-			{
-				origin = new Vector2(this.transform.position.x, this.transform.position.y);
-				size = new Vector2((collider2D.bounds.size.x / 2) + 0.1f, 0);
-				RaycastHit2D hitLeft = Physics2D.Raycast(origin - size, -Vector2.right);
-				if (hitLeft)
-				{
-					Left = false;
-					var tile = hitLeft.collider.GetComponentInChildren<pathNodes>();
-					tile.Right = false;
-					sendPath(tile);
-				}
-			}
-			//send ray right
-			if (Right == true)
-			{
-				origin = new Vector2(this.transform.position.x, this.transform.position.y);
-				size = new Vector2((collider2D.bounds.size.x / 2) + 0.1f, 0);
-				RaycastHit2D hitRight = Physics2D.Raycast(origin + size, Vector2.right);
-				if (hitRight)
-				{
-					Right = false;
-					var tile = hitRight.collider.GetComponentInChildren<pathNodes>();
-					tile.Left = false;
-					sendPath(tile);
-				}
-			}
-			SendRay = false;
-			//path.Clear();
-		}
 	}
 
 	public virtual void detectPath()
@@ -99,7 +33,6 @@ public class pathNodes : MonoBehaviour {
 		Right = true;
 		//Wall = false;
 		GotRay = false;
-		SendRay = false;
 		detectWall();
 		//send raycasts where ever there is a true
 	}
@@ -148,14 +81,73 @@ public class pathNodes : MonoBehaviour {
 		//Debug.Log("node hit" + transform.position.x + transform.position.y);
 		if (GotRay == false)
 		{
-			SendRay = true;
 			GotRay = true;
+			Vector2 origin;
+			origin = new Vector2(this.transform.position.x, this.transform.position.y);
+			Vector2 size;
+			path.Add(transform.position);
+			//send ray up
+			if (Up == true)
+			{			
+				size = new Vector2(0, (collider2D.bounds.size.y / 2) + 0.1f);
+				RaycastHit2D hitUp = Physics2D.Raycast(origin + size, Vector2.up);
+				if (hitUp)
+				{
+					Up = false;
+					var tile = hitUp.collider.GetComponentInChildren<pathNodes>();
+					tile.Down = false;
+					sendPath(tile);
+				}
+			}
+			//send ray down
+			if (Down == true)
+			{
+				size = new Vector2(0, (collider2D.bounds.size.y / 2) + 0.1f);
+				RaycastHit2D hitDown = Physics2D.Raycast(origin - size, -Vector2.up);
+				if (hitDown)
+				{
+					Down = false;
+					var tile = hitDown.collider.GetComponentInChildren<pathNodes>();
+					tile.Up = false;
+					sendPath(tile);
+				}
+			}
+			//send ray left
+			if (Left == true)
+			{
+				size = new Vector2((collider2D.bounds.size.x / 2) + 0.1f, 0);
+				RaycastHit2D hitLeft = Physics2D.Raycast(origin - size, -Vector2.right);
+				if (hitLeft)
+				{
+					Left = false;
+					var tile = hitLeft.collider.GetComponentInChildren<pathNodes>();
+					tile.Right = false;
+					sendPath(tile);
+				}
+			}
+			//send ray right
+			if (Right == true)
+			{
+				size = new Vector2((collider2D.bounds.size.x / 2) + 0.1f, 0);
+				RaycastHit2D hitRight = Physics2D.Raycast(origin + size, Vector2.right);
+				if (hitRight)
+				{
+					Right = false;
+					var tile = hitRight.collider.GetComponentInChildren<pathNodes>();
+					tile.Left = false;
+					sendPath(tile);
+				}
+			}
+			//path.Clear();
 		}		
 	}
 
 	public virtual void sendPath(pathNodes tile)
 	{
-		tile.path = this.path;
+		foreach (var item in path)
+		{
+			tile.path.Add(item);
+		}		
 		tile.recieveRay();
 	}
 }

@@ -21,6 +21,7 @@ public class endNode : pathNodes {
 		if (GotRay == false)
 		{
 			GotRay = true;
+			path.Add(this.transform.position);
 			Debug.Log("end path");
 		}	
 	}
