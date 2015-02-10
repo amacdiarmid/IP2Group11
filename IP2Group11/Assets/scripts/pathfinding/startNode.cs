@@ -6,7 +6,12 @@ public class startNode : pathNodes {
 	// Use this for initialization
 	void Start () 
 	{
-		detectPath();
+		Up = true;
+		Down = true;
+		Left = true;
+		Right = true;
+		GotRay = false;
+		//send raycasts where ever there is a true	
 	}
 	
 	// Update is called once per frame

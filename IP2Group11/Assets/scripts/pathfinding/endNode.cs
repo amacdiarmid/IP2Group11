@@ -3,12 +3,17 @@ using System.Collections;
 
 public class endNode : pathNodes {
 
-	public pathfindTest test;
+	public GameObject test;
 
 	// Use this for initialization
 	void Start () 
 	{
-		detectPath();
+		Up = true;
+		Down = true;
+		Left = true;
+		Right = true;
+		GotRay = false;
+		//send raycasts where ever there is a true		
 	}
 	
 	// Update is called once per frame
@@ -18,11 +23,28 @@ public class endNode : pathNodes {
 
 	public override void recieveRay()
 	{
-		if (GotRay == false)
+		if (done == false)
 		{
-			GotRay = true;
-			path.Add(this.transform.position);
-			Debug.Log("end path");
-		}	
+			if (GotRay == false)
+			{
+				GotRay = true;
+				done = true;
+				path.Add(this.transform.position);
+				int i = 0;
+				foreach (var item in path)
+				{ 
+					i++;
+				}
+				test.GetComponent<LineRenderer>().SetVertexCount(i);
+				i = 0;
+				foreach (var item in path)
+				{
+					test.GetComponent<LineRenderer>().SetPosition(i, new Vector3(item.x, item.y, -1));
+					i++;
+				}
+				test.GetComponent<LineRenderer>().enabled = true;
+				Debug.Log("end path");
+			}
+		}
 	}
 }

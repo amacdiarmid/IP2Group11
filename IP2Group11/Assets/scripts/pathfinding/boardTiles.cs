@@ -17,15 +17,6 @@ public class boardTiles : MonoBehaviour {
 	
 	}
 
-	public void detectWalls()
-	{
-		foreach (var tile in tiles)
-		{
-			tile.detectWall();
-		}
-		Debug.Log("done walls");
-	}
-
 	public void startPath()
 	{
 		start.startPath();
