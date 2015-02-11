@@ -11,6 +11,9 @@ public class pathNodes : MonoBehaviour {
 	public bool Wall;
 	[HideInInspector] public bool GotRay;
 	[HideInInspector] public static bool done;
+	[HideInInspector] public Vector2 origin;
+	[HideInInspector] public Vector2 size;
+	[HideInInspector] public static endNode end;
 
 	public List<Vector2> path = new List<Vector2>();
 
@@ -43,72 +46,133 @@ public class pathNodes : MonoBehaviour {
 			if (GotRay == false)
 			{
 				GotRay = true;
-				Vector2 origin = new Vector2(this.transform.position.x, this.transform.position.y);
-				Vector2 size;
-				path.Add(transform.position);
-				//send ray up
-				if (Up == true)
+				origin = new Vector2(this.transform.position.x, this.transform.position.y);
+				//this is the priority of the ray
+				//if it needs to go horizontal more than vertical 
+				if (end.transform.position.x - this.transform.position.x < end.transform.position.y - this.transform.position.y)
 				{
-					size = new Vector2(0, (collider2D.bounds.size.y / 2) + 0.1f);
-					RaycastHit2D hitUp = Physics2D.Raycast(origin + size, Vector2.up);
-					if (hitUp)
+					//if it needs to go left more than right
+					if (end.transform.position.x < this.transform.position.x)
 					{
-						if (hitUp.collider.GetComponentInChildren<pathNodes>().Wall != true)
-						{
-							Up = false;
-							var tile = hitUp.collider.GetComponentInChildren<pathNodes>();
-							tile.Down = false;
-							sendPath(tile);
-						}
-						
-					}
-				}
-				//send ray down
-				if (Down == true)
-				{
-					size = new Vector2(0, (collider2D.bounds.size.y / 2) + 0.1f);
-					RaycastHit2D hitDown = Physics2D.Raycast(origin - size, -Vector2.up);
-					if (hitDown)
-					{
-						if (hitDown.collider.GetComponentInChildren<pathNodes>().Wall != true)
-						{
-							Down = false;
-							var tile = hitDown.collider.GetComponentInChildren<pathNodes>();
-							tile.Up = false;
-							sendPath(tile);
-						}
-					}
-				}
-				//send ray left
-				if (Left == true)
-				{
-					size = new Vector2((collider2D.bounds.size.x / 2) + 0.1f, 0);
-					RaycastHit2D hitLeft = Physics2D.Raycast(origin - size, -Vector2.right);
-					if (hitLeft)
-					{
-						if (hitLeft.collider.GetComponentInChildren<pathNodes>().Wall != true)
+						//first prioraty
+						if (Left == true)
 						{
 							Left = false;
-							var tile = hitLeft.collider.GetComponentInChildren<pathNodes>();
-							tile.Right = false;
-							sendPath(tile);
+							rayLeft();
 						}
 					}
-				}
-				//send ray right
-				if (Right == true)
-				{
-					size = new Vector2((collider2D.bounds.size.x / 2) + 0.1f, 0);
-					RaycastHit2D hitRight = Physics2D.Raycast(origin + size, Vector2.right);
-					if (hitRight)
+					else
 					{
-						if (hitRight.collider.GetComponentInChildren<pathNodes>().Wall != true)
+						//first prioraty
+						if (Right == true)
 						{
 							Right = false;
-							var tile = hitRight.collider.GetComponentInChildren<pathNodes>();
-							tile.Left = false;
-							sendPath(tile);
+							rayRight();
 						}
+					}
+					//if it needs to go up more than down 
+					if (end.transform.position.y < this.transform.position.y)
+					{
+						//second prioraty
+						if (Up == true)
+						{
+							Up = false;
+							rayUp();
+						}
+					}
+					else
+					{
+						//second prioraty
+						if (Down == true)
+						{
+							Down = false;
+							rayDown();
+						}
+					}
+					//third priority
+					if (Right == true)
+					{
+						Right = false;
+						rayRight();
+					}
+					else
+					{
+						Left = false;
+						rayLeft();
+					}
+					//fourth priority
+					if (Up == true)
+					{
+						Up = false;
+						rayUp();
+					}
+					else
+					{
+						Down = false;
+						rayDown();
+					}
+				}
+				else
+				{
+					//if it needs to go up more than down 
+					if (end.transform.position.y < this.transform.position.y)
+					{
+						//first prioraty
+						if (Up == true)
+						{
+							Up = false;
+							rayUp();
+						}
+					}
+					else
+					{
+						//first prioraty
+						if (Down == true)
+						{
+							Down = false;
+							rayDown();
+						}
+					}
+					//if it needs to go left more than right
+					if (end.transform.position.x < this.transform.position.x)
+					{
+						//second prioraty
+						if (Left == true)
+						{
+							Left = false;
+							rayLeft();
+						}
+					}
+					else
+					{
+						//second prioraty
+						if (Right == true)
+						{
+							Right = false;
+							rayRight();
+						}
+					}
+					//third priority
+					if (Up == true)
+					{
+						Up = false;
+						rayUp();
+					}
+					else
+					{
+						Down = false;
+						rayDown();
+					}
+					//fourth priority
+					if (Right == true)
+					{
+						Right = false;
+						rayRight();
+					}
+					else
+					{
+						Left = false;
+						rayLeft();
 					}
 				}
 			}
@@ -117,11 +181,88 @@ public class pathNodes : MonoBehaviour {
 
 	public virtual void sendPath(pathNodes tile)
 	{
-		tile.path.Clear();
-		foreach (var item in path)
+		if (!path.Contains(tile.transform.position))
 		{
-			tile.path.Add(item);
-		}		
+			tile.path.Clear();
+			foreach (var item in path)
+			{			
+				tile.path.Add(item);
+			}
+			path.Add(transform.position);
+		}	
 		tile.recieveRay();
+	}
+
+	public virtual void rayUp()
+	{
+		size = new Vector2(0, (collider2D.bounds.size.y / 2) + 0.1f);
+		RaycastHit2D hit = Physics2D.Raycast(origin + size, Vector2.up);
+		if (hit)
+		{
+			if (hit.collider.GetComponentInChildren<pathNodes>().Wall != true)
+			{
+				var tile = hit.collider.GetComponentInChildren<pathNodes>();
+				sendPath(tile);
+			}
+			else
+			{
+				recieveRay();
+			}
+		}
+	}
+
+	public virtual void rayDown()
+	{
+		size = new Vector2(0, (collider2D.bounds.size.y / 2) + 0.1f);
+		RaycastHit2D hit = Physics2D.Raycast(origin - size, -Vector2.up);
+		if (hit)
+		{
+			if (hit.collider.GetComponentInChildren<pathNodes>().Wall != true)
+			{
+				var tile = hit.collider.GetComponentInChildren<pathNodes>();
+				sendPath(tile);
+			}
+			else
+			{
+				recieveRay();
+			}
+		}
+	}
+
+	public virtual void rayLeft()
+	{
+		size = new Vector2((collider2D.bounds.size.x / 2) + 0.1f, 0);
+		RaycastHit2D hit = Physics2D.Raycast(origin - size, -Vector2.right);
+		if (hit)
+		{
+			if (hit.collider.GetComponentInChildren<pathNodes>().Wall != true)
+			{
+				var tile = hit.collider.GetComponentInChildren<pathNodes>();
+				sendPath(tile);
+			}
+			else
+			{
+				recieveRay();
+			}
+		}
+	}
+
+	public virtual void rayRight()
+	{
+		size = new Vector2((collider2D.bounds.size.x / 2) + 0.1f, 0);
+		RaycastHit2D hit = Physics2D.Raycast(origin + size, Vector2.right);
+		if (hit)
+		{
+			if (hit.collider.GetComponentInChildren<pathNodes>().Wall != true)
+			{
+				
+				var tile = hit.collider.GetComponentInChildren<pathNodes>();
+				sendPath(tile);
+			}
+			else
+			{
+				recieveRay();
+			}
+		}
 	}
 }
