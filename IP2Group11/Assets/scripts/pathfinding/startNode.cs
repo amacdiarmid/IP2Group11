@@ -12,7 +12,7 @@ public class startNode : pathNodes {
 		Down = true;
 		Left = true;
 		Right = true;
-		GotRay = false;
+		//GotRay = false;
 		end = unhiddenEnd;
 		//send raycasts where ever there is a true	
 	}
@@ -24,27 +24,6 @@ public class startNode : pathNodes {
 
 	public void startPath()
 	{
-		path.Add(transform.position);
-		origin = new Vector2(this.transform.position.x, this.transform.position.y);
-		//send ray up
-		if (Up == true)
-		{
-			rayUp();
-		}
-		//send ray down
-		if (Down == true)
-		{
-			rayDown();
-		}
-		//send ray left
-		if (Left == true)
-		{
-			rayLeft();
-		}
-		//send ray right
-		if (Right == true)
-		{
-			rayRight();
-		}
+		recieveRay();
 	}
 }

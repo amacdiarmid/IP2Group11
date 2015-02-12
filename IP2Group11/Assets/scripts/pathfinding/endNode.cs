@@ -12,7 +12,7 @@ public class endNode : pathNodes {
 		Down = true;
 		Left = true;
 		Right = true;
-		GotRay = false;
+		//GotRay = false;
 		//send raycasts where ever there is a true		
 	}
 	
@@ -25,9 +25,9 @@ public class endNode : pathNodes {
 	{
 		if (done == false)
 		{
-			if (GotRay == false)
-			{
-				GotRay = true;
+			//if (GotRay == false)
+			//{
+				//GotRay = true;
 				done = true;
 				path.Add(this.transform.position);
 				int i = 0;
@@ -44,7 +44,7 @@ public class endNode : pathNodes {
 				}
 				test.GetComponent<LineRenderer>().enabled = true;
 				Debug.Log("end path");
-			}
+			//}
 		}
 	}
 }

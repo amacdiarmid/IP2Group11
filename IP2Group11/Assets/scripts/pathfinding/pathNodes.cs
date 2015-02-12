@@ -9,7 +9,7 @@ public class pathNodes : MonoBehaviour {
 	[HideInInspector] public bool Left;
 	[HideInInspector] public bool Right;
 	public bool Wall;
-	[HideInInspector] public bool GotRay;
+	//[HideInInspector] public bool GotRay;
 	[HideInInspector] public static bool done;
 	[HideInInspector] public Vector2 origin;
 	[HideInInspector] public Vector2 size;
@@ -24,7 +24,7 @@ public class pathNodes : MonoBehaviour {
 		Down = true;
 		Left = true;
 		Right = true;
-		GotRay = false;
+		//GotRay = false;
 		//send raycasts where ever there is a true	
 		if (Wall == false)
 		{
@@ -43,16 +43,16 @@ public class pathNodes : MonoBehaviour {
 		if (done == false)
 		{
 			//Debug.Log("node hit" + transform.position.x + transform.position.y);
-			if (GotRay == false)
-			{
-				GotRay = true;
+			//if (GotRay == false)
+			//{
+				//GotRay = true;
 				origin = new Vector2(this.transform.position.x, this.transform.position.y);
 				//this is the priority of the ray
 				//if it needs to go horizontal more than vertical 
-				if (end.transform.position.x - this.transform.position.x < end.transform.position.y - this.transform.position.y)
+				if (end.transform.position.x - this.transform.position.x <= end.transform.position.y - this.transform.position.y)
 				{
 					//if it needs to go left more than right
-					if (end.transform.position.x < this.transform.position.x)
+					if (end.transform.position.x <= this.transform.position.x)
 					{
 						//first prioraty
 						if (Left == true)
@@ -71,7 +71,7 @@ public class pathNodes : MonoBehaviour {
 						}
 					}
 					//if it needs to go up more than down 
-					if (end.transform.position.y < this.transform.position.y)
+					if (end.transform.position.y <= this.transform.position.y)
 					{
 						//second prioraty
 						if (Up == true)
@@ -95,7 +95,7 @@ public class pathNodes : MonoBehaviour {
 						Right = false;
 						rayRight();
 					}
-					else
+					else if(Left == true)
 					{
 						Left = false;
 						rayLeft();
@@ -106,7 +106,7 @@ public class pathNodes : MonoBehaviour {
 						Up = false;
 						rayUp();
 					}
-					else
+					else if(Down == true)
 					{
 						Down = false;
 						rayDown();
@@ -115,7 +115,7 @@ public class pathNodes : MonoBehaviour {
 				else
 				{
 					//if it needs to go up more than down 
-					if (end.transform.position.y < this.transform.position.y)
+					if (end.transform.position.y <= this.transform.position.y)
 					{
 						//first prioraty
 						if (Up == true)
@@ -134,7 +134,7 @@ public class pathNodes : MonoBehaviour {
 						}
 					}
 					//if it needs to go left more than right
-					if (end.transform.position.x < this.transform.position.x)
+					if (end.transform.position.x <= this.transform.position.x)
 					{
 						//second prioraty
 						if (Left == true)
@@ -158,7 +158,7 @@ public class pathNodes : MonoBehaviour {
 						Up = false;
 						rayUp();
 					}
-					else
+					else if(Down == true)
 					{
 						Down = false;
 						rayDown();
@@ -169,13 +169,13 @@ public class pathNodes : MonoBehaviour {
 						Right = false;
 						rayRight();
 					}
-					else
+					else if(Left == true)
 					{
 						Left = false;
 						rayLeft();
 					}
 				}
-			}
+			//}
 		}		
 	}
 
@@ -184,11 +184,11 @@ public class pathNodes : MonoBehaviour {
 		if (!path.Contains(tile.transform.position))
 		{
 			tile.path.Clear();
+			path.Add(transform.position);
 			foreach (var item in path)
 			{			
 				tile.path.Add(item);
-			}
-			path.Add(transform.position);
+			}			
 		}	
 		tile.recieveRay();
 	}
@@ -209,6 +209,10 @@ public class pathNodes : MonoBehaviour {
 				recieveRay();
 			}
 		}
+		else
+		{
+			recieveRay();
+		}
 	}
 
 	public virtual void rayDown()
@@ -226,6 +230,10 @@ public class pathNodes : MonoBehaviour {
 			{
 				recieveRay();
 			}
+		}
+		else
+		{
+			recieveRay();
 		}
 	}
 
@@ -245,6 +253,10 @@ public class pathNodes : MonoBehaviour {
 				recieveRay();
 			}
 		}
+		else
+		{
+			recieveRay();
+		}
 	}
 
 	public virtual void rayRight()
@@ -263,6 +275,10 @@ public class pathNodes : MonoBehaviour {
 			{
 				recieveRay();
 			}
+		}
+		else
+		{
+			recieveRay();
 		}
 	}
 }
