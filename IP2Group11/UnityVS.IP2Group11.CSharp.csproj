@@ -54,6 +54,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\scripts\Creep\creepMovement.cs" />
     <Compile Include="Assets\scripts\pathfinding\boardTiles.cs" />
     <Compile Include="Assets\scripts\pathfinding\endNode.cs" />
     <Compile Include="Assets\scripts\pathfinding\pathNodes.cs" />

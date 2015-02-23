@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 public class endNode : pathNodes {
 
@@ -25,26 +26,18 @@ public class endNode : pathNodes {
 	{
 		if (done == false)
 		{
-			//if (GotRay == false)
-			//{
-				//GotRay = true;
-				done = true;
-				path.Add(this.transform.position);
-				int i = 0;
-				foreach (var item in path)
-				{ 
-					i++;
-				}
-				test.GetComponent<LineRenderer>().SetVertexCount(i);
-				i = 0;
-				foreach (var item in path)
-				{
-					test.GetComponent<LineRenderer>().SetPosition(i, new Vector3(item.x, item.y, -1));
-					i++;
-				}
-				test.GetComponent<LineRenderer>().enabled = true;
-				Debug.Log("end path");
-			//}
+			done = true;
+			path.Add(this.transform.position);
+			path = path.Distinct().ToList();
+			test.GetComponent<LineRenderer>().SetVertexCount(path.Count);
+			int i = 0;
+			foreach (var item in path)
+			{
+				test.GetComponent<LineRenderer>().SetPosition(i, new Vector3(item.x, item.y, -1));
+				i++;
+			}
+			test.GetComponent<LineRenderer>().enabled = true;
+			Debug.Log("end path");
 		}
 	}
 }

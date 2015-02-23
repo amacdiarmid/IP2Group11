@@ -7,6 +7,8 @@ public class pathfindTest : MonoBehaviour {
 	public startNode start;
 	public endNode finish;
 
+	public creepMovement creep;
+
 	// Use this for initialization
 	void Start () {
 
@@ -23,6 +25,12 @@ public class pathfindTest : MonoBehaviour {
 		{
 			Debug.Log("start path");
 			start.startPath();
+		}
+
+		if (GUI.Button(new Rect(10, 160, 150.0f, 150.0f), "move creep"))
+		{
+			Debug.Log("move creep");
+			creep.Move();
 		}
 	}
 }

@@ -23,12 +23,10 @@ public class pathNodes : MonoBehaviour {
 		Up = true;
 		Down = true;
 		Left = true;
-		Right = true;
-		//GotRay = false;
-		//send raycasts where ever there is a true	
+		Right = true;	
 		if (Wall == false)
 		{
-			this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+			//this.gameObject.GetComponent<MeshRenderer>().enabled = false;
 		}
 	}
 	
@@ -42,140 +40,135 @@ public class pathNodes : MonoBehaviour {
 	{
 		if (done == false)
 		{
-			//Debug.Log("node hit" + transform.position.x + transform.position.y);
-			//if (GotRay == false)
-			//{
-				//GotRay = true;
-				origin = new Vector2(this.transform.position.x, this.transform.position.y);
-				//this is the priority of the ray
-				//if it needs to go horizontal more than vertical 
-				if (end.transform.position.x - this.transform.position.x <= end.transform.position.y - this.transform.position.y)
+			origin = new Vector2(this.transform.position.x, this.transform.position.y);
+			//this is the priority of the ray
+			//if it needs to go horizontal more than vertical 
+			if (end.transform.position.x - this.transform.position.x <= end.transform.position.y - this.transform.position.y)
+			{
+				//if it needs to go left more than right
+				if (end.transform.position.x <= this.transform.position.x)
 				{
-					//if it needs to go left more than right
-					if (end.transform.position.x <= this.transform.position.x)
-					{
-						//first prioraty
-						if (Left == true)
-						{
-							Left = false;
-							rayLeft();
-						}
-					}
-					else
-					{
-						//first prioraty
-						if (Right == true)
-						{
-							Right = false;
-							rayRight();
-						}
-					}
-					//if it needs to go up more than down 
-					if (end.transform.position.y <= this.transform.position.y)
-					{
-						//second prioraty
-						if (Up == true)
-						{
-							Up = false;
-							rayUp();
-						}
-					}
-					else
-					{
-						//second prioraty
-						if (Down == true)
-						{
-							Down = false;
-							rayDown();
-						}
-					}
-					//third priority
-					if (Right == true)
-					{
-						Right = false;
-						rayRight();
-					}
-					else if(Left == true)
+					//first prioraty
+					if (Left == true)
 					{
 						Left = false;
 						rayLeft();
-					}
-					//fourth priority
-					if (Up == true)
-					{
-						Up = false;
-						rayUp();
-					}
-					else if(Down == true)
-					{
-						Down = false;
-						rayDown();
 					}
 				}
 				else
 				{
-					//if it needs to go up more than down 
-					if (end.transform.position.y <= this.transform.position.y)
-					{
-						//first prioraty
-						if (Up == true)
-						{
-							Up = false;
-							rayUp();
-						}
-					}
-					else
-					{
-						//first prioraty
-						if (Down == true)
-						{
-							Down = false;
-							rayDown();
-						}
-					}
-					//if it needs to go left more than right
-					if (end.transform.position.x <= this.transform.position.x)
-					{
-						//second prioraty
-						if (Left == true)
-						{
-							Left = false;
-							rayLeft();
-						}
-					}
-					else
-					{
-						//second prioraty
-						if (Right == true)
-						{
-							Right = false;
-							rayRight();
-						}
-					}
-					//third priority
-					if (Up == true)
-					{
-						Up = false;
-						rayUp();
-					}
-					else if(Down == true)
-					{
-						Down = false;
-						rayDown();
-					}
-					//fourth priority
+					//first prioraty
 					if (Right == true)
 					{
 						Right = false;
 						rayRight();
 					}
-					else if(Left == true)
+				}
+				//if it needs to go up more than down 
+				if (end.transform.position.y <= this.transform.position.y)
+				{
+					//second prioraty
+					if (Up == true)
+					{
+						Up = false;
+						rayUp();
+					}
+				}
+				else
+				{
+					//second prioraty
+					if (Down == true)
+					{
+						Down = false;
+						rayDown();
+					}
+				}
+				//third priority
+				if (Right == true)
+				{
+					Right = false;
+					rayRight();
+				}
+				else if(Left == true)
+				{
+					Left = false;
+					rayLeft();
+				}
+				//fourth priority
+				if (Up == true)
+				{
+					Up = false;
+					rayUp();
+				}
+				else if(Down == true)
+				{
+					Down = false;
+					rayDown();
+				}
+			}
+			else
+			{
+				//if it needs to go up more than down 
+				if (end.transform.position.y <= this.transform.position.y)
+				{
+					//first prioraty
+					if (Up == true)
+					{
+						Up = false;
+						rayUp();
+					}
+				}
+				else
+				{
+					//first prioraty
+					if (Down == true)
+					{
+						Down = false;
+						rayDown();
+					}
+				}
+				//if it needs to go left more than right
+				if (end.transform.position.x <= this.transform.position.x)
+				{
+					//second prioraty
+					if (Left == true)
 					{
 						Left = false;
 						rayLeft();
 					}
 				}
-			//}
+				else
+				{
+					//second prioraty
+					if (Right == true)
+					{
+						Right = false;
+						rayRight();
+					}
+				}
+				//third priority
+				if (Up == true)
+				{
+					Up = false;
+					rayUp();
+				}
+				else if(Down == true)
+				{
+					Down = false;
+					rayDown();
+				}
+				//fourth priority
+				if (Right == true)
+				{
+					Right = false;
+					rayRight();
+				}
+				else if(Left == true)
+				{
+					Left = false;
+					rayLeft();
+				}
+			}
 		}		
 	}
 
@@ -195,8 +188,8 @@ public class pathNodes : MonoBehaviour {
 
 	public virtual void rayUp()
 	{
-		size = new Vector2(0, (collider2D.bounds.size.y / 2) + 0.1f);
-		RaycastHit2D hit = Physics2D.Raycast(origin + size, Vector2.up);
+		size = new Vector2(renderer.bounds.size.x / 2, renderer.bounds.size.y / 2);
+		RaycastHit2D hit = Physics2D.Raycast(origin + size, new Vector2(1,1));
 		if (hit)
 		{
 			if (hit.collider.GetComponentInChildren<pathNodes>().Wall != true)
@@ -217,8 +210,8 @@ public class pathNodes : MonoBehaviour {
 
 	public virtual void rayDown()
 	{
-		size = new Vector2(0, (collider2D.bounds.size.y / 2) + 0.1f);
-		RaycastHit2D hit = Physics2D.Raycast(origin - size, -Vector2.up);
+		size = new Vector2(-renderer.bounds.size.x / 2, -renderer.bounds.size.y / 2);
+		RaycastHit2D hit = Physics2D.Raycast(origin + size, new Vector2(-1,-1));
 		if (hit)
 		{
 			if (hit.collider.GetComponentInChildren<pathNodes>().Wall != true)
@@ -239,8 +232,8 @@ public class pathNodes : MonoBehaviour {
 
 	public virtual void rayLeft()
 	{
-		size = new Vector2((collider2D.bounds.size.x / 2) + 0.1f, 0);
-		RaycastHit2D hit = Physics2D.Raycast(origin - size, -Vector2.right);
+		size = new Vector2(-renderer.bounds.size.x / 2, renderer.bounds.size.y / 2);
+		RaycastHit2D hit = Physics2D.Raycast(origin + size, new Vector2(-1, 1));
 		if (hit)
 		{
 			if (hit.collider.GetComponentInChildren<pathNodes>().Wall != true)
@@ -261,8 +254,8 @@ public class pathNodes : MonoBehaviour {
 
 	public virtual void rayRight()
 	{
-		size = new Vector2((collider2D.bounds.size.x / 2) + 0.1f, 0);
-		RaycastHit2D hit = Physics2D.Raycast(origin + size, Vector2.right);
+		size = new Vector2(renderer.bounds.size.x/2, -renderer.bounds.size.y/2);
+		RaycastHit2D hit = Physics2D.Raycast(origin + size, new Vector2(1, -1));
 		if (hit)
 		{
 			if (hit.collider.GetComponentInChildren<pathNodes>().Wall != true)
