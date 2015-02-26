@@ -8,13 +8,12 @@ public class pathNodes : MonoBehaviour {
 	[HideInInspector] public bool Down;
 	[HideInInspector] public bool Left;
 	[HideInInspector] public bool Right;
-	public bool Wall;
+	[HideInInspector] public bool Wall;
 	//[HideInInspector] public bool GotRay;
 	[HideInInspector] public static bool done;
 	[HideInInspector] public Vector2 origin;
 	[HideInInspector] public Vector2 size;
 	[HideInInspector] public static endNode end;
-
 	public List<Vector2> path = new List<Vector2>();
 
 	// Use this for initialization
@@ -23,17 +22,13 @@ public class pathNodes : MonoBehaviour {
 		Up = true;
 		Down = true;
 		Left = true;
-		Right = true;	
-		if (Wall == false)
-		{
-			//this.gameObject.GetComponent<MeshRenderer>().enabled = false;
-		}
+		Right = true;
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	void Update()
 	{
-
+		
 	}
 
 	public virtual void recieveRay()
