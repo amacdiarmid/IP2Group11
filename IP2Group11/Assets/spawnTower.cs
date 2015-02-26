@@ -45,13 +45,13 @@ public class spawnTower : MonoBehaviour {
 		}
 	}
 
-	public void spawnWall()
+	public void spawnWall(GameObject tempTower)
 	{
 		if (wall == false)
 		{
 			Node.Wall = true;
 			wall = true;
-			tower = Instantiate(towerData.wall, this.transform.position, Quaternion.identity) as GameObject;
+			tower = Instantiate(tempTower, this.transform.position, Quaternion.identity) as GameObject;
 			tower.transform.parent = transform;
 			towerData.UIActive = false;
 			canvas.enabled = false;
