@@ -8,8 +8,16 @@ public class boardTiles : MonoBehaviour {
 	public List<pathNodes> tiles;
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+	{
+		tiles.Clear();
+		foreach(GameObject tile in GameObject.FindObjectsOfType(typeof(GameObject)))
+		{
+			if (tile.tag == "Tile")
+			{
+				tiles.Add(tile.GetComponent<pathNodes>());
+			}
+		}
 	}
 	
 	// Update is called once per frame

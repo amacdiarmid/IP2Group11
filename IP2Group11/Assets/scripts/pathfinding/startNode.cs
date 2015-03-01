@@ -12,9 +12,7 @@ public class startNode : pathNodes {
 		Down = true;
 		Left = true;
 		Right = true;
-		//GotRay = false;
 		end = unhiddenEnd;
-		//send raycasts where ever there is a true	
 	}
 	
 	// Update is called once per frame

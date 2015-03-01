@@ -14,6 +14,7 @@ public class creepMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		movement = new Vector3(2, 1.2f, 0) / speed;
+		Move();
 	}
 	
 	// Update is called once per frame
