@@ -54,7 +54,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 107964, guid: 301e51c13783318458cdde1af1a7788b, type: 2}
   RateOfFire: 1
-  canFire: 1
+  areaOfAttack: 5
+  damage: 1
 --- !u!212 &21250218
 SpriteRenderer:
   m_ObjectHideFlags: 1

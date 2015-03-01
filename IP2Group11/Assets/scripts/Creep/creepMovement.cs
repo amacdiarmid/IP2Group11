@@ -10,6 +10,7 @@ public class creepMovement : MonoBehaviour {
 	public int i;
 	[Range(0,10)] public float speed;
 	private Vector3 movement;
+	public int HP;
 
 	// Use this for initialization
 	void Start () {

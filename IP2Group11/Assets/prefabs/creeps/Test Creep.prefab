@@ -71,6 +71,7 @@ MonoBehaviour:
   path: []
   i: 0
   speed: 2.5999999
+  HP: 3
 --- !u!212 &21280198
 SpriteRenderer:
   m_ObjectHideFlags: 1

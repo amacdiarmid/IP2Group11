@@ -5,6 +5,9 @@ public class projectileBehaviour : MonoBehaviour {
 
 	public float speed = 10;
 	public Transform target;
+	public int damage;
+	private bool hit = false;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -19,6 +22,26 @@ public class projectileBehaviour : MonoBehaviour {
 		} else {
 			// Otherwise destroy self
 			Destroy(gameObject);
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		
+		if (col.gameObject.tag == "Creep")
+		{
+			Debug.Log("hit");
+			if (hit == false)
+			{
+				hit = true;
+				col.gameObject.GetComponent<creepMovement>().HP -= damage;
+				Destroy(this.gameObject);
+				if (col.gameObject.GetComponent<creepMovement>().HP <= 0)
+				{
+					Destroy(col.gameObject);
+				}	
+			}
+				
 		}
 	}
 }
