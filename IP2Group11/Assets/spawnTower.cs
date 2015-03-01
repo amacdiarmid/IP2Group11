@@ -51,7 +51,7 @@ public class spawnTower : MonoBehaviour {
 		{
 			Node.Wall = true;
 			wall = true;
-			tower = Instantiate(tempTower, this.transform.position, Quaternion.identity) as GameObject;
+			GameObject tower = (GameObject)Instantiate(tempTower, this.transform.position, Quaternion.identity);
 			tower.transform.parent = transform;
 			towerData.UIActive = false;
 			canvas.enabled = false;
