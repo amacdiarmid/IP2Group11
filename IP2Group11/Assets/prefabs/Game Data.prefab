@@ -138,7 +138,7 @@ LineRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150544}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_LightmapIndex: 255
@@ -152,7 +152,18 @@ LineRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Positions: []
+  m_Positions:
+  - {x: 20, y: 9.60000038, z: -1}
+  - {x: 18, y: 8.39999962, z: -1}
+  - {x: 16, y: 7.19999981, z: -1}
+  - {x: 14, y: 6, z: -1}
+  - {x: 12, y: 4.80000019, z: -1}
+  - {x: 10, y: 3.5999999, z: -1}
+  - {x: 7.99999952, y: 2.4000001, z: -1}
+  - {x: 5.99999952, y: 1.20000005, z: -1}
+  - {x: 3.99999952, y: 0, z: -1}
+  - {x: 1.99999952, y: 1.20000005, z: -1}
+  - {x: 0, y: 0, z: -1}
   m_Parameters:
     startWidth: .100000001
     endWidth: .100000001
