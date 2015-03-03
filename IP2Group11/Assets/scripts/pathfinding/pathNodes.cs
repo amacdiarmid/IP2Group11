@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 public class pathNodes : MonoBehaviour {
 
-	[HideInInspector] public bool Up;
-	[HideInInspector] public bool Down;
-	[HideInInspector] public bool Left;
-	[HideInInspector] public bool Right;
-	[HideInInspector] public bool Wall;
+	public bool Up;
+	public bool Down;
+	public bool Left;
+	public bool Right;
+	public bool Wall;
 	//[HideInInspector] public bool GotRay;
 	[HideInInspector] public static bool done;
 	[HideInInspector] public Vector2 origin;
@@ -19,10 +19,7 @@ public class pathNodes : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		Up = true;
-		Down = true;
-		Left = true;
-		Right = true;
+
 	}
 	
 	// Update is called once per frame
@@ -31,7 +28,7 @@ public class pathNodes : MonoBehaviour {
 		
 	}
 
-	public virtual void recieveRay()
+	public virtual bool recieveRay()
 	{
 		if (done == false)
 		{
@@ -47,7 +44,10 @@ public class pathNodes : MonoBehaviour {
 					if (Left == true)
 					{
 						Left = false;
-						rayLeft();
+						if (rayLeft() == true)
+						{
+							return true;
+						}
 					}
 				}
 				else
@@ -57,6 +57,7 @@ public class pathNodes : MonoBehaviour {
 					{
 						Right = false;
 						rayRight();
+						return true;
 					}
 				}
 				//if it needs to go up more than down 
@@ -67,6 +68,7 @@ public class pathNodes : MonoBehaviour {
 					{
 						Up = false;
 						rayUp();
+						return true;
 					}
 				}
 				else
@@ -76,6 +78,7 @@ public class pathNodes : MonoBehaviour {
 					{
 						Down = false;
 						rayDown();
+						return true;
 					}
 				}
 				//third priority
@@ -83,22 +86,26 @@ public class pathNodes : MonoBehaviour {
 				{
 					Right = false;
 					rayRight();
+					return true;
 				}
 				else if(Left == true)
 				{
 					Left = false;
 					rayLeft();
+					return true;
 				}
 				//fourth priority
 				if (Up == true)
 				{
 					Up = false;
 					rayUp();
+					return true;
 				}
 				else if(Down == true)
 				{
 					Down = false;
 					rayDown();
+					return true;
 				}
 			}
 			else
@@ -111,6 +118,7 @@ public class pathNodes : MonoBehaviour {
 					{
 						Up = false;
 						rayUp();
+						return true;
 					}
 				}
 				else
@@ -120,6 +128,7 @@ public class pathNodes : MonoBehaviour {
 					{
 						Down = false;
 						rayDown();
+						return true;
 					}
 				}
 				//if it needs to go left more than right
@@ -130,6 +139,7 @@ public class pathNodes : MonoBehaviour {
 					{
 						Left = false;
 						rayLeft();
+						return true;
 					}
 				}
 				else
@@ -139,6 +149,7 @@ public class pathNodes : MonoBehaviour {
 					{
 						Right = false;
 						rayRight();
+						return true;
 					}
 				}
 				//third priority
@@ -146,28 +157,33 @@ public class pathNodes : MonoBehaviour {
 				{
 					Up = false;
 					rayUp();
+					return true;
 				}
 				else if(Down == true)
 				{
 					Down = false;
 					rayDown();
+					return true;
 				}
 				//fourth priority
 				if (Right == true)
 				{
 					Right = false;
 					rayRight();
+					return true;
 				}
 				else if(Left == true)
 				{
 					Left = false;
 					rayLeft();
+					return true;
 				}
 			}
-		}		
+		}
+		return false;
 	}
 
-	public virtual void sendPath(pathNodes tile)
+	public virtual bool sendPath(pathNodes tile)
 	{
 		if (!path.Contains(tile.transform.position))
 		{
@@ -178,10 +194,17 @@ public class pathNodes : MonoBehaviour {
 				tile.path.Add(item);
 			}			
 		}	
-		tile.recieveRay();
+		if(tile.recieveRay() == true)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
-	public virtual void rayUp()
+	public virtual bool rayUp()
 	{
 		size = new Vector2(renderer.bounds.size.x / 2, renderer.bounds.size.y / 2);
 		RaycastHit2D hit = Physics2D.Raycast(origin + size, new Vector2(1,1));
@@ -190,20 +213,41 @@ public class pathNodes : MonoBehaviour {
 			if (hit.collider.GetComponentInChildren<pathNodes>().Wall != true)
 			{
 				var tile = hit.collider.GetComponentInChildren<pathNodes>();
-				sendPath(tile);
+				if(sendPath(tile) == true)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
 			}
 			else
 			{
-				recieveRay();
+				if (recieveRay() == true)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
 			}
 		}
 		else
 		{
-			recieveRay();
+			if (recieveRay() == true)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 	}
 
-	public virtual void rayDown()
+	public virtual bool rayDown()
 	{
 		size = new Vector2(-renderer.bounds.size.x / 2, -renderer.bounds.size.y / 2);
 		RaycastHit2D hit = Physics2D.Raycast(origin + size, new Vector2(-1,-1));
@@ -212,20 +256,41 @@ public class pathNodes : MonoBehaviour {
 			if (hit.collider.GetComponentInChildren<pathNodes>().Wall != true)
 			{
 				var tile = hit.collider.GetComponentInChildren<pathNodes>();
-				sendPath(tile);
+				if (sendPath(tile) == true)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
 			}
 			else
 			{
-				recieveRay();
+				if (recieveRay() == true)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
 			}
 		}
 		else
 		{
-			recieveRay();
+			if (recieveRay() == true)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 	}
 
-	public virtual void rayLeft()
+	public virtual bool rayLeft()
 	{
 		size = new Vector2(-renderer.bounds.size.x / 2, renderer.bounds.size.y / 2);
 		RaycastHit2D hit = Physics2D.Raycast(origin + size, new Vector2(-1, 1));
@@ -234,20 +299,41 @@ public class pathNodes : MonoBehaviour {
 			if (hit.collider.GetComponentInChildren<pathNodes>().Wall != true)
 			{
 				var tile = hit.collider.GetComponentInChildren<pathNodes>();
-				sendPath(tile);
+				if (sendPath(tile) == true)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
 			}
 			else
 			{
-				recieveRay();
+				if (recieveRay() == true)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
 			}
 		}
 		else
 		{
-			recieveRay();
+			if (recieveRay() == true)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 	}
 
-	public virtual void rayRight()
+	public virtual bool rayRight()
 	{
 		size = new Vector2(renderer.bounds.size.x/2, -renderer.bounds.size.y/2);
 		RaycastHit2D hit = Physics2D.Raycast(origin + size, new Vector2(1, -1));
@@ -257,16 +343,37 @@ public class pathNodes : MonoBehaviour {
 			{
 				
 				var tile = hit.collider.GetComponentInChildren<pathNodes>();
-				sendPath(tile);
+				if (sendPath(tile) == true)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
 			}
 			else
 			{
-				recieveRay();
+				if (recieveRay() == true)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
 			}
 		}
 		else
 		{
-			recieveRay();
+			if (recieveRay() == true)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 	}
 }

@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11404322}
   - 58: {fileID: 5870276}
   m_Layer: 2
-  m_Name: wall test prefab
+  m_Name: lightning tower
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ed2def754126f5d4b987509171cc0bcd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 459de83a815a52242b0758bc687425e4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

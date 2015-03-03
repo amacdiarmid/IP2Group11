@@ -20,8 +20,15 @@ public class startNode : pathNodes {
 	
 	}
 
-	public void startPath()
+	public bool startPath()
 	{
-		recieveRay();
+		if (recieveRay() == true)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }

@@ -13,7 +13,7 @@ GameObject:
   - 61: {fileID: 6107964}
   - 50: {fileID: 5050710}
   m_Layer: 0
-  m_Name: projectile prefab
+  m_Name: lightning tower projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,6 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   target: {fileID: 0}
+  damage: 0
 --- !u!212 &21207964
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -1992,7 +1992,7 @@ GameObject:
   - 58: {fileID: 483733892}
   - 114: {fileID: 483733891}
   m_Layer: 0
-  m_Name: tile
+  m_Name: grass
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2032,7 +2032,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 483733889}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Radius: 1
   m_Center: {x: 0, y: 0}
 --- !u!212 &483733893
@@ -2122,6 +2122,57 @@ Prefab:
   m_RootGameObject: {fileID: 767380886}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &525164516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 130810, guid: 236cb3ae17ae8c142b272bf063f50789, type: 2}
+  m_PrefabInternal: {fileID: 1801967668}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 525164517}
+  - 212: {fileID: 525164518}
+  m_Layer: 0
+  m_Name: Nexus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &525164517
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 430810, guid: 236cb3ae17ae8c142b272bf063f50789, type: 2}
+  m_PrefabInternal: {fileID: 1801967668}
+  m_GameObject: {fileID: 525164516}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: .199999809, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1810223349}
+  m_RootOrder: 0
+--- !u!212 &525164518
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 21230810, guid: 236cb3ae17ae8c142b272bf063f50789,
+    type: 2}
+  m_PrefabInternal: {fileID: 1801967668}
+  m_GameObject: {fileID: 525164516}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: ed2def754126f5d4b987509171cc0bcd, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &545619833
 GameObject:
   m_ObjectHideFlags: 0
@@ -2135,7 +2186,7 @@ GameObject:
   - 58: {fileID: 545619836}
   - 114: {fileID: 545619835}
   m_Layer: 0
-  m_Name: tile
+  m_Name: grass
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2175,7 +2226,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 545619833}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Radius: 1
   m_Center: {x: 0, y: 0}
 --- !u!212 &545619837
@@ -2587,7 +2638,7 @@ GameObject:
   - 58: {fileID: 634658913}
   - 114: {fileID: 634658912}
   m_Layer: 0
-  m_Name: tile
+  m_Name: grass
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2627,7 +2678,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 634658910}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Radius: 1
   m_Center: {x: 0, y: 0}
 --- !u!212 &634658914
@@ -3660,7 +3711,7 @@ GameObject:
   - 58: {fileID: 767380889}
   - 114: {fileID: 767380888}
   m_Layer: 0
-  m_Name: tile
+  m_Name: grass
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3700,7 +3751,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 767380886}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Radius: 1
   m_Center: {x: 0, y: 0}
 --- !u!212 &767380890
@@ -3828,7 +3879,7 @@ GameObject:
   - 58: {fileID: 806329164}
   - 114: {fileID: 806329163}
   m_Layer: 0
-  m_Name: tile
+  m_Name: grass
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3868,7 +3919,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 806329161}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Radius: 1
   m_Center: {x: 0, y: 0}
 --- !u!212 &806329165
@@ -3943,7 +3994,7 @@ GameObject:
   - 58: {fileID: 890157642}
   - 114: {fileID: 890157641}
   m_Layer: 0
-  m_Name: tile
+  m_Name: grass
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3983,7 +4034,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 890157639}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Radius: 1
   m_Center: {x: 0, y: 0}
 --- !u!212 &890157643
@@ -5112,7 +5163,7 @@ GameObject:
   - 58: {fileID: 1038024104}
   - 114: {fileID: 1038024103}
   m_Layer: 0
-  m_Name: tile
+  m_Name: grass
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5152,7 +5203,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1038024101}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Radius: 1
   m_Center: {x: 0, y: 0}
 --- !u!212 &1038024105
@@ -5332,7 +5383,7 @@ GameObject:
   - 58: {fileID: 1077151954}
   - 114: {fileID: 1077151953}
   m_Layer: 0
-  m_Name: tile
+  m_Name: grass
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5372,7 +5423,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1077151951}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Radius: 1
   m_Center: {x: 0, y: 0}
 --- !u!212 &1077151955
@@ -5647,7 +5698,7 @@ GameObject:
   - 58: {fileID: 1145593368}
   - 114: {fileID: 1145593367}
   m_Layer: 0
-  m_Name: tile
+  m_Name: grass
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5687,7 +5738,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1145593365}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Radius: 1
   m_Center: {x: 0, y: 0}
 --- !u!212 &1145593369
@@ -6011,7 +6062,7 @@ GameObject:
   - 58: {fileID: 1217508528}
   - 114: {fileID: 1217508527}
   m_Layer: 0
-  m_Name: tile
+  m_Name: grass
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6051,7 +6102,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1217508525}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Radius: 1
   m_Center: {x: 0, y: 0}
 --- !u!212 &1217508529
@@ -6110,7 +6161,7 @@ GameObject:
   - 58: {fileID: 1220688106}
   - 114: {fileID: 1220688105}
   m_Layer: 0
-  m_Name: tile
+  m_Name: grass
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6150,7 +6201,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1220688103}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Radius: 1
   m_Center: {x: 0, y: 0}
 --- !u!212 &1220688107
@@ -6998,7 +7049,7 @@ GameObject:
   - 114: {fileID: 1369112163}
   - 58: {fileID: 1369112162}
   m_Layer: 2
-  m_Name: wall test prefab
+  m_Name: lightning tower
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7053,7 +7104,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ed2def754126f5d4b987509171cc0bcd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 459de83a815a52242b0758bc687425e4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1369112165
 Transform:
@@ -7223,7 +7274,7 @@ GameObject:
   - 58: {fileID: 1436202795}
   - 114: {fileID: 1436202794}
   m_Layer: 0
-  m_Name: tile
+  m_Name: grass
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7263,7 +7314,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1436202792}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Radius: 1
   m_Center: {x: 0, y: 0}
 --- !u!212 &1436202796
@@ -7889,7 +7940,7 @@ GameObject:
   - 58: {fileID: 1634802028}
   - 114: {fileID: 1634802027}
   m_Layer: 0
-  m_Name: tile
+  m_Name: grass
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7929,7 +7980,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1634802025}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Radius: 1
   m_Center: {x: 0, y: 0}
 --- !u!212 &1634802029
@@ -8664,7 +8715,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 525164517}
   m_Father: {fileID: 0}
   m_RootOrder: 5
 --- !u!1 &1811432514
@@ -9876,7 +9928,7 @@ GameObject:
   - 58: {fileID: 2021332836}
   - 114: {fileID: 2021332835}
   m_Layer: 0
-  m_Name: tile
+  m_Name: grass
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9916,7 +9968,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 2021332833}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Radius: 1
   m_Center: {x: 0, y: 0}
 --- !u!212 &2021332837
@@ -10352,7 +10404,7 @@ GameObject:
   - 58: {fileID: 2136939275}
   - 114: {fileID: 2136939274}
   m_Layer: 0
-  m_Name: tile
+  m_Name: grass
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10392,7 +10444,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 2136939272}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Radius: 1
   m_Center: {x: 0, y: 0}
 --- !u!212 &2136939276
