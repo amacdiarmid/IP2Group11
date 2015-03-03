@@ -1,11 +1,11 @@
 # =============== #
 # Unity generated #
 # =============== #
-Temp/
-Obj/
-UnityGenerated/
-Library/
-Assets/AssetStoreTools*
+IP2Group11/Temp/
+IP2Group11/Obj/
+IP2Group11/UnityGenerated/
+IP2Group11/Library/
+IP2Group11/Assets/AssetStoreTools*
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
