@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class spawnTower : MonoBehaviour {
 
@@ -8,18 +9,19 @@ public class spawnTower : MonoBehaviour {
 	private towerData towerData;
 	private pathNodes Node;
 	private bool wall;
-	private Canvas canvas;
 	private GameObject tower;
 	private bool UIActive;
 	private startNode start;
+	private UIData towerUI;
 
 	// Use this for initialization
 	void Start () 
 	{
 		Node = this.GetComponent<pathNodes>();
 		towerData = GameObject.Find("Game Data").GetComponent<towerData>();
-		canvas = this.gameObject.GetComponentInChildren<Canvas>();
+		towerUI = GameObject.Find("Game Data").GetComponent<UIData>();
 		start = GameObject.Find("board/start").GetComponent<startNode>();
+		UIActive = false;
 	}
 	
 	// Update is called once per frame
@@ -30,43 +32,46 @@ public class spawnTower : MonoBehaviour {
 
 	void OnMouseDown()
 	{
-		if (towerData.UIActive == false)
+		if (!EventSystem.current.IsPointerOverGameObject())
 		{
 			if (UIActive == false)
 			{
-				towerData.UIActive = true;
-				canvas.enabled = true;
+				Debug.Log("not blocking path");
+				towerUI.towerUI.SetActive(true);
+				towerUI.towerUI.transform.position = this.transform.position;
+				towerUI.move(this.gameObject);
 				UIActive = true;
 			}
+			else
+			{
+				towerUI.towerUI.SetActive(false);
+				UIActive = false;
+			}
+			
 		}
-		else if (towerData.UIActive == true && UIActive == true)
-		{
-			towerData.UIActive = false;
-			canvas.enabled = false;
-			UIActive = false;
-		}
+		
 	}
 
 	public void spawnWall(GameObject tempTower)
 	{
-		if (wall == false)
+		if (wall == false && start.startPath() == true)
 		{
+			Debug.Log("spawn Wall");
 			Node.Wall = true;
 			wall = true;
-			GameObject tower = (GameObject)Instantiate(tempTower, this.transform.position, Quaternion.identity);
+			tower = (GameObject)Instantiate(tempTower, this.transform.position, Quaternion.identity);
 			tower.transform.parent = transform;
-			towerData.UIActive = false;
-			canvas.enabled = false;
+			towerUI.towerUI.SetActive(false);
 			UIActive = false;
 		}
 	}
 
 	public void destroyWall()
 	{
+		Debug.Log("sell Wall");
 		Node.Wall = false;
 		wall = false;
-		towerData.UIActive = false;
-		canvas.enabled = false;
+		towerUI.towerUI.SetActive(false);
 		UIActive = false;
 		Destroy(tower);
 	}

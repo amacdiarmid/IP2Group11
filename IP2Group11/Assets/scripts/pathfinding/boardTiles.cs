@@ -5,17 +5,22 @@ using System.Collections.Generic;
 public class boardTiles : MonoBehaviour {
 
 	public startNode start;
-	public List<pathNodes> tiles;
+	public List<pathNodes> tileNodes;
+	public List<spawnTower> tileSpawns;
 
 	// Use this for initialization
 	void Start () 
 	{
-		tiles.Clear();
+		tileNodes.Clear();
 		foreach(GameObject tile in GameObject.FindObjectsOfType(typeof(GameObject)))
 		{
 			if (tile.tag == "Tile")
 			{
-				tiles.Add(tile.GetComponent<pathNodes>());
+				tileNodes.Add(tile.GetComponent<pathNodes>());
+				if (tile.name == "grass")
+				{
+					tileSpawns.Add(tile.GetComponent<spawnTower>());
+				}	
 			}
 		}
 	}
@@ -28,5 +33,16 @@ public class boardTiles : MonoBehaviour {
 	public void startPath()
 	{
 		start.startPath();
+	}
+
+	public void clearDirections()
+	{
+		foreach (var tile in tileNodes)
+		{
+			tile.Up = true;
+			tile.Down = true;
+			tile.Left = true;
+			tile.Right = true;
+		}
 	}
 }

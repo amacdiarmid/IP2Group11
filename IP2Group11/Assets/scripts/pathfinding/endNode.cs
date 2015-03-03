@@ -4,8 +4,6 @@ using System.Linq;
 
 public class endNode : pathNodes {
 
-	public WaveData waveData;
-
 	// Use this for initialization
 	void Start () 
 	{
@@ -13,7 +11,6 @@ public class endNode : pathNodes {
 		Down = true;
 		Left = true;
 		Right = true;
-		waveData = GameObject.Find("Game Data").GetComponent<WaveData>();
 	}
 	
 	// Update is called once per frame
@@ -28,11 +25,12 @@ public class endNode : pathNodes {
 			done = true;
 			path.Add(this.transform.position);
 			path = path.Distinct().ToList();
-			Debug.Log("end path");
+			Debug.Log("end return true");
 			return true;
 		}
 		else
 		{
+			Debug.Log("end return fale");
 			return false;	
 		} 
 	}

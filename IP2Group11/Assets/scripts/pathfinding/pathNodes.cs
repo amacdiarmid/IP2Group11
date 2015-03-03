@@ -56,8 +56,10 @@ public class pathNodes : MonoBehaviour {
 					if (Right == true)
 					{
 						Right = false;
-						rayRight();
-						return true;
+						if (rayRight() == true)
+						{
+							return true;
+						}
 					}
 				}
 				//if it needs to go up more than down 
@@ -67,8 +69,10 @@ public class pathNodes : MonoBehaviour {
 					if (Up == true)
 					{
 						Up = false;
-						rayUp();
-						return true;
+						if(rayUp() == true)
+						{
+							return true;
+						}				
 					}
 				}
 				else
@@ -77,35 +81,51 @@ public class pathNodes : MonoBehaviour {
 					if (Down == true)
 					{
 						Down = false;
-						rayDown();
-						return true;
+						if(rayDown() == true)
+						{
+							return true;
+						}
+						
 					}
 				}
 				//third priority
 				if (Right == true)
 				{
 					Right = false;
-					rayRight();
-					return true;
+					if (rayRight() == true)
+					{
+						return true;
+					}
 				}
 				else if(Left == true)
 				{
 					Left = false;
-					rayLeft();
-					return true;
+					if (rayLeft() == true)
+					{
+						return true;
+					}
 				}
 				//fourth priority
 				if (Up == true)
 				{
 					Up = false;
-					rayUp();
-					return true;
+					if (rayUp() == true)
+					{
+						return true;
+					}	
 				}
 				else if(Down == true)
 				{
 					Down = false;
-					rayDown();
-					return true;
+					if (rayDown() == true)
+					{
+						return true;
+					}
+				}
+				else
+				{
+					Debug.Log("1 node return false" + transform.position);
+					return false;
 				}
 			}
 			else
@@ -117,8 +137,10 @@ public class pathNodes : MonoBehaviour {
 					if (Up == true)
 					{
 						Up = false;
-						rayUp();
-						return true;
+						if (rayUp() == true)
+						{
+							return true;
+						}	
 					}
 				}
 				else
@@ -127,8 +149,10 @@ public class pathNodes : MonoBehaviour {
 					if (Down == true)
 					{
 						Down = false;
-						rayDown();
-						return true;
+						if (rayDown() == true)
+						{
+							return true;
+						}
 					}
 				}
 				//if it needs to go left more than right
@@ -138,8 +162,10 @@ public class pathNodes : MonoBehaviour {
 					if (Left == true)
 					{
 						Left = false;
-						rayLeft();
-						return true;
+						if (rayLeft() == true)
+						{
+							return true;
+						}
 					}
 				}
 				else
@@ -148,38 +174,54 @@ public class pathNodes : MonoBehaviour {
 					if (Right == true)
 					{
 						Right = false;
-						rayRight();
-						return true;
+						if (rayRight() == true)
+						{
+							return true;
+						}
 					}
 				}
 				//third priority
 				if (Up == true)
 				{
 					Up = false;
-					rayUp();
-					return true;
+					if (rayUp() == true)
+					{
+						return true;
+					}	
 				}
 				else if(Down == true)
 				{
 					Down = false;
-					rayDown();
-					return true;
+					if (rayDown() == true)
+					{
+						return true;
+					}
 				}
 				//fourth priority
 				if (Right == true)
 				{
 					Right = false;
-					rayRight();
-					return true;
+					if (rayRight() == true)
+					{
+						return true;
+					}
 				}
 				else if(Left == true)
 				{
 					Left = false;
-					rayLeft();
-					return true;
+					if (rayLeft() == true)
+					{
+						return true;
+					}
+				}
+				else
+				{
+					Debug.Log("2 node return false" +transform.position);
+					return false;
 				}
 			}
 		}
+		Debug.Log("3 node return false" +transform.position);
 		return false;
 	}
 

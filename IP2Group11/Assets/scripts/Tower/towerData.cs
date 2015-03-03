@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 public class towerData : MonoBehaviour {
 
-	[HideInInspector] public bool UIActive;
+	public GameObject lightningTower;
 	[HideInInspector] public List<towerBehaviour> towers;
 
 	// Use this for initialization
 	void Start () {
-		UIActive = false;
+
 	}
 	
 	// Update is called once per frame

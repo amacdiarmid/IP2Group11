@@ -3,16 +3,18 @@ using System.Collections;
 
 public class startNode : pathNodes {
 
-	public endNode unhiddenEnd;
+	private boardTiles board;
 
 	// Use this for initialization
 	void Start () 
 	{
+		end = GameObject.Find("board/finish").GetComponent<endNode>();
+		board = GameObject.Find("board").GetComponent<boardTiles>();
 		Up = true;
 		Down = true;
 		Left = true;
 		Right = true;
-		end = unhiddenEnd;
+		startPath();
 	}
 	
 	// Update is called once per frame
@@ -22,12 +24,16 @@ public class startNode : pathNodes {
 
 	public bool startPath()
 	{
+		done = false;
+		board.clearDirections();
 		if (recieveRay() == true)
 		{
+			Debug.Log("start path = true");
 			return true;
 		}
 		else
 		{
+			Debug.Log("start path = false");
 			return false;
 		}
 	}
