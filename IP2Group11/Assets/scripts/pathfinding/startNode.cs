@@ -4,12 +4,16 @@ using System.Collections;
 public class startNode : pathNodes {
 
 	private boardTiles board;
+	private towerData towers;
+	private heroMovement hero;
 
 	// Use this for initialization
 	void Start () 
 	{
 		end = GameObject.Find("board/finish").GetComponent<endNode>();
 		board = GameObject.Find("board").GetComponent<boardTiles>();
+		towers = GameObject.Find("Game Data").GetComponent<towerData>();
+		hero = GameObject.Find("hero").GetComponent<heroMovement>();
 		Up = true;
 		Down = true;
 		Left = true;
@@ -26,14 +30,18 @@ public class startNode : pathNodes {
 	{
 		done = false;
 		board.clearDirections();
+		towers.hideCollider();
+		hero.HideCollider();
 		if (recieveRay() == true)
 		{
-			Debug.Log("start path = true");
+			towers.hideCollider();
+			hero.HideCollider();
 			return true;
 		}
 		else
 		{
-			Debug.Log("start path = false");
+			towers.hideCollider();
+			hero.HideCollider();
 			return false;
 		}
 	}

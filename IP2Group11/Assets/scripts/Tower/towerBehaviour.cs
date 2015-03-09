@@ -22,10 +22,8 @@ public class towerBehaviour : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D other)
 	{
-		Debug.Log("something inside collider");
 		if(other.gameObject.tag=="Creep")
 		{
-			Debug.Log ("creep inside collider");
 			if (canFire == true)
 			{			
 				GameObject shot = (GameObject)Instantiate(projectile, transform.position, Quaternion.identity);

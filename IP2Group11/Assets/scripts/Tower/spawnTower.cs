@@ -13,6 +13,7 @@ public class spawnTower : MonoBehaviour {
 	private bool UIActive;
 	private startNode start;
 	private UIData towerUI;
+	private boardTiles board;
 
 	// Use this for initialization
 	void Start () 
@@ -21,6 +22,7 @@ public class spawnTower : MonoBehaviour {
 		towerData = GameObject.Find("Game Data").GetComponent<towerData>();
 		towerUI = GameObject.Find("Game Data").GetComponent<UIData>();
 		start = GameObject.Find("board/start").GetComponent<startNode>();
+		board = GameObject.Find("board").GetComponent<boardTiles>();
 		UIActive = false;
 	}
 	
@@ -34,29 +36,40 @@ public class spawnTower : MonoBehaviour {
 	{
 		if (!EventSystem.current.IsPointerOverGameObject())
 		{
-			if (UIActive == false)
-			{
-				Debug.Log("not blocking path");
-				towerUI.towerUI.SetActive(true);
-				towerUI.towerUI.transform.position = this.transform.position;
-				towerUI.move(this.gameObject);
-				UIActive = true;
+			if (board.heroSelected == false)
+			{		
+				Node.Wall = true;
+				if (start.startPath() == true)
+				{
+					if (UIActive == false)
+					{
+						towerUI.towerUI.SetActive(true);
+						towerUI.towerUI.transform.position = this.transform.position;
+						towerUI.move(this.gameObject);
+						UIActive = true;
+					}
+					else
+					{
+						towerUI.towerUI.SetActive(false);
+						UIActive = false;
+					}
+				}
+				else
+				{
+					Node.Wall = false;
+				}
 			}
 			else
 			{
-				towerUI.towerUI.SetActive(false);
-				UIActive = false;
+				board.sendNewPos(transform.position);
 			}
-			
-		}
-		
+		}		
 	}
 
 	public void spawnWall(GameObject tempTower)
 	{
 		if (wall == false && start.startPath() == true)
 		{
-			Debug.Log("spawn Wall");
 			Node.Wall = true;
 			wall = true;
 			tower = (GameObject)Instantiate(tempTower, this.transform.position, Quaternion.identity);
@@ -68,7 +81,6 @@ public class spawnTower : MonoBehaviour {
 
 	public void destroyWall()
 	{
-		Debug.Log("sell Wall");
 		Node.Wall = false;
 		wall = false;
 		towerUI.towerUI.SetActive(false);

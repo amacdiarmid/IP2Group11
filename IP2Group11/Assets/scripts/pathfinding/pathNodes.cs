@@ -124,7 +124,6 @@ public class pathNodes : MonoBehaviour {
 				}
 				else
 				{
-					Debug.Log("1 node return false" + transform.position);
 					return false;
 				}
 			}
@@ -216,12 +215,10 @@ public class pathNodes : MonoBehaviour {
 				}
 				else
 				{
-					Debug.Log("2 node return false" +transform.position);
 					return false;
 				}
 			}
 		}
-		Debug.Log("3 node return false" +transform.position);
 		return false;
 	}
 

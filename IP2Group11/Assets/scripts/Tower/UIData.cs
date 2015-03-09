@@ -24,10 +24,10 @@ public class UIData : MonoBehaviour {
 
 	public void move(GameObject tile)
 	{
-		Debug.Log(tile.transform.position);
 		spawnTower a = tile.GetComponent<spawnTower>();
+		buyLightning.onClick.RemoveAllListeners();
+		sellTower.onClick.RemoveAllListeners();
 		buyLightning.onClick.AddListener(() => a.spawnWall(towers.lightningTower));
 		sellTower.onClick.AddListener(() => a.destroyWall());
-		Debug.Log(tile.transform.position);
 	}
 }

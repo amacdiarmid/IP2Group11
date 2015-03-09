@@ -30,7 +30,6 @@ public class projectileBehaviour : MonoBehaviour {
 		
 		if (col.gameObject.tag == "Creep")
 		{
-			Debug.Log("hit");
 			if (hit == false)
 			{
 				hit = true;

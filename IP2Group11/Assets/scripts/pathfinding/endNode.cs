@@ -4,9 +4,12 @@ using System.Linq;
 
 public class endNode : pathNodes {
 
+	public boardTiles board;
+
 	// Use this for initialization
 	void Start () 
 	{
+		board = GameObject.Find("board").GetComponent<boardTiles>();
 		Up = true;
 		Down = true;
 		Left = true;
@@ -25,12 +28,10 @@ public class endNode : pathNodes {
 			done = true;
 			path.Add(this.transform.position);
 			path = path.Distinct().ToList();
-			Debug.Log("end return true");
 			return true;
 		}
 		else
 		{
-			Debug.Log("end return fale");
 			return false;	
 		} 
 	}

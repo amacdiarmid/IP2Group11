@@ -7,10 +7,14 @@ public class boardTiles : MonoBehaviour {
 	public startNode start;
 	public List<pathNodes> tileNodes;
 	public List<spawnTower> tileSpawns;
+	[HideInInspector] public bool heroSelected;
+	[HideInInspector] public heroMovement hero;
+	private towerData towers;
 
 	// Use this for initialization
 	void Start () 
 	{
+		towers = GameObject.Find("Game Data").GetComponent<towerData>();
 		tileNodes.Clear();
 		foreach(GameObject tile in GameObject.FindObjectsOfType(typeof(GameObject)))
 		{
@@ -30,11 +34,6 @@ public class boardTiles : MonoBehaviour {
 	
 	}
 
-	public void startPath()
-	{
-		start.startPath();
-	}
-
 	public void clearDirections()
 	{
 		foreach (var tile in tileNodes)
@@ -44,5 +43,10 @@ public class boardTiles : MonoBehaviour {
 			tile.Left = true;
 			tile.Right = true;
 		}
+	}
+
+	public void sendNewPos(Vector3 heroMovePos)
+	{
+		hero.moveHero(heroMovePos);
 	}
 }

@@ -17,7 +17,7 @@ public class towerData : MonoBehaviour {
 	
 	}
 
-	void hideCollider()
+	public void hideCollider()
 	{
 		towers.Clear();
 		foreach (GameObject tower in GameObject.FindObjectsOfType(typeof(GameObject)))
