@@ -11,7 +11,7 @@ GameObject:
   - 114: {fileID: 11404250}
   - 212: {fileID: 21204250}
   - 58: {fileID: 5804250}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: start
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -60,7 +60,6 @@ MonoBehaviour:
   origin: {x: 0, y: 0}
   size: {x: 0, y: 0}
   path: []
-  unhiddenEnd: {fileID: 0}
 --- !u!212 &21204250
 SpriteRenderer:
   m_ObjectHideFlags: 1

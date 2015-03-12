@@ -16,16 +16,13 @@ public class boardTiles : MonoBehaviour {
 	{
 		towers = GameObject.Find("Game Data").GetComponent<towerData>();
 		tileNodes.Clear();
-		foreach(GameObject tile in GameObject.FindObjectsOfType(typeof(GameObject)))
+		foreach(GameObject tile in GameObject.FindGameObjectsWithTag("Tile"))
 		{
-			if (tile.tag == "Tile")
+			tileNodes.Add(tile.GetComponent<pathNodes>());
+			if (tile.name == "grass")
 			{
-				tileNodes.Add(tile.GetComponent<pathNodes>());
-				if (tile.name == "grass")
-				{
-					tileSpawns.Add(tile.GetComponent<spawnTower>());
-				}	
-			}
+				tileSpawns.Add(tile.GetComponent<spawnTower>());
+			}	
 		}
 	}
 	

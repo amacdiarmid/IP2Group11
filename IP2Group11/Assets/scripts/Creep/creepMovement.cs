@@ -15,7 +15,10 @@ public class creepMovement : MonoBehaviour {
 	void Start () {
 		movement = new Vector3(2, 1.2f, 0) / speed;
 		i++;
-		path = GameObject.Find("finish").GetComponent<endNode>().path;
+		foreach (var item in GameObject.Find("finish").GetComponent<endNode>().path)
+		{
+			path.Add(item);
+		} 
 		go = true;
 		float a = path[i].x - path[i - 1].x;
 		float b = path[i].y - path[i - 1].y;

@@ -11,8 +11,8 @@ GameObject:
   - 212: {fileID: 21280198}
   - 114: {fileID: 11480198}
   - 61: {fileID: 6180198}
-  - 50: {fileID: 5080198}
-  m_Layer: 0
+  - 50: {fileID: 5043104}
+  m_Layer: 9
   m_Name: basic creep
   m_TagString: Creep
   m_Icon: {fileID: 0}
@@ -26,23 +26,23 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.69508553, y: -1.13806665, z: -.550000012}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 8.76391029, y: 4.16346025, z: -.550000012}
+  m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!50 &5080198
+--- !u!50 &5043104
 Rigidbody2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180198}
-  m_Mass: 9.99999975e-05
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_FixedAngle: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -55,7 +55,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .331999987, y: .523999989}
+  m_Size: {x: 2.07500005, y: 3.2750001}
   m_Center: {x: 0, y: 0}
 --- !u!114 &11480198
 MonoBehaviour:

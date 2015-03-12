@@ -12,7 +12,7 @@ GameObject:
   - 212: {fileID: 21266880}
   - 58: {fileID: 5866880}
   - 114: {fileID: 11466880}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: grass
   m_TagString: Tile
   m_Icon: {fileID: 0}

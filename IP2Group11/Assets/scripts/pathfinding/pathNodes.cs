@@ -15,6 +15,7 @@ public class pathNodes : MonoBehaviour {
 	[HideInInspector] public Vector2 size;
 	[HideInInspector] public static endNode end;
 	public List<Vector2> path = new List<Vector2>();
+	private int layerMask;
 
 	// Use this for initialization
 	void Start () 
@@ -246,7 +247,7 @@ public class pathNodes : MonoBehaviour {
 	public virtual bool rayUp()
 	{
 		size = new Vector2(renderer.bounds.size.x / 2, renderer.bounds.size.y / 2);
-		RaycastHit2D hit = Physics2D.Raycast(origin + size, new Vector2(1,1));
+		RaycastHit2D hit = Physics2D.Raycast(origin + size, new Vector2(1, 1), Mathf.Infinity, LayerMask.GetMask("Tile"));
 		if (hit)
 		{
 			if (hit.collider.GetComponentInChildren<pathNodes>().Wall != true)
@@ -289,7 +290,7 @@ public class pathNodes : MonoBehaviour {
 	public virtual bool rayDown()
 	{
 		size = new Vector2(-renderer.bounds.size.x / 2, -renderer.bounds.size.y / 2);
-		RaycastHit2D hit = Physics2D.Raycast(origin + size, new Vector2(-1,-1));
+		RaycastHit2D hit = Physics2D.Raycast(origin + size, new Vector2(-1, -1), Mathf.Infinity, LayerMask.GetMask("Tile"));
 		if (hit)
 		{
 			if (hit.collider.GetComponentInChildren<pathNodes>().Wall != true)
@@ -332,7 +333,7 @@ public class pathNodes : MonoBehaviour {
 	public virtual bool rayLeft()
 	{
 		size = new Vector2(-renderer.bounds.size.x / 2, renderer.bounds.size.y / 2);
-		RaycastHit2D hit = Physics2D.Raycast(origin + size, new Vector2(-1, 1));
+		RaycastHit2D hit = Physics2D.Raycast(origin + size, new Vector2(-1, 1), Mathf.Infinity, LayerMask.GetMask("Tile"));
 		if (hit)
 		{
 			if (hit.collider.GetComponentInChildren<pathNodes>().Wall != true)
@@ -375,7 +376,7 @@ public class pathNodes : MonoBehaviour {
 	public virtual bool rayRight()
 	{
 		size = new Vector2(renderer.bounds.size.x/2, -renderer.bounds.size.y/2);
-		RaycastHit2D hit = Physics2D.Raycast(origin + size, new Vector2(1, -1));
+		RaycastHit2D hit = Physics2D.Raycast(origin + size, new Vector2(1, -1), Mathf.Infinity, LayerMask.GetMask("Tile"));
 		if (hit)
 		{
 			if (hit.collider.GetComponentInChildren<pathNodes>().Wall != true)

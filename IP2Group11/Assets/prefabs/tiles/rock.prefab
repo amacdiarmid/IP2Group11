@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21203474}
   - 114: {fileID: 11406724}
   - 58: {fileID: 5894058}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: rock
   m_TagString: Tile
   m_Icon: {fileID: 0}

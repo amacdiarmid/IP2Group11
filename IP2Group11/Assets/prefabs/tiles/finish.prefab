@@ -11,7 +11,7 @@ GameObject:
   - 114: {fileID: 11422696}
   - 212: {fileID: 21222696}
   - 58: {fileID: 5822696}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: finish
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 430810}
   - 212: {fileID: 21230810}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Nexus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ MonoBehaviour:
   origin: {x: 0, y: 0}
   size: {x: 0, y: 0}
   path: []
-  test: {fileID: 150544, guid: e64eb73ebd2a4f74f9b86f4c64fa0d38, type: 2}
+  board: {fileID: 0}
 --- !u!212 &21222696
 SpriteRenderer:
   m_ObjectHideFlags: 1
