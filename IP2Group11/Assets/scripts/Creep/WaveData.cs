@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class waveData : MonoBehaviour {
+public class WaveData : MonoBehaviour {
 
 	private int waveNum = -1;
 	public List<GameObject> starts;
