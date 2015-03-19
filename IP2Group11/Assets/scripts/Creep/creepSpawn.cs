@@ -6,7 +6,7 @@ public class creepSpawn : MonoBehaviour {
 	[HideInInspector] public float creepTimer;
 	[HideInInspector] public int basicCreepNo;
 	[HideInInspector] public GameObject basicCreep;
-	[HideInInspector] public WaveData data;
+	[HideInInspector] public waveData data;
 	private bool spawnCreep = true;
 
 	public void Update()

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class WaveData : MonoBehaviour {
+public class waveData : MonoBehaviour {
 
 	private int waveNum = -1;
 	public List<GameObject> starts;
@@ -49,12 +49,6 @@ public class WaveData : MonoBehaviour {
 					button.SetActive(true);
 				}
 			}	
-			else if (wait == true)
-			{
-				Debug.Log(Time.time);
-				Debug.Log(curTime);
-				Debug.Log(Time.time - curTime);
-			}
 			if (wait == true && Time.time - curTime >= waveWaitTime)
 			{
 				wait = false;

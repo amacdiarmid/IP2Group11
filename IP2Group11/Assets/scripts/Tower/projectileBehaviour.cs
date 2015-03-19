@@ -39,8 +39,7 @@ public class projectileBehaviour : MonoBehaviour {
 				{
 					Destroy(col.gameObject);
 				}	
-			}
-				
+			}		
 		}
 	}
 }
