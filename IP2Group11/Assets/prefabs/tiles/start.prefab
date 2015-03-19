@@ -11,6 +11,7 @@ GameObject:
   - 114: {fileID: 11404250}
   - 212: {fileID: 21204250}
   - 58: {fileID: 5804250}
+  - 114: {fileID: 11433370}
   m_Layer: 8
   m_Name: start
   m_TagString: Tile
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 104250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11, y: 4, z: 0}
+  m_LocalPosition: {x: 20, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -60,6 +61,21 @@ MonoBehaviour:
   origin: {x: 0, y: 0}
   size: {x: 0, y: 0}
   path: []
+--- !u!114 &11433370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06fa304c09330054caf4493a7ba5c6ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creepTimer: 0
+  basicCreepNo: 0
+  basicCreep: {fileID: 0}
+  data: {fileID: 0}
 --- !u!212 &21204250
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -27,6 +27,7 @@ public class heroMovement : MonoBehaviour {
 			float fracJourney = distCovered / distance;
 			transform.position = Vector3.Lerp(currentPos, posToMove, fracJourney);
 		}
+		
 	}
 
 	void OnMouseDown()
@@ -41,7 +42,7 @@ public class heroMovement : MonoBehaviour {
 			}
 			else
 			{
-				selected = true;
+				selected = false;
 			}
 		}
 	}
@@ -53,6 +54,8 @@ public class heroMovement : MonoBehaviour {
 		distance = Vector3.Distance(currentPos, posToMove);
 		startTime = Time.time;
 		move = true;
+		selected = false;
+		board.heroSelected = false;
 	}
 
 	public void HideCollider()

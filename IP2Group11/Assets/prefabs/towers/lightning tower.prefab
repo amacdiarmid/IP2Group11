@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21250218}
   - 114: {fileID: 11404322}
   - 58: {fileID: 5870276}
-  m_Layer: 2
+  m_Layer: 11
   m_Name: lightning tower
   m_TagString: Tower
   m_Icon: {fileID: 0}
