@@ -7533,7 +7533,6 @@ MonoBehaviour:
   origin: {x: 0, y: 0}
   size: {x: 0, y: 0}
   path: []
-  playerData: {fileID: 0}
 --- !u!58 &1562364993
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7863,9 +7862,8 @@ GameObject:
   - 224: {fileID: 1629313114}
   - 222: {fileID: 1629313116}
   - 114: {fileID: 1629313115}
-  - 114: {fileID: 1629313117}
   m_Layer: 0
-  m_Name: Text
+  m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7920,19 +7918,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1629313113}
---- !u!114 &1629313117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1629313113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 902509b275e300946b17ad51fef82154, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHealth: 5
-  text: {fileID: 1629313115}
 --- !u!1001 &1645583215
 Prefab:
   m_ObjectHideFlags: 0
@@ -8894,6 +8879,7 @@ GameObject:
   - 114: {fileID: 1790368466}
   - 114: {fileID: 1790368465}
   - 114: {fileID: 1790368467}
+  - 114: {fileID: 1790368468}
   m_Layer: 0
   m_Name: Game Data
   m_TagString: Untagged
@@ -8961,6 +8947,19 @@ MonoBehaviour:
   towerUI: {fileID: 169467288}
   buyLightning: {fileID: 1756623557}
   sellTower: {fileID: 1809412836}
+--- !u!114 &1790368468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1790368463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 902509b275e300946b17ad51fef82154, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 5
+  text: {fileID: 1629313115}
 --- !u!1001 &1808799028
 Prefab:
   m_ObjectHideFlags: 0
