@@ -10,9 +10,11 @@ public class creepMovement : MonoBehaviour {
 	[Range(0,10)] public float speed;
 	private Vector3 movement;
 	public int HP;
+	public PlayerData playerData;
 
 	// Use this for initialization
 	void Start () {
+		playerData = GameObject.Find("Game Data").GetComponent<PlayerData>();
 		movement = new Vector3(2, 1.2f, 0) / speed;
 		i++;
 		path = GameObject.Find("finish").GetComponent<endNode>().path;
@@ -109,6 +111,7 @@ public class creepMovement : MonoBehaviour {
 			}
 			if (i == path.Count)
 			{
+				playerData.RemoveHealth(1);
 				Destroy(this.gameObject);
 				//remove life from total count
 			}
