@@ -4,17 +4,37 @@ using System.Collections;
 public class creepSpawn : MonoBehaviour {
 
 	[HideInInspector] public float creepTimer;
-	[HideInInspector] public int basicCreepNo;
+
 	[HideInInspector] public GameObject basicCreep;
+	[HideInInspector] public int BasicCreepCount;
+	[HideInInspector] public GameObject CancerCreep;
+	[HideInInspector] public int CancerCreepCount;
+	[HideInInspector] public GameObject LocustCreep;
+	[HideInInspector] public int LocustCreepCount;
+
 	[HideInInspector] public waveData data;
 	private bool spawnCreep = true;
 
 	public void Update()
 	{
-		if (basicCreepNo > 0 && spawnCreep == true)
+		if (BasicCreepCount > 0 && spawnCreep == true)
 		{
-			basicCreepNo--;
+			BasicCreepCount--;
 			Instantiate(basicCreep, new Vector3(this.transform.position.x, this.transform.position.y, -1), Quaternion.identity);
+			data.spawnedCreeps++;
+			StartCoroutine("Wait");
+		}
+		if (CancerCreepCount > 0 && spawnCreep == true)
+		{
+			CancerCreepCount--;
+			Instantiate(CancerCreep, new Vector3(this.transform.position.x, this.transform.position.y, -1), Quaternion.identity);
+			data.spawnedCreeps++;
+			StartCoroutine("Wait");
+		}
+		if (LocustCreepCount > 0 && spawnCreep == true)
+		{
+			LocustCreepCount--;
+			Instantiate(LocustCreep, new Vector3(this.transform.position.x, this.transform.position.y, -1), Quaternion.identity);
 			data.spawnedCreeps++;
 			StartCoroutine("Wait");
 		}

@@ -1,0 +1,12 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# http://www.codeandweb.com/texturepacker/unity
+#
+# Sprite sheet: Locust4.png (1596 x 764)
+# $TexturePacker:SmartUpdate:4bd356de7323655d59f76caa9fceca16:04385106c5607f97e8a588a24ae1ab00:6b25d52377d9b233b8e0d4c9bb263402$
+#
+
+Locust1;12;12;844;740;0.5130331753554502;0.5
+Locust2;878;110;706;642;0.386685552407932;0.5763239875389408
