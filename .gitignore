@@ -33,3 +33,8 @@ Icon?
 ehthumbs.db
 Thumbs.db
 IP2Group11/Library/ScriptAssemblies/Assembly-CSharp.dll.mdb
+
+IP2Group11/Library/guidmapper
+*.dll
+IP2Group11/Library/expandedItems
+*.dll
