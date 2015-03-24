@@ -9,6 +9,8 @@ public class towerBehaviour : MonoBehaviour {
 	public float areaOfAttack;
 	public int damage;
 	public int speed;
+	public int cost;
+	public int Refund;
 
 	// Use this for initialization
 	void Start () {

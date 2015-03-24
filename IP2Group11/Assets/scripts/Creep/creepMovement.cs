@@ -12,6 +12,7 @@ public class creepMovement : MonoBehaviour {
 	public int HP;
 	private PlayerData player;
 	public int value;
+	public int goldGain;
 
 	// Use this for initialization
 	void Start () {
@@ -151,6 +152,7 @@ public class creepMovement : MonoBehaviour {
 
 		if (HP <= 0)
 		{
+			player.AddGold(goldGain);
 			Destroy(this);
 		}
 	}
