@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11407964}
   - 61: {fileID: 6107964}
   - 50: {fileID: 5050710}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: lightning tower projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

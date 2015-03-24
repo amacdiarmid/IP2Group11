@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21212356}
   - 114: {fileID: 11412356}
   - 58: {fileID: 5812356}
-  m_Layer: 11
+  m_Layer: 2
   m_Name: wall tower
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -56,6 +56,9 @@ MonoBehaviour:
   RateOfFire: 0
   areaOfAttack: 9.99999975e-05
   damage: 0
+  speed: 0
+  cost: 1
+  Refund: 1
 --- !u!212 &21212356
 SpriteRenderer:
   m_ObjectHideFlags: 1

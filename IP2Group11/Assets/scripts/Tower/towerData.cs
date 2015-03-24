@@ -5,6 +5,9 @@ using System.Collections.Generic;
 public class towerData : MonoBehaviour {
 
 	public GameObject lightningTower;
+	public GameObject locustTower;
+	public GameObject volcanoTower;
+	public GameObject wallTower;
 	[HideInInspector] public List<towerBehaviour> towers;
 
 	// Use this for initialization

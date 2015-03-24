@@ -10,7 +10,6 @@ public class spawnTower : MonoBehaviour {
 	private pathNodes Node;
 	private bool wall;
 	private GameObject tower;
-	private bool UIActive;
 	private startNode start;
 	private UIData towerUI;
 	private boardTiles board;
@@ -25,7 +24,6 @@ public class spawnTower : MonoBehaviour {
 		start = GameObject.Find("board/start").GetComponent<startNode>();
 		board = GameObject.Find("board").GetComponent<boardTiles>();
 		playerData = GameObject.Find("Game Data").GetComponent<PlayerData>();
-		UIActive = false;
 	}
 	
 	// Update is called once per frame
@@ -36,33 +34,45 @@ public class spawnTower : MonoBehaviour {
 
 	void OnMouseDown()
 	{
+		Debug.Log("click");
 		if (!EventSystem.current.IsPointerOverGameObject())
 		{
+			Debug.Log("no ui in the way");
 			if (board.heroSelected == false)
-			{		
-				Node.Wall = true;
-				if (start.startPath() == true)
+			{
+				Debug.Log("hero is not active");
+				if (wall == true)
 				{
-					if (UIActive == false)
-					{
-						towerUI.towerUI.SetActive(true);
-						towerUI.towerUI.transform.position = this.transform.position;
-						towerUI.move(this.gameObject);
-						UIActive = true;
-					}
-					else
-					{
-						towerUI.towerUI.SetActive(false);
-						UIActive = false;
-					}
+					Debug.Log("no current ui on tower");
+					towerUI.upgradeUI.SetActive(true);
+					towerUI.towerUI.SetActive(false);
+					towerUI.upgradeUI.transform.position = this.transform.position;
+					towerUI.move(this.gameObject);
 				}
 				else
 				{
-					Node.Wall = false;
+					Node.Wall = true;
+					if (start.startPath() == true)
+					{
+						Debug.Log("no current ui on empty space");
+						Node.Wall = false;
+						towerUI.towerUI.SetActive(true);
+						towerUI.upgradeUI.SetActive(false);
+						towerUI.towerUI.transform.position = this.transform.position;
+						towerUI.move(this.gameObject);
+					}
+					else
+					{
+						Debug.Log("removing the tower ui");
+						towerUI.towerUI.SetActive(false);
+						towerUI.upgradeUI.SetActive(false);
+						Node.Wall = false;
+					}
 				}
 			}
 			else
 			{
+				Debug.Log("hero is selected");
 				board.sendNewPos(transform.position);
 			}
 		}		
@@ -77,7 +87,6 @@ public class spawnTower : MonoBehaviour {
 			tower = (GameObject)Instantiate(tempTower, this.transform.position, Quaternion.identity);
 			tower.transform.parent = transform;
 			towerUI.towerUI.SetActive(false);
-			UIActive = false;
 			playerData.RemoveGold(tempTower.GetComponent<towerBehaviour>().cost);
 		}
 	}
@@ -86,8 +95,7 @@ public class spawnTower : MonoBehaviour {
 	{
 		Node.Wall = false;
 		wall = false;
-		towerUI.towerUI.SetActive(false);
-		UIActive = false;
+		towerUI.upgradeUI.SetActive(false);
 		playerData.AddGold(tower.GetComponent<towerBehaviour>().Refund);
 		Destroy(tower);
 	}

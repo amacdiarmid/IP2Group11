@@ -10,7 +10,7 @@ public class PlayerData : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		text = GameObject.Find("Score").GetComponent<Text>();
+
 	}
 	
 	// Update is called once per frame

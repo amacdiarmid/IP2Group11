@@ -28,7 +28,7 @@ public class heroAttack : MonoBehaviour {
 		if (CanUse[0] == true && creepCount.Count >= 5)
 		{
 			CanUse[0] = false;
-			AOEAttack();
+			//AOEAttack();
 		}
 	}
 

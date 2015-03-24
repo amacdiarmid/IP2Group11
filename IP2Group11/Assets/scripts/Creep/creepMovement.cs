@@ -153,7 +153,7 @@ public class creepMovement : MonoBehaviour {
 		if (HP <= 0)
 		{
 			player.AddGold(goldGain);
-			Destroy(this);
+			Destroy(this.gameObject);
 		}
 	}
 }

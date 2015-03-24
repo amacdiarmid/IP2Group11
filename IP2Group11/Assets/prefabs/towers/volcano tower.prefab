@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11423208}
   - 58: {fileID: 5823208}
   - 95: {fileID: 9545684}
-  m_Layer: 11
+  m_Layer: 2
   m_Name: volcano tower
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -72,7 +72,9 @@ MonoBehaviour:
   RateOfFire: 1
   areaOfAttack: 5
   damage: 1
-  speed: 0
+  speed: 1
+  cost: 1
+  Refund: 1
 --- !u!212 &21223208
 SpriteRenderer:
   m_ObjectHideFlags: 1

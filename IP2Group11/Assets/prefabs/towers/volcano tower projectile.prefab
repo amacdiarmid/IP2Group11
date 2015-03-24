@@ -13,7 +13,7 @@ GameObject:
   - 61: {fileID: 6122278}
   - 50: {fileID: 5022278}
   - 95: {fileID: 9522278}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: volcano tower projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

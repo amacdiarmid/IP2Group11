@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135106}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.92000008, y: 3.1500001, z: -2}
+  m_LocalPosition: {x: 8.23999977, y: -1.98000002, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -38,7 +38,7 @@ CircleCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135106}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Radius: .0299999993
@@ -81,10 +81,10 @@ MonoBehaviour:
   Range: 0
   Cooldown:
   - 10
-  - 60
-  - 60
-  - 60
-  Damage: 03000000000000000000000000000000
+  - 5
+  - 3
+  - 1
+  Damage: 030000000a0000000500000001000000
   AreaOfEffect: 6.67999983
   creepCount: []
 --- !u!212 &21235106
