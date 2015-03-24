@@ -13,11 +13,13 @@ public class spawnTower : MonoBehaviour {
 	private bool UIActive;
 	private startNode start;
 	private UIData towerUI;
+	private PlayerData playerData;
 
 	// Use this for initialization
 	void Start () 
 	{
 		Node = this.GetComponent<pathNodes>();
+		playerData = GameObject.Find("Game Data").GetComponent<PlayerData>();
 		towerData = GameObject.Find("Game Data").GetComponent<towerData>();
 		towerUI = GameObject.Find("Game Data").GetComponent<UIData>();
 		start = GameObject.Find("board/start").GetComponent<startNode>();
@@ -54,7 +56,7 @@ public class spawnTower : MonoBehaviour {
 
 	public void spawnWall(GameObject tempTower)
 	{
-		if (wall == false && start.startPath() == true)
+		if (wall == false && start.startPath() == true && playerData.playerGold>100)
 		{
 			Debug.Log("spawn Wall");
 			Node.Wall = true;
@@ -63,6 +65,7 @@ public class spawnTower : MonoBehaviour {
 			tower.transform.parent = transform;
 			towerUI.towerUI.SetActive(false);
 			UIActive = false;
+			playerData.RemoveGold(100);
 		}
 	}
 
@@ -74,5 +77,6 @@ public class spawnTower : MonoBehaviour {
 		towerUI.towerUI.SetActive(false);
 		UIActive = false;
 		Destroy(tower);
+		playerData.AddGold(75);
 	}
 }

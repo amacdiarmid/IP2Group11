@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class PlayerData : MonoBehaviour {
 
 	public int playerHealth = 5;
+	public int playerGold = 500;
 	public Text text;
 
 	// Use this for initialization
@@ -14,11 +15,21 @@ public class PlayerData : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		text.text = "Life: " +playerHealth;
+		text.text = "Life: " + playerHealth + " Gold: " + playerGold;
 	}
 
 	public void RemoveHealth(int health)
 	{
 		playerHealth-=health;
+	}
+
+	public void RemoveGold(int gold)
+	{
+		playerGold-=gold;
+	}
+
+	public void AddGold(int gold)
+	{
+		playerGold+=gold;
 	}
 }

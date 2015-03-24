@@ -5,12 +5,13 @@ public class projectileBehaviour : MonoBehaviour {
 
 	public float speed = 10;
 	public Transform target;
+	public PlayerData playerData;
 	public int damage;
 	private bool hit = false;
 
 	// Use this for initialization
 	void Start () {
-	
+		playerData = GameObject.Find("Game Data").GetComponent<PlayerData>();
 	}
 	
 	// Update is called once per frame
@@ -38,6 +39,7 @@ public class projectileBehaviour : MonoBehaviour {
 				Destroy(this.gameObject);
 				if (col.gameObject.GetComponent<creepMovement>().HP <= 0)
 				{
+					playerData.AddGold(5);
 					Destroy(col.gameObject);
 				}	
 			}
