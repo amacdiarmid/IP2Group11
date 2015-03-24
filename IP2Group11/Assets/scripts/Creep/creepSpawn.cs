@@ -10,7 +10,7 @@ public class creepSpawn : MonoBehaviour {
 	[HideInInspector] public GameObject CancerCreep;
 	[HideInInspector] public int CancerCreepCount;
 
-	[HideInInspector] public waveData data;
+	[HideInInspector] public WaveData data;
 	private bool spawnCreep = true;
 
 	public void Update()
