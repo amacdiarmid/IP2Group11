@@ -38,11 +38,7 @@ public class heroAttack : MonoBehaviour {
 		foreach (var creep in creepCount)
 		{
 			Debug.Log("AOE attack");
-			creep.HP = -Damage[0];
-			if (creep.HP <= 0)
-			{
-				Destroy(creep.gameObject);
-			}
+			creep.removeHealth(Damage[0]);
 		}	
 	}
 
@@ -69,25 +65,21 @@ public class heroAttack : MonoBehaviour {
 				if (CanUse[1] == true)
 				{
 					Debug.Log("heavy attack");
-					creep.GetComponent<creepMovement>().HP = -Damage[1];
+					creep.GetComponent<creepMovement>().removeHealth(Damage[1]);
 					StartCoroutine(Wait(Cooldown[1], 1));
 				}
 				else if (CanUse[2] == true)
 				{
 					Debug.Log("medium attack");
-					creep.GetComponent<creepMovement>().HP = -Damage[2];
+					creep.GetComponent<creepMovement>().removeHealth(Damage[2]);
 					StartCoroutine(Wait(Cooldown[2], 2));
 				}
 				else if (CanUse[3] == true)
 				{
 					Debug.Log("light attack");
-					creep.GetComponent<creepMovement>().HP = -Damage[3];
+					creep.GetComponent<creepMovement>().removeHealth(Damage[3]);
 					StartCoroutine(Wait(Cooldown[3], 3));
 				}
-			}
-			if (creep.GetComponent<creepMovement>().HP <= 0)
-			{
-				Destroy(creep.gameObject);
 			}
 		}
 	}

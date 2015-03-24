@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class PlayerData : MonoBehaviour {
 
-	public int playerHealth = 5;
+	public int playerHealth;
 	public Text text;
 
 	// Use this for initialization

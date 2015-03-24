@@ -57,6 +57,7 @@
     <Compile Include="Assets\scripts\Creep\creepMovement.cs" />
     <Compile Include="Assets\scripts\Creep\creepSpawn.cs" />
     <Compile Include="Assets\scripts\Creep\waveData.cs" />
+    <Compile Include="Assets\scripts\PlayerData.cs" />
     <Compile Include="Assets\scripts\Tower\UIData.cs" />
     <Compile Include="Assets\scripts\Tower\projectileBehaviour.cs" />
     <Compile Include="Assets\scripts\Tower\spawnTower.cs" />

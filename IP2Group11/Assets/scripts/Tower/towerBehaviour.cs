@@ -8,6 +8,7 @@ public class towerBehaviour : MonoBehaviour {
 	private bool canFire = true;
 	public float areaOfAttack;
 	public int damage;
+	public int speed;
 
 	// Use this for initialization
 	void Start () {
@@ -29,6 +30,7 @@ public class towerBehaviour : MonoBehaviour {
 				GameObject shot = (GameObject)Instantiate(projectile, transform.position, Quaternion.identity);
 				shot.GetComponent<projectileBehaviour>().target = other.transform;
 				shot.GetComponent<projectileBehaviour>().damage = damage;
+				shot.GetComponent<projectileBehaviour>().speed = speed;
 				canFire = false;
 				StartCoroutine("Wait");
 			}		

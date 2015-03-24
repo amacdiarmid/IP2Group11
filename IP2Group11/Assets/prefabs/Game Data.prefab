@@ -1,5 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &128132
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22428132}
+  - 222: {fileID: 22228132}
+  - 114: {fileID: 11428132}
+  m_Layer: 5
+  m_Name: HP Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &141480
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,6 +28,7 @@ GameObject:
   - 114: {fileID: 11441486}
   - 114: {fileID: 11441484}
   - 114: {fileID: 11438310}
+  - 114: {fileID: 11445688}
   m_Layer: 0
   m_Name: Game Data
   m_TagString: Untagged
@@ -204,6 +222,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 441474}
   m_RootOrder: 2
+--- !u!114 &11428132
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
 --- !u!114 &11438310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -238,8 +282,6 @@ MonoBehaviour:
   BasicCreepCount: 050000000a0000000f0000001400000019000000
   CancerCreep: {fileID: 165840, guid: 0e60833001feda548a61fd449a3351b7, type: 2}
   CancerCreepCount: 00000000050000000a0000000f00000014000000
-  LocustCreep: {fileID: 142254, guid: 82f2e4a160d369a468911054ef1e6fb8, type: 2}
-  LocustCreepCount: 0000000000000000050000000a0000000f000000
 --- !u!114 &11441486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -253,6 +295,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightningTower: {fileID: 150218, guid: 407c418f2158a1945803617f1b06b8ec, type: 2}
   towers: []
+--- !u!114 &11445688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 902509b275e300946b17ad51fef82154, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 5
+  text: {fileID: 11428132}
 --- !u!114 &11470952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -646,6 +701,12 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
+--- !u!222 &22228132
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128132}
 --- !u!222 &22270952
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -707,7 +768,7 @@ Canvas:
   m_GameObject: {fileID: 170964}
   m_Enabled: 1
   serializedVersion: 2
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -716,6 +777,23 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!224 &22428132
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128132}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 22470964}
+  m_RootOrder: 1
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: -85.4100037, y: -241.699997}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: .5, y: .5}
 --- !u!224 &22470952
 RectTransform:
   m_ObjectHideFlags: 1
@@ -834,6 +912,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 22470958}
+  - {fileID: 22428132}
   m_Father: {fileID: 441474}
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}

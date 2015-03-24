@@ -10,6 +10,8 @@ public class creepMovement : MonoBehaviour {
 	[Range(0,10)] public float speed;
 	private Vector3 movement;
 	public int HP;
+	private PlayerData player;
+	public int value;
 
 	// Use this for initialization
 	void Start () {
@@ -22,6 +24,7 @@ public class creepMovement : MonoBehaviour {
 		go = true;
 		float a = path[i].x - path[i - 1].x;
 		float b = path[i].y - path[i - 1].y;
+		player = GameObject.Find("Game Data").GetComponent<PlayerData>();
 	}
 	
 	// Update is called once per frame
@@ -113,7 +116,7 @@ public class creepMovement : MonoBehaviour {
 			if (i == path.Count)
 			{
 				Destroy(this.gameObject);
-				//remove life from total count
+				player.RemoveHealth(value);
 			}
 		}
 	}
@@ -140,5 +143,15 @@ public class creepMovement : MonoBehaviour {
 	{
 		movement = new Vector3(2, -1.2f, 0) / speed;
 		transform.Translate(movement * Time.deltaTime, Space.World);
+	}
+
+	public void removeHealth(int damage)
+	{
+		HP -= damage;
+
+		if (HP <= 0)
+		{
+			Destroy(this);
+		}
 	}
 }

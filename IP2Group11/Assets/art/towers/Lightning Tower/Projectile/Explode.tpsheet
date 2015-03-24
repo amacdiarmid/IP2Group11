@@ -1,0 +1,20 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# http://www.codeandweb.com/texturepacker/unity
+#
+# Sprite sheet: Explode6.png (1812 x 684)
+# $TexturePacker:SmartUpdate:663866617af96c91917630a3e2de2dbf:94e20685d0b4a93bac84ebc626293040:fc135c0edc3b77f2027c978cba963af5$
+#
+
+Explode0001;15;350;344;319;0.5;0.5
+Explode0002;374;350;344;319;0.5;0.5
+Explode0003;733;350;344;319;0.5;0.5
+Explode0004;1092;350;344;319;0.5;0.5
+Explode0005;1451;350;344;319;0.5;0.5
+Explode0007;15;16;344;319;0.5;0.5
+Explode0008;374;16;344;319;0.5;0.5
+Explode0009;733;16;344;319;0.5;0.5
+Explode0010;1092;16;344;319;0.5;0.5
+Explode0011;1451;16;344;319;0.5;0.5

@@ -9,8 +9,6 @@ public class creepSpawn : MonoBehaviour {
 	[HideInInspector] public int BasicCreepCount;
 	[HideInInspector] public GameObject CancerCreep;
 	[HideInInspector] public int CancerCreepCount;
-	[HideInInspector] public GameObject LocustCreep;
-	[HideInInspector] public int LocustCreepCount;
 
 	[HideInInspector] public waveData data;
 	private bool spawnCreep = true;
@@ -28,13 +26,6 @@ public class creepSpawn : MonoBehaviour {
 		{
 			CancerCreepCount--;
 			Instantiate(CancerCreep, new Vector3(this.transform.position.x, this.transform.position.y, -1), Quaternion.identity);
-			data.spawnedCreeps++;
-			StartCoroutine("Wait");
-		}
-		if (LocustCreepCount > 0 && spawnCreep == true)
-		{
-			LocustCreepCount--;
-			Instantiate(LocustCreep, new Vector3(this.transform.position.x, this.transform.position.y, -1), Quaternion.identity);
 			data.spawnedCreeps++;
 			StartCoroutine("Wait");
 		}

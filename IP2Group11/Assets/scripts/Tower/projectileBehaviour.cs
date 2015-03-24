@@ -3,9 +3,9 @@ using System.Collections;
 
 public class projectileBehaviour : MonoBehaviour {
 
-	public float speed = 10;
-	public Transform target;
-	public int damage;
+	[HideInInspector] public float speed = 10;
+	[HideInInspector] public Transform target;
+	[HideInInspector] public int damage;
 	private bool hit = false;
 
 	// Use this for initialization
@@ -33,12 +33,8 @@ public class projectileBehaviour : MonoBehaviour {
 			if (hit == false)
 			{
 				hit = true;
-				col.gameObject.GetComponent<creepMovement>().HP -= damage;
-				Destroy(this.gameObject);
-				if (col.gameObject.GetComponent<creepMovement>().HP <= 0)
-				{
-					Destroy(col.gameObject);
-				}	
+				col.gameObject.GetComponent<creepMovement>().removeHealth(damage);
+				Destroy(this.gameObject);	
 			}		
 		}
 	}

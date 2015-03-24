@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 123208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.2900009, y: -1.20000005, z: -8.47999954}
+  m_LocalPosition: {x: 25.8768158, y: -3.7175951, z: -8.47999954}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -68,10 +68,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f0ec59d588be740940bcb21cc30f14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 107964, guid: 301e51c13783318458cdde1af1a7788b, type: 2}
+  projectile: {fileID: 122278, guid: a93fa90b50593dd4cb9cdbd7df45cd77, type: 2}
   RateOfFire: 1
   areaOfAttack: 5
   damage: 1
+  speed: 0
 --- !u!212 &21223208
 SpriteRenderer:
   m_ObjectHideFlags: 1

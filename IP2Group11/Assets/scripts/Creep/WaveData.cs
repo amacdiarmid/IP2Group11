@@ -20,8 +20,6 @@ public class waveData : MonoBehaviour {
 	public List<int> BasicCreepCount;
 	public GameObject CancerCreep;
 	public List<int> CancerCreepCount;
-	public GameObject LocustCreep;
-	public List<int> LocustCreepCount;	
 
 	// Use this for initialization
 	void Start () 
@@ -34,6 +32,7 @@ public class waveData : MonoBehaviour {
 				starts.Add(tile);
 				tile.GetComponent<creepSpawn>().creepTimer = creepTimer;
 				tile.GetComponent<creepSpawn>().basicCreep = basicCreep;
+				tile.GetComponent<creepSpawn>().CancerCreep = CancerCreep;
 				tile.GetComponent<creepSpawn>().data = this;
 			}
 		}
@@ -46,7 +45,7 @@ public class waveData : MonoBehaviour {
 		{
 			if (wait == false)
 			{
-				if (spawnedCreeps == BasicCreepCount[waveNum] + CancerCreepCount[waveNum] + LocustCreepCount[waveNum])
+				if (spawnedCreeps == BasicCreepCount[waveNum] + CancerCreepCount[waveNum])
 				{
 					curTime = Time.time;
 					wait = true;
@@ -71,7 +70,6 @@ public class waveData : MonoBehaviour {
 			tile.GetComponent<startNode>().startPath();
 			tile.GetComponent<creepSpawn>().BasicCreepCount += BasicCreepCount[waveNum] / starts.Count;
 			tile.GetComponent<creepSpawn>().CancerCreepCount += CancerCreepCount[waveNum] / starts.Count;
-			tile.GetComponent<creepSpawn>().LocustCreepCount += LocustCreepCount[waveNum] / starts.Count;
 			tile.GetComponent<creepSpawn>().NextCreep();
 		}
 			
