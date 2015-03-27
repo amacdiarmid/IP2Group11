@@ -5,13 +5,15 @@ using System.Collections.Generic;
 
 public class WaveData : MonoBehaviour {
 
-	private int waveNum = -1;
+	private PlayerData player;
+	[HideInInspector] public int waveNum = -1;
 	public List<GameObject> starts;
 	public GameObject button;
 	//wave infomation
 	private bool started = false;
 	public float creepTimer;
 	[HideInInspector] public int spawnedCreeps;
+	[HideInInspector] public int deadCreeps;
 	private float curTime;
 	public float waveWaitTime;
 	private bool wait = false;
@@ -24,6 +26,7 @@ public class WaveData : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
+		player = GameObject.Find("Game Data").GetComponent<PlayerData>();
 		foreach (GameObject tile in GameObject.FindGameObjectsWithTag("Tile"))
 		{
 			if (tile.name == "start")
@@ -41,11 +44,11 @@ public class WaveData : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if (waveNum >= 0)
+		if (waveNum >= 0 && waveNum > BasicCreepCount.Count)
 		{
 			if (wait == false)
 			{
-				if (spawnedCreeps == BasicCreepCount[waveNum] + CancerCreepCount[waveNum])
+				if (spawnedCreeps == deadCreeps * 0.8f)
 				{
 					curTime = Time.time;
 					wait = true;
@@ -57,12 +60,19 @@ public class WaveData : MonoBehaviour {
 				wait = false;
 				NextWave();
 			}
-		}	
+		}
+		else if (waveNum == BasicCreepCount.Count)
+		{
+			if (spawnedCreeps == deadCreeps)
+				{
+					player.victory();
+				}
+		}
+	
 	}
 	
 	public void NextWave()
 	{
-		spawnedCreeps = 0;
 		button.SetActive(false);
 		waveNum++;
 		foreach (var tile in starts)

@@ -69,12 +69,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 122278, guid: a93fa90b50593dd4cb9cdbd7df45cd77, type: 2}
-  RateOfFire: 1
-  areaOfAttack: 5
+  RateOfFire: .300000012
+  areaOfAttack: 2
   damage: 1
-  speed: 1
-  cost: 1
-  Refund: 1
+  speed: 4
+  cost: 40
+  Refund: 20
 --- !u!212 &21274848
 SpriteRenderer:
   m_ObjectHideFlags: 1

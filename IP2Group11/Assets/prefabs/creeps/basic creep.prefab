@@ -86,10 +86,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: []
   i: 0
-  speed: 2.5999999
-  HP: 3
+  speed: 1.41999996
+  HP: 14
   value: 1
-  goldGain: 5
+  goldGain: 20
 --- !u!212 &21280198
 SpriteRenderer:
   m_ObjectHideFlags: 1

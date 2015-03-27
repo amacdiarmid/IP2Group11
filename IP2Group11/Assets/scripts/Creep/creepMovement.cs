@@ -13,6 +13,7 @@ public class creepMovement : MonoBehaviour {
 	private PlayerData player;
 	public int value;
 	public int goldGain;
+	private WaveData wave;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +27,7 @@ public class creepMovement : MonoBehaviour {
 		float a = path[i].x - path[i - 1].x;
 		float b = path[i].y - path[i - 1].y;
 		player = GameObject.Find("Game Data").GetComponent<PlayerData>();
+		wave = GameObject.Find("Game Data").GetComponent<WaveData>();
 	}
 	
 	// Update is called once per frame
@@ -152,6 +154,7 @@ public class creepMovement : MonoBehaviour {
 
 		if (HP <= 0)
 		{
+			wave.deadCreeps++;
 			player.AddGold(goldGain);
 			Destroy(this.gameObject);
 		}
