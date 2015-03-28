@@ -31,17 +31,14 @@ public class startNode : pathNodes {
 		done = false;
 		board.clearDirections();
 		towers.hideCollider();
-		hero.HideCollider();
 		if (recieveRay() == true)
 		{
 			towers.hideCollider();
-			hero.HideCollider();
 			return true;
 		}
 		else
 		{
 			towers.hideCollider();
-			hero.HideCollider();
 			return false;
 		}
 	}

@@ -11,7 +11,6 @@ GameObject:
   - 212: {fileID: 21235106}
   - 114: {fileID: 11435108}
   - 114: {fileID: 11435106}
-  - 61: {fileID: 6135106}
   - 58: {fileID: 5887992}
   m_Layer: 10
   m_Name: hero
@@ -27,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135106}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.23999977, y: -1.98000002, z: -2}
+  m_LocalPosition: {x: -3.05999994, y: -6.65999985, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -42,17 +41,6 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Radius: .0299999993
-  m_Center: {x: 0, y: 0}
---- !u!61 &6135106
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 135106}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Size: {x: 2.07500005, y: 3.2750001}
   m_Center: {x: 0, y: 0}
 --- !u!114 &11435106
 MonoBehaviour:
@@ -78,15 +66,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad849d8de2b636e45a151ff7fbd08369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Range: 0
-  Cooldown:
-  - 10
-  - 5
-  - 3
-  - 1
-  Damage: 030000000a0000000500000001000000
-  AreaOfEffect: 6.67999983
-  creepCount: []
+  autoAttackRange: 0
+  medAttackRange: 0
+  heavyAttackRange: 0
+  AOERange: 0
+  autoCooldown: 0
+  medCooldown: 0
+  heavyCooldown: 0
+  AOECooldown: 0
+  autoDamage: 0
+  medDamage: 0
+  heavyDamage: 0
+  AOEDamage: 0
 --- !u!212 &21235106
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -106,7 +97,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
-  m_SortingOrder: 108
+  m_SortingOrder: 74
   m_Sprite: {fileID: 21300050, guid: 6c8bdcee9c119324abf3d6b0041cd9e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000

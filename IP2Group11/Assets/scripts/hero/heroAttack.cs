@@ -5,88 +5,272 @@ using System.Collections.Generic;
 public class heroAttack : MonoBehaviour {
 
 	//the range of the hero
-	public float Range;
+	public float autoAttackRange;
+	public float medAttackRange;
+	public float heavyAttackRange;
+	public float AOERange;
 	//the cooldown on each attack
-	public float[] Cooldown = new float[4];
+	public float autoCooldown;
+	public float medCooldown;
+	public float heavyCooldown;
+	public float AOECooldown;
 	//the damage for each attack
-	public int[] Damage = new int[4];
-	//the area for the AOE attack
-	public float AreaOfEffect;
-	//see if the AOE [0], medium[1] or heavy[2] are ready to use;
-	private bool[] CanUse = new bool[4] {true, true, true, true};
-	//the current creeps in the AOE range
-	[HideInInspector] public List<creepMovement> creepCount;
+	public int autoDamage;
+	public int medDamage;
+	public int heavyDamage;
+	public int AOEDamage;
+	//if an ability can be used
+	private bool autoCanUse;
+	private bool medCanUse;
+	private bool heavyCanUse;
+	private bool AOECanUse;
 
 	// Use this for initialization
 	void Start () {
-		this.gameObject.GetComponent<CircleCollider2D>().radius = AreaOfEffect;	
+		this.gameObject.GetComponent<CircleCollider2D>().enabled = true;
+		this.gameObject.GetComponent<CircleCollider2D>().radius = AOERange;
+		this.gameObject.GetComponent<CircleCollider2D>().enabled = false;
+
+		autoCanUse = true;
+		medCanUse = true;
+		heavyCanUse = true;
+		AOECanUse = true;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if (CanUse[0] == true && creepCount.Count >= 5)
+		//med
+		if (Input.GetKeyUp("ability1"))
 		{
-			CanUse[0] = false;
-			//AOEAttack();
-		}
-	}
-
-	void AOEAttack()
-	{
-		StartCoroutine(Wait(Cooldown[0], 0));
-		foreach (var creep in creepCount)
-		{
-			Debug.Log("AOE attack");
-			creep.removeHealth(Damage[0]);
-		}	
-	}
-
-	void OnTriggerEnter2D(Collider2D other)
-	{
-		if (other.gameObject.tag == "Creep")
-		{
-			Debug.Log("creep added");
-			creepCount.Add(other.GetComponent<creepMovement>());
-		}
-	}
-
-	void OnTriggerExit2D(Collider2D other)
-	{
-		creepCount.Remove(other.GetComponent<creepMovement>());
-	}
-
-	void OnTriggerStay2D(Collider2D creep)
-	{
-		if(creep.gameObject.tag=="Creep")
-		{
-			if (Vector2.Distance(this.gameObject.transform.position, creep.gameObject.transform.position) <= Range)
+			if (medCanUse == true)
 			{
-				if (CanUse[1] == true)
-				{
-					Debug.Log("heavy attack");
-					creep.GetComponent<creepMovement>().removeHealth(Damage[1]);
-					StartCoroutine(Wait(Cooldown[1], 1));
-				}
-				else if (CanUse[2] == true)
-				{
-					Debug.Log("medium attack");
-					creep.GetComponent<creepMovement>().removeHealth(Damage[2]);
-					StartCoroutine(Wait(Cooldown[2], 2));
-				}
-				else if (CanUse[3] == true)
-				{
-					Debug.Log("light attack");
-					creep.GetComponent<creepMovement>().removeHealth(Damage[3]);
-					StartCoroutine(Wait(Cooldown[3], 3));
-				}
+				medCanUse = false;
+				medAttack();
+			}
+		}
+		//heavy
+		else if (Input.GetKeyUp("ability2"))
+		{
+			if (heavyCanUse == true)
+			{
+				heavyCanUse = false;
+				heavyAttack();
+			}
+		}
+		//AOE
+		else if (Input.GetKeyUp("ability3"))
+		{
+			if (AOECanUse == true)
+			{
+				AOECanUse = false;
+				AOEAttack(1);
+			}
+		}
+		else
+		{
+			if (autoCanUse == true)
+			{
+				autoCanUse = false;
+				autoAttack();
 			}
 		}
 	}
 
-	IEnumerator Wait(float time, int ability)
+	void autoAttack()
 	{
-		yield return new WaitForSeconds(time);
-		CanUse[ability] = true;
+		//check for creep NE
+		RaycastHit2D hitNE = Physics2D.Raycast(this.transform.position, new Vector2(2, 1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
+		if (hitNE)
+		{
+			Debug.Log("auto attack");
+			hitNE.collider.GetComponent<creepMovement>().removeHealth(autoDamage);
+			StartCoroutine(autoWait());
+		}
+		if (!hitNE)
+		{
+			//check for creep SE
+			RaycastHit2D hitSE = Physics2D.Raycast(this.transform.position, new Vector2(2, -1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
+			if (hitSE)
+			{
+				Debug.Log("auto attack");
+				hitSE.collider.GetComponent<creepMovement>().removeHealth(autoDamage);
+				StartCoroutine(autoWait());
+			}
+			if (!hitSE)
+			{
+				//check for creep SW
+				RaycastHit2D hitSW = Physics2D.Raycast(this.transform.position, new Vector2(-2, -1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
+				if (hitSW)
+				{
+					Debug.Log("auto attack");
+					hitSW.collider.GetComponent<creepMovement>().removeHealth(autoDamage);
+					StartCoroutine(autoWait());
+				}
+				if (!hitSE)
+				{
+					//check for creep NW
+					RaycastHit2D hitNW = Physics2D.Raycast(this.transform.position, new Vector2(-2, 1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
+					if (hitNW)
+					{
+						Debug.Log("auto attack");
+						hitNW.collider.GetComponent<creepMovement>().removeHealth(autoDamage);
+						StartCoroutine(autoWait());
+					}
+					if (!hitNW)
+					{
+						Debug.Log("No auto attack");
+					}
+				}
+			}
+		}
 	}
+	void medAttack()
+	{
+		//check for creep NE
+		RaycastHit2D hitNE = Physics2D.Raycast(this.transform.position, new Vector2(2, 1.2f), medAttackRange, LayerMask.GetMask("Creep"));
+		if (hitNE)
+		{
+			Debug.Log("med attack");
+			hitNE.collider.GetComponent<creepMovement>().removeHealth(medDamage);
+			StartCoroutine(medWait());
+		}
+		if (!hitNE)
+		{
+			//check for creep SE
+			RaycastHit2D hitSE = Physics2D.Raycast(this.transform.position, new Vector2(2, -1.2f), medAttackRange, LayerMask.GetMask("Creep"));
+			if (hitSE)
+			{
+				Debug.Log("med attack");
+				hitSE.collider.GetComponent<creepMovement>().removeHealth(medDamage);
+				StartCoroutine(medWait());
+			}
+			if (!hitSE)
+			{
+				//check for creep SW
+				RaycastHit2D hitSW = Physics2D.Raycast(this.transform.position, new Vector2(-2, -1.2f), medAttackRange, LayerMask.GetMask("Creep"));
+				if (hitSW)
+				{
+					Debug.Log("med attack");
+					hitSW.collider.GetComponent<creepMovement>().removeHealth(medDamage);
+					StartCoroutine(medWait());
+				}
+				if (!hitSE)
+				{
+					//check for creep NW
+					RaycastHit2D hitNW = Physics2D.Raycast(this.transform.position, new Vector2(-2, 1.2f), medAttackRange, LayerMask.GetMask("Creep"));
+					if (hitNW)
+					{
+						Debug.Log("med attack");
+						hitNW.collider.GetComponent<creepMovement>().removeHealth(medDamage);
+						StartCoroutine(medWait());
+					}
+					if (!hitNW)
+					{
+						Debug.Log("No med attack");
+					}
+				}
+			}
+		}
+	}
+	void heavyAttack()
+	{
+		//check for creep NE
+		RaycastHit2D hitNE = Physics2D.Raycast(this.transform.position, new Vector2(2, 1.2f), heavyAttackRange, LayerMask.GetMask("Creep"));
+		if (hitNE)
+		{
+			Debug.Log("heavy attack");
+			hitNE.collider.GetComponent<creepMovement>().removeHealth(heavyDamage);
+			StartCoroutine(heavyWait());
+		}
+		if (!hitNE)
+		{
+			//check for creep SE
+			RaycastHit2D hitSE = Physics2D.Raycast(this.transform.position, new Vector2(2, -1.2f), heavyAttackRange, LayerMask.GetMask("Creep"));
+			if (hitSE)
+			{
+				Debug.Log("heavy attack");
+				hitSE.collider.GetComponent<creepMovement>().removeHealth(heavyDamage);
+				StartCoroutine(heavyWait());
+			}
+			if (!hitSE)
+			{
+				//check for creep SW
+				RaycastHit2D hitSW = Physics2D.Raycast(this.transform.position, new Vector2(-2, -1.2f), heavyAttackRange, LayerMask.GetMask("Creep"));
+				if (hitSW)
+				{
+					Debug.Log("heavy attack");
+					hitSW.collider.GetComponent<creepMovement>().removeHealth(heavyDamage);
+					StartCoroutine(heavyWait());
+				}
+				if (!hitSE)
+				{
+					//check for creep NW
+					RaycastHit2D hitNW = Physics2D.Raycast(this.transform.position, new Vector2(-2, 1.2f), heavyAttackRange, LayerMask.GetMask("Creep"));
+					if (hitNW)
+					{
+						Debug.Log("heavy attack");
+						hitNW.collider.GetComponent<creepMovement>().removeHealth(heavyDamage);
+						StartCoroutine(heavyWait());
+					}
+					if (!hitNW)
+					{
+						Debug.Log("No heavy attack");
+					}
+				}
+			}
+		}
+	}
+	//this may or may no work
+	void AOEAttack(int i)
+	{
+		Debug.Log("AOE attack");
+		if (i == 1)
+		{
+			this.gameObject.GetComponent<CircleCollider2D>().enabled = true;
+		}
+		else
+		{
+			this.gameObject.GetComponent<CircleCollider2D>().enabled = false;
+			StartCoroutine(AOEWait());
+		}	
+	}
+
+	void onTriggerStay(Collider2D other)
+	{
+		if (this.gameObject.GetComponent<CircleCollider2D>().enabled == true)
+		{
+			if (other.gameObject.tag == "Creep")
+			{
+				other.gameObject.GetComponent<creepMovement>().removeHealth(AOEDamage);
+			}
+		}
+	}
+
+	IEnumerator autoWait()
+	{
+		yield return new WaitForSeconds(autoCooldown);
+		autoCanUse = true;
+	}
+	IEnumerator medWait()
+	{
+		yield return new WaitForSeconds(medCooldown);
+		medCanUse = true;
+	}
+	IEnumerator heavyWait()
+	{
+		yield return new WaitForSeconds(heavyCooldown);
+		heavyCanUse = true;
+	}
+	IEnumerator AOEWait()
+	{
+		yield return new WaitForSeconds(AOECooldown);
+		AOECanUse = true;
+	}
+	IEnumerator Wait()
+	{
+		yield return new WaitForSeconds(1);
+		AOEAttack(2);
+	}
+
 }

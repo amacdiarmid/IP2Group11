@@ -27,24 +27,11 @@ public class heroMovement : MonoBehaviour {
 			float fracJourney = distCovered / distance;
 			transform.position = Vector3.Lerp(currentPos, posToMove, fracJourney);
 		}
-		
-	}
-
-	void OnMouseDown()
-	{
-		if (!EventSystem.current.IsPointerOverGameObject())
+		if (Input.GetKeyUp("move"))
 		{
-			if (selected == false)
-			{
-				selected = true;
-				board.hero = this.gameObject.GetComponent<heroMovement>();
-				board.heroSelected = true;
-			}
-			else
-			{
-				selected = false;
-			}
+			Select();
 		}
+		
 	}
 
 	public void moveHero(Vector3 heroMovePos)
@@ -58,15 +45,15 @@ public class heroMovement : MonoBehaviour {
 		board.heroSelected = false;
 	}
 
-	public void HideCollider()
+	public void Select()
 	{
-		if (this.gameObject.collider2D.enabled == false)
+		if (selected == true)
 		{
-			this.gameObject.collider2D.enabled = true;
+			selected = false;
 		}
 		else
 		{
-			this.gameObject.collider2D.enabled = false;
+			selected = true;
 		}
 	}
 }
