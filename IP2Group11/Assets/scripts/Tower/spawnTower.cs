@@ -99,4 +99,9 @@ public class spawnTower : MonoBehaviour {
 		playerData.AddGold(tower.GetComponent<towerBehaviour>().Refund);
 		Destroy(tower);
 	}
+
+	public void UpgradeTower()
+	{
+		tower.GetComponent<towerBehaviour>().UpgradeTower();
+	}
 }

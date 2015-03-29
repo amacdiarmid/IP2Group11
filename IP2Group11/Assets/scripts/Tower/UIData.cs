@@ -48,6 +48,7 @@ public class UIData : MonoBehaviour {
 		buyWall.onClick.AddListener(() => a.spawnWall(towers.wallTower));
 		//upgrade
 		sellTower.onClick.AddListener(() => a.destroyWall());
+		upgradeTower.onClick.AddListener (() => a.UpgradeTower());
 	}
 
 	public void hide()
