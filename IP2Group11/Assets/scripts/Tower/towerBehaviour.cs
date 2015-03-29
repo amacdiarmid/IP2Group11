@@ -56,4 +56,12 @@ public class towerBehaviour : MonoBehaviour {
 			this.gameObject.collider2D.enabled = false;
 		}
 	}
+
+	public void UpgradeTower()
+	{
+		//should use floats for precision
+		damage *= 2;
+		speed *= 2;
+		//radius, cost, etc etc
+	}
 }
