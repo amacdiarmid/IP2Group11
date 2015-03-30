@@ -53,11 +53,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e01c6176baafb4f8a159ea011f0ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Up: 1
-  Down: 1
-  Left: 1
-  Right: 1
-  Wall: 0
+  Up: 0
+  Down: 0
+  Left: 0
+  Right: 0
+  Wall: 1
   origin: {x: 0, y: 0}
   size: {x: 0, y: 0}
   path: []

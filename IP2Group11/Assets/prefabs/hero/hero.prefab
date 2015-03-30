@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135106}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.05999994, y: -6.65999985, z: -2}
+  m_LocalPosition: {x: 14.9283228, y: -10.5045452, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -66,18 +66,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad849d8de2b636e45a151ff7fbd08369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoAttackRange: 0
-  medAttackRange: 0
-  heavyAttackRange: 0
-  AOERange: 0
-  autoCooldown: 0
-  medCooldown: 0
-  heavyCooldown: 0
-  AOECooldown: 0
-  autoDamage: 0
-  medDamage: 0
-  heavyDamage: 0
-  AOEDamage: 0
+  autoAttackRange: 1
+  medAttackRange: 2
+  heavyAttackRange: 3
+  AOERange: 6
+  autoCooldown: 1
+  medCooldown: 5
+  heavyCooldown: 8
+  AOECooldown: 20
+  autoDamage: 2
+  medDamage: 5
+  heavyDamage: 8
+  AOEDamage: 10
 --- !u!212 &21235106
 SpriteRenderer:
   m_ObjectHideFlags: 1
