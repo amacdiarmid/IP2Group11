@@ -7,13 +7,16 @@ public class PlayerData : MonoBehaviour {
 	private WaveData wave;
 	public int playerHealth;
 	public int playerGold;
-	public Text text;
+	public Text goldText;
+	public Text healthText;
+	public Text waveText;
 	public Button level;
 	public Button retry;
 	public Button quit;
 
 	// Use this for initialization
 	void Start () {
+		Time.timeScale = 1;
 		wave = GameObject.Find("Game Data").GetComponent<WaveData>();
 		retry.gameObject.SetActive(false);
 		quit.gameObject.SetActive(false);
@@ -22,8 +25,9 @@ public class PlayerData : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		text.text = "Life: " + playerHealth + " Gold: " + playerGold;
-
+		goldText.text = "" + playerGold;
+		healthText.text = "" + playerHealth;
+		waveText.text = "" + wave.curWave + "/" +wave.BasicCreepCount.Count;
 	}
 
 	public void RemoveHealth(int health)
@@ -33,7 +37,7 @@ public class PlayerData : MonoBehaviour {
 		{
 			retry.gameObject.SetActive(true);
 			quit.gameObject.SetActive(true);
-			text.text = "Life: " + playerHealth + " Gold: " + playerGold +"game over";
+			goldText.text = "Life: " + playerHealth + " Gold: " + playerGold +"game over";
 			Time.timeScale = 0;
 		}
 	}

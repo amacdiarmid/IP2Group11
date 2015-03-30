@@ -41,7 +41,7 @@ public class heroAttack : MonoBehaviour {
 	void Update () 
 	{
 		//med
-		if (Input.GetKeyUp("ability1"))
+		if (Input.GetButtonUp("ability1"))
 		{
 			if (medCanUse == true)
 			{
@@ -50,7 +50,7 @@ public class heroAttack : MonoBehaviour {
 			}
 		}
 		//heavy
-		else if (Input.GetKeyUp("ability2"))
+		else if (Input.GetButtonUp("ability2"))
 		{
 			if (heavyCanUse == true)
 			{
@@ -59,7 +59,7 @@ public class heroAttack : MonoBehaviour {
 			}
 		}
 		//AOE
-		else if (Input.GetKeyUp("ability3"))
+		else if (Input.GetButtonUp("ability3"))
 		{
 			if (AOECanUse == true)
 			{
@@ -79,6 +79,7 @@ public class heroAttack : MonoBehaviour {
 
 	void autoAttack()
 	{
+		Debug.Log("start auto attack");
 		//check for creep NE
 		RaycastHit2D hitNE = Physics2D.Raycast(this.transform.position, new Vector2(2, 1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
 		if (hitNE)
@@ -120,6 +121,7 @@ public class heroAttack : MonoBehaviour {
 					if (!hitNW)
 					{
 						Debug.Log("No auto attack");
+						autoCanUse = true;
 					}
 				}
 			}
@@ -168,6 +170,7 @@ public class heroAttack : MonoBehaviour {
 					if (!hitNW)
 					{
 						Debug.Log("No med attack");
+						medCanUse = true;
 					}
 				}
 			}
@@ -216,6 +219,7 @@ public class heroAttack : MonoBehaviour {
 					if (!hitNW)
 					{
 						Debug.Log("No heavy attack");
+						heavyCanUse = true;
 					}
 				}
 			}
@@ -249,8 +253,10 @@ public class heroAttack : MonoBehaviour {
 
 	IEnumerator autoWait()
 	{
+		Debug.Log("co routine test start");
 		yield return new WaitForSeconds(autoCooldown);
 		autoCanUse = true;
+		Debug.Log("co routine test end");
 	}
 	IEnumerator medWait()
 	{

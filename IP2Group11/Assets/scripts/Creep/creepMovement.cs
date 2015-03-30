@@ -118,6 +118,7 @@ public class creepMovement : MonoBehaviour {
 			}
 			if (i == path.Count)
 			{
+				wave.deadCreeps++;
 				Destroy(this.gameObject);
 				player.RemoveHealth(value);
 			}

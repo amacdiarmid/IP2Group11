@@ -7,6 +7,7 @@ public class WaveData : MonoBehaviour {
 
 	private PlayerData player;
 	[HideInInspector] public int waveNum = -1;
+	[HideInInspector] public int curWave = 0;
 	public List<GameObject> starts;
 	public GameObject button;
 	//wave infomation
@@ -44,12 +45,16 @@ public class WaveData : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if (waveNum >= 0 && waveNum > BasicCreepCount.Count)
+		Debug.Log(waveNum +" " +BasicCreepCount.Count +" wave check");
+		if (waveNum >= 0 && waveNum < BasicCreepCount.Count)
 		{
+			Debug.Log("1 loop check");
 			if (wait == false)
 			{
-				if (spawnedCreeps == deadCreeps * 0.8f)
+				Debug.Log("2 loop check" + deadCreeps + " " + spawnedCreeps);
+				if (deadCreeps >= spawnedCreeps * 0.8f)
 				{
+					Debug.Log("3 loop check");
 					curTime = Time.time;
 					wait = true;
 					button.SetActive(true);
@@ -57,13 +62,15 @@ public class WaveData : MonoBehaviour {
 			}	
 			if (wait == true && Time.time - curTime >= waveWaitTime)
 			{
+				Debug.Log("4 loop check");
 				wait = false;
 				NextWave();
 			}
 		}
 		else if (waveNum == BasicCreepCount.Count)
 		{
-			if (spawnedCreeps == deadCreeps)
+			Debug.Log("5 loop check");
+			if (deadCreeps == spawnedCreeps)
 				{
 					player.victory();
 				}
@@ -75,6 +82,7 @@ public class WaveData : MonoBehaviour {
 	{
 		button.SetActive(false);
 		waveNum++;
+		curWave++;
 		foreach (var tile in starts)
 		{
 			tile.GetComponent<startNode>().startPath();

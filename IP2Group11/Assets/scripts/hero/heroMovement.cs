@@ -6,7 +6,7 @@ public class heroMovement : MonoBehaviour {
 
 	private Vector3 currentPos;
 	private Vector3 posToMove;
-	private bool selected;
+	private bool selected = false;
 	private boardTiles board;
 	[Range(0, 10)] public float speed;
 	public bool move;
@@ -27,8 +27,9 @@ public class heroMovement : MonoBehaviour {
 			float fracJourney = distCovered / distance;
 			transform.position = Vector3.Lerp(currentPos, posToMove, fracJourney);
 		}
-		if (Input.GetKeyUp("move"))
+		if (Input.GetButtonUp("move"))
 		{
+			Debug.Log("hero selected 1");
 			Select();
 		}
 		
@@ -49,11 +50,15 @@ public class heroMovement : MonoBehaviour {
 	{
 		if (selected == true)
 		{
+			Debug.Log("hero selected 2");
 			selected = false;
+			board.heroSelected = false;
 		}
 		else
 		{
+			Debug.Log("hero selected 3");
 			selected = true;
+			board.heroSelected = true;
 		}
 	}
 }

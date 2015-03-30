@@ -14,6 +14,7 @@ public class boardTiles : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
+		hero = GameObject.Find("hero").GetComponent<heroMovement>();
 		towers = GameObject.Find("Game Data").GetComponent<towerData>();
 		tileNodes.Clear();
 		foreach(GameObject tile in GameObject.FindGameObjectsWithTag("Tile"))
