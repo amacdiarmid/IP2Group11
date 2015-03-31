@@ -27,8 +27,9 @@ public class UIData : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+	{
+		
 	}
 
 	public void move(GameObject tile)
@@ -46,7 +47,7 @@ public class UIData : MonoBehaviour {
 		buyLocust.onClick.AddListener(() => a.spawnWall(towers.locustTower));
 		buyVolcano.onClick.AddListener(() => a.spawnWall(towers.volcanoTower));
 		buyWall.onClick.AddListener(() => a.spawnWall(towers.wallTower));
-		//upgrade
+		upgradeTower.onClick.AddListener(() => a.UpgradeTower());
 		sellTower.onClick.AddListener(() => a.destroyWall());
 		upgradeTower.onClick.AddListener (() => a.UpgradeTower());
 	}

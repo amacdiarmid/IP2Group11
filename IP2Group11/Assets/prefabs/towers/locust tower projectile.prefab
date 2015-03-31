@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11415678}
   - 61: {fileID: 6115678}
   - 50: {fileID: 5015678}
-  - 95: {fileID: 9515678}
+  - 95: {fileID: 9585940}
   m_Layer: 2
   m_Name: locust tower projectile
   m_TagString: Untagged
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 115678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.7186241, y: -3.73885894, z: 0}
+  m_LocalPosition: {x: -31.9939938, y: -14.2307234, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
@@ -58,7 +58,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_Size: {x: .200000003, y: .200000003}
   m_Center: {x: 0, y: 0}
---- !u!95 &9515678
+--- !u!95 &9585940
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -67,7 +67,7 @@ Animator:
   m_GameObject: {fileID: 115678}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 706a59480ac31f547aa0d39116c550ec, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7a866905afd6e3543aea6319deb3383b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -108,7 +108,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9bf7c1e1fa143074b86c45f1c894861d, type: 3}
-  m_Color: {r: .850980401, g: .850980401, b: .850980401, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

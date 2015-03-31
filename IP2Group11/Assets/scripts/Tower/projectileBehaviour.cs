@@ -7,10 +7,11 @@ public class projectileBehaviour : MonoBehaviour {
 	[HideInInspector] public Transform target;
 	[HideInInspector] public int damage;
 	private bool hit = false;
+	private Animator animator;
 
 	// Use this for initialization
 	void Start () {
-	
+		animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -34,8 +35,13 @@ public class projectileBehaviour : MonoBehaviour {
 			{
 				hit = true;
 				col.gameObject.GetComponent<creepMovement>().removeHealth(damage);
-				Destroy(this.gameObject);	
+				animator.SetTrigger("explode");
 			}		
 		}
+	}
+
+	void Destroy()
+	{
+		Destroy(this.gameObject);
 	}
 }

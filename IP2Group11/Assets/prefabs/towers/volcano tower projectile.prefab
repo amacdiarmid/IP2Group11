@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11422278}
   - 61: {fileID: 6122278}
   - 50: {fileID: 5022278}
-  - 95: {fileID: 9522278}
+  - 95: {fileID: 9516820}
   m_Layer: 2
   m_Name: volcano tower projectile
   m_TagString: Untagged
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122278}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.7999992, y: -4.61999989, z: 0}
+  m_LocalPosition: {x: -33.8558807, y: -17.3816051, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
@@ -58,7 +58,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_Size: {x: .200000003, y: .200000003}
   m_Center: {x: 0, y: 0}
---- !u!95 &9522278
+--- !u!95 &9516820
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -67,7 +67,7 @@ Animator:
   m_GameObject: {fileID: 122278}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 706a59480ac31f547aa0d39116c550ec, type: 2}
+  m_Controller: {fileID: 9100000, guid: b26060642f9878447a0dbbce2d8eac38, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -108,7 +108,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e31843e1ad36c7847b4e8efa48bc4057, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

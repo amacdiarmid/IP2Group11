@@ -1511,7 +1511,7 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 153, y: -386}
+  m_AnchoredPosition: {x: 112, y: -471}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &219786528
@@ -2181,7 +2181,7 @@ RectTransform:
   m_RootOrder: 6
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 379, y: -386.000061}
+  m_AnchoredPosition: {x: 338, y: -471}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &307155918
@@ -5028,7 +5028,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 433, y: -216}
+  m_AnchoredPosition: {x: 392, y: -301}
   m_SizeDelta: {x: 1919.99988, y: 1080}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &632013527
@@ -13596,7 +13596,7 @@ RectTransform:
   m_RootOrder: 7
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 865, y: -386.000122}
+  m_AnchoredPosition: {x: 824, y: -471}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1692883639
@@ -15979,6 +15979,7 @@ GameObject:
   - 114: {fileID: 2070251872}
   - 114: {fileID: 2070251871}
   - 58: {fileID: 2070251870}
+  - 95: {fileID: 2070251875}
   m_Layer: 10
   m_Name: hero
   m_TagString: Untagged
@@ -16010,7 +16011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce76461843afb94dbf149b6cceb952c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.1099999
+  speed: 5.34000015
   move: 0
 --- !u!114 &2070251872
 MonoBehaviour:
@@ -16057,7 +16058,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 74
-  m_Sprite: {fileID: 21300050, guid: 6c8bdcee9c119324abf3d6b0041cd9e7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4d0f7c64770dc5f468b864a76e0b3a57, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &2070251874
 Transform:
@@ -16071,6 +16072,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!95 &2070251875
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 9501658, guid: cc5ab9c288407874a943ef5cf9482f53,
+    type: 2}
+  m_PrefabInternal: {fileID: 277056349}
+  m_GameObject: {fileID: 2070251869}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0f4d17fad8e26c1408f1bd3e58a4c37d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &2080039316
 GameObject:
   m_ObjectHideFlags: 0

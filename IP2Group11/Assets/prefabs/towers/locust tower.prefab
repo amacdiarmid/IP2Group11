@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f0ec59d588be740940bcb21cc30f14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 122278, guid: a93fa90b50593dd4cb9cdbd7df45cd77, type: 2}
+  projectile: {fileID: 115678, guid: 8c3f00345580d0d47a4eb684c001c1fe, type: 2}
   RateOfFire: .300000012
   areaOfAttack: 2
   damage: 1

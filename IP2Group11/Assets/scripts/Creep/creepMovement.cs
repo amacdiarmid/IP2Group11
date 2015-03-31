@@ -127,24 +127,28 @@ public class creepMovement : MonoBehaviour {
 
 	void moveUp()
 	{
+		transform.localScale = new Vector3(-1, 1, 1);
 		movement = new Vector3(2, 1.2f, 0) / speed;
 		transform.Translate(movement * Time.deltaTime, Space.World);
 	}
 
 	void moveDown()
 	{
+		transform.localScale = new Vector3(1, 1, 1);
 		movement = new Vector3(-2, -1.2f, 0) / speed;
 		transform.Translate(movement * Time.deltaTime, Space.World);
 	}
 
 	void moveLeft()
 	{
+		transform.localScale = new Vector3(1, 1, 1);
 		movement = new Vector3(-2, 1.2f, 0) / speed;
 		transform.Translate(movement * Time.deltaTime, Space.World);
 	}
 
 	void moveRight()
 	{
+		transform.localScale = new Vector3(-1, 1, 1);
 		movement = new Vector3(2, -1.2f, 0) / speed;
 		transform.Translate(movement * Time.deltaTime, Space.World);
 	}

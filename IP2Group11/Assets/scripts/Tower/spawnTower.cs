@@ -80,6 +80,7 @@ public class spawnTower : MonoBehaviour {
 
 	public void spawnWall(GameObject tempTower)
 	{
+		Debug.Log(tempTower);
 		if (wall == false && start.startPath() == true && playerData.playerGold>=tempTower.GetComponent<towerBehaviour>().cost)
 		{
 			Node.Wall = true;
