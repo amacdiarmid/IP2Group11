@@ -10,11 +10,13 @@ public class towerBehaviour : MonoBehaviour {
 	public int damage;
 	public int speed;
 	public int cost;
+	public int upgradeCost;
 	public int Refund;
 
 	// Use this for initialization
 	void Start () {
-		this.gameObject.GetComponent<CircleCollider2D>().radius = areaOfAttack;	
+		this.gameObject.GetComponent<CircleCollider2D>().radius = areaOfAttack;
+		upgradeCost = cost * 2;
 	}
 	
 	// Update is called once per frame
@@ -61,7 +63,10 @@ public class towerBehaviour : MonoBehaviour {
 	{
 		//should use floats for precision
 		damage *= 2;
-		speed *= 2;
-		//radius, cost, etc etc
+		speed /= 2;
+		upgradeCost *= 2;
+		Refund *= 2;
+		areaOfAttack *= 2;
+		this.gameObject.GetComponent<CircleCollider2D>().radius = areaOfAttack;
 	}
 }

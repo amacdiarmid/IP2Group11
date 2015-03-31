@@ -47,9 +47,11 @@ public class UIData : MonoBehaviour {
 		buyLocust.onClick.AddListener(() => a.spawnWall(towers.locustTower));
 		buyVolcano.onClick.AddListener(() => a.spawnWall(towers.volcanoTower));
 		buyWall.onClick.AddListener(() => a.spawnWall(towers.wallTower));
-		upgradeTower.onClick.AddListener(() => a.UpgradeTower());
 		sellTower.onClick.AddListener(() => a.destroyWall());
 		upgradeTower.onClick.AddListener (() => a.UpgradeTower());
+		//add text
+		towerText.text = towers.lightningTower.GetComponent<towerBehaviour>().cost + "  " + towers.locustTower.GetComponent<towerBehaviour>().cost + "  " + towers.volcanoTower.GetComponent<towerBehaviour>().cost + "  " + towers.wallTower.GetComponent<towerBehaviour>().cost;
+		upgradeText.text = a.GetComponent<spawnTower>().getUpCost() + "  " + a.GetComponent<spawnTower>().getSellCost();
 	}
 
 	public void hide()

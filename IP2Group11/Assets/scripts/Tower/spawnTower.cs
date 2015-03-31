@@ -103,6 +103,35 @@ public class spawnTower : MonoBehaviour {
 
 	public void UpgradeTower()
 	{
-		tower.GetComponent<towerBehaviour>().UpgradeTower();
+		if (playerData.playerGold>=tower.GetComponent<towerBehaviour>().upgradeCost)
+		{
+			towerUI.upgradeUI.SetActive(false);
+			playerData.RemoveGold(tower.GetComponent<towerBehaviour>().upgradeCost);
+			tower.GetComponent<towerBehaviour>().UpgradeTower();
+		}	
+	}
+
+	public int getUpCost()
+	{
+		if (!tower)
+		{
+			return 0;
+		}
+		else
+		{
+			return tower.gameObject.GetComponent<towerBehaviour>().upgradeCost;
+		}
+	}
+
+	public int getSellCost()
+	{
+		if (!tower)
+		{
+			return 0;
+		}
+		else
+		{
+			return tower.gameObject.GetComponent<towerBehaviour>().Refund;
+		}
 	}
 }
