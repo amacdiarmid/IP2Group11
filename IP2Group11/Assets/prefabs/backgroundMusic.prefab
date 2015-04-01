@@ -188,6 +188,7 @@ MonoBehaviour:
   choice: 0
   song:
   - {fileID: 8300000, guid: da52eceb52545534aa54678b359f8764, type: 3}
+  - {fileID: 8300000, guid: 74fe8a1985528594baea8b194065eae6, type: 3}
   - {fileID: 8300000, guid: 5c6f13b0452de4e448472bad7d1ab838, type: 3}
   - {fileID: 8300000, guid: 56535501708b32b4abedef640d55903e, type: 3}
 --- !u!1001 &100100000
