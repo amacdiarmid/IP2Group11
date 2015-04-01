@@ -32,6 +32,7 @@ public class creepMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = -(int)this.gameObject.transform.position.y;
 		if (go == true)
 		{
 			//"up" is NE

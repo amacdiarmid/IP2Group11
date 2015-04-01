@@ -17,6 +17,7 @@ public class heroMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 99;
 		board = GameObject.Find("board").GetComponent<boardTiles>();
 		animator = GetComponent<Animator>();
 	}
@@ -37,6 +38,7 @@ public class heroMovement : MonoBehaviour {
 		}
 		if (Input.GetButtonUp("move"))
 		{
+			animator.SetTrigger("selected");
 			Debug.Log("hero selected 1");
 			Select();
 		}

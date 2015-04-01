@@ -10,6 +10,7 @@ public class startNode : pathNodes {
 	// Use this for initialization
 	void Start () 
 	{
+		this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = -(int)this.gameObject.transform.position.y;
 		end = GameObject.Find("board/finish").GetComponent<endNode>();
 		board = GameObject.Find("board").GetComponent<boardTiles>();
 		towers = GameObject.Find("Game Data").GetComponent<towerData>();

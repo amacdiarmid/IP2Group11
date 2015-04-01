@@ -20,7 +20,7 @@ public class pathNodes : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-
+		this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = -(int)this.gameObject.transform.position.y;
 	}
 	
 	// Update is called once per frame

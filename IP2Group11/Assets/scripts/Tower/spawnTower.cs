@@ -32,50 +32,45 @@ public class spawnTower : MonoBehaviour {
 
 	}
 
-	void OnMouseDown()
+	void OnMouseUp()
 	{
 		Debug.Log("click");
-		if (!EventSystem.current.IsPointerOverGameObject())
+		if (board.heroSelected == false)
 		{
-			Debug.Log("no ui in the way");
-			if (board.heroSelected == false)
+			Debug.Log("hero is not active");
+			if (wall == true)
 			{
-				Debug.Log("hero is not active");
-				if (wall == true)
+				Debug.Log("no current ui on tower");
+				towerUI.hide();
+				towerUI.upgradeUI.transform.position = this.transform.position;
+				//towerUI.StartCoroutine("upgradeWait");
+				towerUI.move(this.gameObject);
+			}
+			else
+			{
+				Node.Wall = true;
+				if (start.startPath() == true)
 				{
-					Debug.Log("no current ui on tower");
-					towerUI.upgradeUI.SetActive(true);
-					towerUI.towerUI.SetActive(false);
-					towerUI.upgradeUI.transform.position = this.transform.position;
+					Debug.Log("no current ui on empty space");
+					Node.Wall = false;
+					towerUI.hide();
+					towerUI.towerUI.transform.position = this.transform.position;
+					//towerUI.StartCoroutine("upgradeWait");
 					towerUI.move(this.gameObject);
 				}
 				else
 				{
-					Node.Wall = true;
-					if (start.startPath() == true)
-					{
-						Debug.Log("no current ui on empty space");
-						Node.Wall = false;
-						towerUI.towerUI.SetActive(true);
-						towerUI.upgradeUI.SetActive(false);
-						towerUI.towerUI.transform.position = this.transform.position;
-						towerUI.move(this.gameObject);
-					}
-					else
-					{
-						Debug.Log("removing the tower ui");
-						towerUI.towerUI.SetActive(false);
-						towerUI.upgradeUI.SetActive(false);
-						Node.Wall = false;
-					}
+					Debug.Log("removing the tower ui");
+					towerUI.hide();
+					Node.Wall = false;
 				}
 			}
-			else
-			{
-				Debug.Log("hero is selected");
-				board.sendNewPos(transform.position);
-			}
-		}		
+		}
+		else
+		{
+			Debug.Log("hero is selected");
+			board.sendNewPos(transform.position);
+		}
 	}
 
 	public void spawnWall(GameObject tempTower)
@@ -87,7 +82,7 @@ public class spawnTower : MonoBehaviour {
 			wall = true;
 			tower = (GameObject)Instantiate(tempTower, this.transform.position, Quaternion.identity);
 			tower.transform.parent = transform;
-			towerUI.towerUI.SetActive(false);
+			towerUI.hide();
 			playerData.RemoveGold(tempTower.GetComponent<towerBehaviour>().cost);
 		}
 	}
@@ -96,7 +91,7 @@ public class spawnTower : MonoBehaviour {
 	{
 		Node.Wall = false;
 		wall = false;
-		towerUI.upgradeUI.SetActive(false);
+		towerUI.hide();
 		playerData.AddGold(tower.GetComponent<towerBehaviour>().Refund);
 		Destroy(tower);
 	}
@@ -105,7 +100,7 @@ public class spawnTower : MonoBehaviour {
 	{
 		if (playerData.playerGold>=tower.GetComponent<towerBehaviour>().upgradeCost)
 		{
-			towerUI.upgradeUI.SetActive(false);
+			towerUI.hide();
 			playerData.RemoveGold(tower.GetComponent<towerBehaviour>().upgradeCost);
 			tower.GetComponent<towerBehaviour>().UpgradeTower();
 		}	

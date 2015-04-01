@@ -9,6 +9,7 @@ public class endNode : pathNodes {
 	// Use this for initialization
 	void Start () 
 	{
+		this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = -(int)this.gameObject.transform.position.y;
 		board = GameObject.Find("board").GetComponent<boardTiles>();
 		Up = true;
 		Down = true;

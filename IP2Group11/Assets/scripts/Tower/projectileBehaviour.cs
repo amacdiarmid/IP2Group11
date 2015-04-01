@@ -16,6 +16,7 @@ public class projectileBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = -(int)this.gameObject.transform.position.y;
 		if (target) {
 			// Fly towards the target        
 			Vector3 dir = target.position - transform.position;

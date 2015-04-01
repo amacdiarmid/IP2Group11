@@ -8,6 +8,8 @@ public class UIData : MonoBehaviour {
 	private towerData towers;
 	//buy towers
 	public GameObject towerUI;
+	private Vector3 towerPos;
+	private bool towerMoved;
 	public Button buyLightning;
 	public Button buyLocust;
 	public Button buyVolcano;
@@ -15,6 +17,8 @@ public class UIData : MonoBehaviour {
 	public Text towerText;
 	//sell/upgrade towers
 	public GameObject upgradeUI;
+	private Vector3 upgradePos;
+	private bool upgradeMoved;
 	public Button upgradeTower;
 	public Button sellTower;
 	public Text upgradeText;
@@ -24,6 +28,8 @@ public class UIData : MonoBehaviour {
 	{
 		board = GameObject.Find("board").GetComponent<boardTiles>();
 		towers = GameObject.Find("Game Data").GetComponent<towerData>();
+		towerPos = towerUI.transform.position;
+		upgradePos = upgradeUI.transform.position;
 	}
 	
 	// Update is called once per frame
@@ -56,7 +62,13 @@ public class UIData : MonoBehaviour {
 
 	public void hide()
 	{
-		towerUI.SetActive(false);
-		upgradeUI.SetActive(false);
+		if (towerMoved == false)
+		{
+			towerUI.transform.position = towerPos;
+		}
+		if (upgradeMoved == false)
+		{
+			upgradeUI.transform.position = upgradePos;
+		}	
 	}
 }

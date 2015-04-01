@@ -15,6 +15,7 @@ public class towerBehaviour : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = -(int)this.gameObject.transform.position.y;
 		this.gameObject.GetComponent<CircleCollider2D>().radius = areaOfAttack;
 		upgradeCost = cost * 2;
 	}
