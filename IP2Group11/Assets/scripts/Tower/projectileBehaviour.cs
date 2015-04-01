@@ -35,6 +35,7 @@ public class projectileBehaviour : MonoBehaviour {
 			{
 				hit = true;
 				col.gameObject.GetComponent<creepMovement>().removeHealth(damage);
+				col.gameObject.GetComponent<creepMovement>().materialChange();
 				animator.SetTrigger("explode");
 			}		
 		}

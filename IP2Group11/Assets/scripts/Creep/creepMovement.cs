@@ -14,9 +14,11 @@ public class creepMovement : MonoBehaviour {
 	public int value;
 	public int goldGain;
 	private WaveData wave;
+	public Color originalColor;
 
 	// Use this for initialization
 	void Start () {
+		originalColor = gameObject.renderer.material.color;
 		movement = new Vector3(2, 1.2f, 0) / speed;
 		i++;
 		foreach (var item in GameObject.Find("finish").GetComponent<endNode>().path)
@@ -163,5 +165,18 @@ public class creepMovement : MonoBehaviour {
 			player.AddGold(goldGain);
 			Destroy(this.gameObject);
 		}
+	}
+
+	IEnumerator Wait()
+	{
+		yield return new WaitForSeconds(0.1f);
+		gameObject.renderer.material.color = originalColor;
+	}
+
+	public void materialChange()
+	{
+
+		gameObject.renderer.material.color = Color.red;
+		StartCoroutine (Wait ());
 	}
 }
