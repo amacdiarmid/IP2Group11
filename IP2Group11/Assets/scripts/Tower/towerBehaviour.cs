@@ -12,11 +12,14 @@ public class towerBehaviour : MonoBehaviour {
 	public int cost;
 	public int upgradeCost;
 	public int Refund;
+	public AudioClip[] sounds;
 
 	// Use this for initialization
 	void Start () {
 		this.gameObject.GetComponent<CircleCollider2D>().radius = areaOfAttack;
 		upgradeCost = cost * 2;
+		audio.clip = sounds[0];
+		audio.Play ();
 	}
 	
 	// Update is called once per frame
@@ -32,6 +35,8 @@ public class towerBehaviour : MonoBehaviour {
 			if (canFire == true)
 			{			
 				GameObject shot = (GameObject)Instantiate(projectile, transform.position, Quaternion.identity);
+				audio.clip = sounds[1];
+				audio.Play();
 				shot.GetComponent<projectileBehaviour>().target = other.transform;
 				shot.GetComponent<projectileBehaviour>().damage = damage;
 				shot.GetComponent<projectileBehaviour>().speed = speed;

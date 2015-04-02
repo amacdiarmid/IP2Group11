@@ -23,6 +23,7 @@ public class WaveData : MonoBehaviour {
 	public List<int> BasicCreepCount;
 	public GameObject CancerCreep;
 	public List<int> CancerCreepCount;
+	public AudioClip[] sounds;
 
 	// Use this for initialization
 	void Start () 
@@ -80,6 +81,8 @@ public class WaveData : MonoBehaviour {
 	
 	public void NextWave()
 	{
+		audio.clip = sounds[0];
+		audio.Play ();
 		button.SetActive(false);
 		waveNum++;
 		curWave++;
