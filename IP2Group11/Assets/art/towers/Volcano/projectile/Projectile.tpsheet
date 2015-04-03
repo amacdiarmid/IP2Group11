@@ -1,0 +1,22 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# http://www.codeandweb.com/texturepacker/unity
+#
+# Sprite sheet: Projectile5.png (1840 x 1012)
+# $TexturePacker:SmartUpdate:193e411aa10433d8bcb647c3ce6ab216:01f70e685b72b1550c6ae607125e1d4f:33e69442b575aaec50ed9d04ff3af416$
+#
+
+Volcano Tower0001;15;680;441;317;0.5;0.5
+Volcano Tower0002;15;680;441;317;0.5;0.5
+Volcano Tower0003;471;680;441;317;0.5;0.5
+Volcano Tower0004;927;680;441;317;0.5;0.5
+Volcano Tower0005;1383;680;441;317;0.5;0.5
+Volcano Tower0006;15;348;441;317;0.5;0.5
+Volcano Tower0007;471;348;441;317;0.5;0.5
+Volcano Tower0008;927;348;441;317;0.5;0.5
+Volcano Tower0009;1383;348;441;317;0.5;0.5
+Volcano Tower0010;15;16;441;317;0.5;0.5
+Volcano Tower0011;471;16;441;317;0.5;0.5
+Volcano Tower0012;927;16;441;317;0.5;0.5

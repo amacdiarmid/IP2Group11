@@ -1,0 +1,377 @@
+fileFormatVersion: 2
+guid: 8a536bc246d4a3242861e99a7df3798e
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Locust Swarm0001
+    21300002: Locust Swarm0002
+    21300004: Locust Swarm0003
+    21300006: Locust Swarm0004
+    21300008: Locust Swarm0005
+    21300010: Locust Swarm0006
+    21300012: Locust Swarm0007
+    21300014: Locust Swarm0008
+    21300016: Locust Swarm0009
+    21300018: Locust Swarm0010
+    21300020: Locust Swarm0011
+    21300022: Locust Swarm0012
+    21300024: Locust Swarm0013
+    21300026: Locust Swarm0014
+    21300028: Locust Swarm0015
+    21300030: Locust Swarm0016
+    21300032: Locust Swarm0017
+    21300034: Locust Swarm0018
+    21300036: Locust Swarm0019
+    21300038: Locust Swarm0020
+    21300040: Locust Swarm0021
+    21300042: Locust Swarm0022
+    21300044: Locust Swarm0023
+    21300046: Locust Swarm0024
+    21300048: Locust Swarm0025
+    21300050: Locust Swarm0026
+    21300052: Locust Swarm0027
+    21300054: Locust Swarm0028
+    21300056: Locust Swarm0029
+    21300058: Locust Swarm0030
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 120
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Locust Swarm0001
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 2789
+        width: 498
+        height: 513
+      alignment: 9
+      pivot: {x: .5, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0002
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 2797
+        width: 498
+        height: 505
+      alignment: 9
+      pivot: {x: .5, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0003
+      rect:
+        serializedVersion: 2
+        x: 1146
+        y: 2807
+        width: 498
+        height: 495
+      alignment: 9
+      pivot: {x: .5, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0004
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 2816
+        width: 498
+        height: 486
+      alignment: 9
+      pivot: {x: .5, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0005
+      rect:
+        serializedVersion: 2
+        x: 2242
+        y: 2831
+        width: 498
+        height: 471
+      alignment: 9
+      pivot: {x: .5, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0006
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 2263
+        width: 498
+        height: 478
+      alignment: 9
+      pivot: {x: .5, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0007
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 2237
+        width: 498
+        height: 502
+      alignment: 9
+      pivot: {x: .5, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0008
+      rect:
+        serializedVersion: 2
+        x: 1146
+        y: 2228
+        width: 498
+        height: 511
+      alignment: 9
+      pivot: {x: .5, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0009
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 2250
+        width: 498
+        height: 489
+      alignment: 9
+      pivot: {x: .5, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0010
+      rect:
+        serializedVersion: 2
+        x: 2242
+        y: 2293
+        width: 498
+        height: 446
+      alignment: 9
+      pivot: {x: .5, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0011
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 1732
+        width: 498
+        height: 446
+      alignment: 9
+      pivot: {x: .5, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0012
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 1724
+        width: 498
+        height: 454
+      alignment: 9
+      pivot: {x: .5, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0013
+      rect:
+        serializedVersion: 2
+        x: 1146
+        y: 1682
+        width: 498
+        height: 496
+      alignment: 9
+      pivot: {x: .5, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0014
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 1683
+        width: 498
+        height: 495
+      alignment: 9
+      pivot: {x: .5, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0015
+      rect:
+        serializedVersion: 2
+        x: 2242
+        y: 1700
+        width: 498
+        height: 477
+      alignment: 9
+      pivot: {x: .5, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0016
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 1144
+        width: 498
+        height: 488
+      alignment: 9
+      pivot: {x: .5, y: .319999993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0017
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 1159
+        width: 498
+        height: 473
+      alignment: 9
+      pivot: {x: .5, y: .330000013}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0018
+      rect:
+        serializedVersion: 2
+        x: 1145
+        y: 1182
+        width: 498
+        height: 450
+      alignment: 9
+      pivot: {x: .5, y: .340000004}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0019
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 1214
+        width: 498
+        height: 421
+      alignment: 9
+      pivot: {x: .5, y: .349999994}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0020
+      rect:
+        serializedVersion: 2
+        x: 2239
+        y: 1244
+        width: 498
+        height: 388
+      alignment: 9
+      pivot: {x: .5, y: .400000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0021
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 676
+        width: 498
+        height: 418
+      alignment: 9
+      pivot: {x: .5, y: .389999986}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0022
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 644
+        width: 498
+        height: 450
+      alignment: 9
+      pivot: {x: .5, y: .360000014}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0023
+      rect:
+        serializedVersion: 2
+        x: 1146
+        y: 602
+        width: 498
+        height: 492
+      alignment: 9
+      pivot: {x: .5, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0024
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 599
+        width: 498
+        height: 495
+      alignment: 9
+      pivot: {x: .5, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0025
+      rect:
+        serializedVersion: 2
+        x: 2242
+        y: 625
+        width: 498
+        height: 469
+      alignment: 9
+      pivot: {x: .5, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0026
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 117
+        width: 498
+        height: 432
+      alignment: 9
+      pivot: {x: .5, y: .340000004}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0027
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 134
+        width: 498
+        height: 415
+      alignment: 9
+      pivot: {x: .5, y: .340000004}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0028
+      rect:
+        serializedVersion: 2
+        x: 1146
+        y: 98
+        width: 498
+        height: 451
+      alignment: 9
+      pivot: {x: .5, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0029
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 80
+        width: 498
+        height: 470
+      alignment: 9
+      pivot: {x: .5, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Locust Swarm0030
+      rect:
+        serializedVersion: 2
+        x: 2242
+        y: 53
+        width: 498
+        height: 496
+      alignment: 9
+      pivot: {x: .5, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

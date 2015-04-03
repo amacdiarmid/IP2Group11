@@ -1,0 +1,377 @@
+fileFormatVersion: 2
+guid: 4d0f7c64770dc5f468b864a76e0b3a57
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Up_Left_0
+    21300002: Up_Left_1
+    21300004: Up_Left_2
+    21300006: Up_Left_3
+    21300008: Up_Left_4
+    21300010: Up_Left_5
+    21300012: Up_Left_6
+    21300014: Up_Left_7
+    21300016: Up_Left_8
+    21300018: Up_Left_9
+    21300020: Up_Left_10
+    21300022: Up_Left_11
+    21300024: Up_Left_12
+    21300026: Up_Left_13
+    21300028: Up_Left_14
+    21300030: Up_Left_15
+    21300032: Up_Left_16
+    21300034: Up_Left_17
+    21300036: Up_Left_18
+    21300038: Up_Left_19
+    21300040: Up_Left_20
+    21300042: Up_Left_21
+    21300044: Up_Left_22
+    21300046: Up_Left_23
+    21300048: Up_Left_24
+    21300050: Up_Left_25
+    21300052: Up_Left_26
+    21300054: Up_Left_27
+    21300056: Up_Left_28
+    21300058: Up_Left_29
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 150
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Up_Left_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 3154
+        width: 810
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_1
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 3154
+        width: 778
+        height: 568
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_2
+      rect:
+        serializedVersion: 2
+        x: 1707
+        y: 3150
+        width: 742
+        height: 568
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_3
+      rect:
+        serializedVersion: 2
+        x: 2550
+        y: 3150
+        width: 713
+        height: 560
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_4
+      rect:
+        serializedVersion: 2
+        x: 3393
+        y: 3146
+        width: 680
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_5
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 2522
+        width: 649
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_6
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 2522
+        width: 612
+        height: 547
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_7
+      rect:
+        serializedVersion: 2
+        x: 1797
+        y: 2518
+        width: 583
+        height: 547
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_8
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 2518
+        width: 559
+        height: 539
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_9
+      rect:
+        serializedVersion: 2
+        x: 3470
+        y: 2514
+        width: 534
+        height: 539
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_10
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 1890
+        width: 511
+        height: 535
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_11
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 1890
+        width: 490
+        height: 527
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_12
+      rect:
+        serializedVersion: 2
+        x: 1845
+        y: 1886
+        width: 470
+        height: 527
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_13
+      rect:
+        serializedVersion: 2
+        x: 2680
+        y: 1886
+        width: 449
+        height: 519
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_14
+      rect:
+        serializedVersion: 2
+        x: 3510
+        y: 1882
+        width: 433
+        height: 519
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_15
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 1262
+        width: 449
+        height: 523
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_16
+      rect:
+        serializedVersion: 2
+        x: 1023
+        y: 1266
+        width: 466
+        height: 523
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_17
+      rect:
+        serializedVersion: 2
+        x: 1837
+        y: 1270
+        width: 490
+        height: 527
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_18
+      rect:
+        serializedVersion: 2
+        x: 2655
+        y: 1270
+        width: 507
+        height: 531
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_19
+      rect:
+        serializedVersion: 2
+        x: 3474
+        y: 1270
+        width: 526
+        height: 539
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_20
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 654
+        width: 547
+        height: 539
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_21
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 654
+        width: 571
+        height: 543
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_22
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 658
+        width: 596
+        height: 547
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_23
+      rect:
+        serializedVersion: 2
+        x: 2599
+        y: 658
+        width: 627
+        height: 551
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_24
+      rect:
+        serializedVersion: 2
+        x: 3405
+        y: 662
+        width: 660
+        height: 556
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_25
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 43
+        width: 689
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_26
+      rect:
+        serializedVersion: 2
+        x: 897
+        y: 43
+        width: 717
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_27
+      rect:
+        serializedVersion: 2
+        x: 1703
+        y: 47
+        width: 750
+        height: 567
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_28
+      rect:
+        serializedVersion: 2
+        x: 2509
+        y: 47
+        width: 782
+        height: 571
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up_Left_29
+      rect:
+        serializedVersion: 2
+        x: 3316
+        y: 51
+        width: 810
+        height: 575
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

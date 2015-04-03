@@ -1,0 +1,322 @@
+fileFormatVersion: 2
+guid: 2d7be3fd5c5de2643a5552ac569cef5a
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Volcano Tower0001
+    21300002: Volcano Tower0002
+    21300004: Volcano Tower0003
+    21300006: Volcano Tower0004
+    21300008: Volcano Tower0005
+    21300010: Volcano Tower0006
+    21300012: Volcano Tower0007
+    21300014: Volcano Tower0008
+    21300016: Volcano Tower0009
+    21300018: Volcano Tower0010
+    21300020: Volcano Tower0011
+    21300022: Volcano Tower0012
+    21300024: Volcano Tower0013
+    21300026: Volcano Tower0014
+    21300028: Volcano Tower0015
+    21300030: Volcano Tower0016
+    21300032: Volcano Tower0017
+    21300034: Volcano Tower0018
+    21300036: Volcano Tower0019
+    21300038: Volcano Tower0020
+    21300040: Volcano Tower0021
+    21300042: Volcano Tower0022
+    21300044: Volcano Tower0023
+    21300046: Volcano Tower0024
+    21300048: Volcano Tower0025
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 120
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Volcano Tower0001
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 1834
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Volcano Tower0002
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 1834
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Volcano Tower0003
+      rect:
+        serializedVersion: 2
+        x: 1819
+        y: 1834
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Volcano Tower0004
+      rect:
+        serializedVersion: 2
+        x: 2716
+        y: 1834
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Volcano Tower0005
+      rect:
+        serializedVersion: 2
+        x: 3613
+        y: 1834
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Volcano Tower0006
+      rect:
+        serializedVersion: 2
+        x: 4510
+        y: 1834
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Volcano Tower0007
+      rect:
+        serializedVersion: 2
+        x: 5407
+        y: 1834
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Volcano Tower0008
+      rect:
+        serializedVersion: 2
+        x: 6304
+        y: 1834
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Volcano Tower0009
+      rect:
+        serializedVersion: 2
+        x: 7201
+        y: 1832
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Volcano Tower0010
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 931
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Volcano Tower0011
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 931
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Volcano Tower0012
+      rect:
+        serializedVersion: 2
+        x: 1819
+        y: 931
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Volcano Tower0013
+      rect:
+        serializedVersion: 2
+        x: 2716
+        y: 931
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Volcano Tower0014
+      rect:
+        serializedVersion: 2
+        x: 3613
+        y: 931
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Volcano Tower0015
+      rect:
+        serializedVersion: 2
+        x: 4510
+        y: 931
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Volcano Tower0016
+      rect:
+        serializedVersion: 2
+        x: 5407
+        y: 931
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Volcano Tower0017
+      rect:
+        serializedVersion: 2
+        x: 6304
+        y: 931
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Volcano Tower0018
+      rect:
+        serializedVersion: 2
+        x: 7205
+        y: 931
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Volcano Tower0019
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 28
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Volcano Tower0020
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 28
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Volcano Tower0021
+      rect:
+        serializedVersion: 2
+        x: 1819
+        y: 28
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Volcano Tower0022
+      rect:
+        serializedVersion: 2
+        x: 2716
+        y: 28
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Volcano Tower0023
+      rect:
+        serializedVersion: 2
+        x: 3613
+        y: 28
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Volcano Tower0024
+      rect:
+        serializedVersion: 2
+        x: 4510
+        y: 28
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Volcano Tower0025
+      rect:
+        serializedVersion: 2
+        x: 5407
+        y: 28
+        width: 867
+        height: 873
+      alignment: 9
+      pivot: {x: .5, y: .150000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
