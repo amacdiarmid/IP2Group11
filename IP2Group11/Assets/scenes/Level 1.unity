@@ -3217,6 +3217,7 @@ GameObject:
   - 114: {fileID: 519609776}
   - 114: {fileID: 519609775}
   - 114: {fileID: 519609774}
+  - 82: {fileID: 519609778}
   m_Layer: 0
   m_Name: Game Data
   m_TagString: Untagged
@@ -3306,6 +3307,8 @@ MonoBehaviour:
   BasicCreepCount: 070000000b0000000f0000000f00000013000000
   CancerCreep: {fileID: 165840, guid: 0e60833001feda548a61fd449a3351b7, type: 2}
   CancerCreepCount: 0000000000000000010000000300000006000000
+  sounds:
+  - {fileID: 8300000, guid: 33720563f976501458f14c511a437a5c, type: 3}
 --- !u!114 &519609777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3323,6 +3326,64 @@ MonoBehaviour:
   volcanoTower: {fileID: 123208, guid: b607519792bcfcc42a157905d0f330f7, type: 2}
   wallTower: {fileID: 112356, guid: 0624ec184a3961444a2c8d57514fb8ff, type: 2}
   towers: []
+--- !u!82 &519609778
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 519609772}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &521669150
 GameObject:
   m_ObjectHideFlags: 0
@@ -3703,7 +3764,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 1, y: 2.79999995}
+  m_AnchoredPosition: {x: 1.39999998, y: 2.5999999}
   m_SizeDelta: {x: 99, y: 98}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &530731222
@@ -5211,6 +5272,7 @@ GameObject:
   - 114: {fileID: 822689744}
   - 58: {fileID: 822689748}
   - 95: {fileID: 822689743}
+  - 82: {fileID: 822689749}
   m_Layer: 10
   m_Name: hero
   m_TagString: Untagged
@@ -5272,6 +5334,9 @@ MonoBehaviour:
   medDamage: 5
   heavyDamage: 8
   AOEDamage: 10
+  sounds:
+  - {fileID: 8300000, guid: 361a58ba26076614d855528f0a62fbb3, type: 3}
+  - {fileID: 8300000, guid: b76429c1fa8339a428a6a8ed577405be, type: 3}
 --- !u!212 &822689746
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5319,6 +5384,65 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_Radius: .0299999993
   m_Center: {x: 0, y: 0}
+--- !u!82 &822689749
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8256596, guid: cc5ab9c288407874a943ef5cf9482f53,
+    type: 2}
+  m_PrefabInternal: {fileID: 892948489}
+  m_GameObject: {fileID: 822689742}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &836312244
 GameObject:
   m_ObjectHideFlags: 0
@@ -5352,7 +5476,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -1, y: 2.79999995}
+  m_AnchoredPosition: {x: -1.39999998, y: 2.5999999}
   m_SizeDelta: {x: 99, y: 98}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &836312246

@@ -37,6 +37,7 @@ public class WaveData : MonoBehaviour {
 	//cancer creep prefab and how many spawn each wave
 	public GameObject CancerCreep;
 	public List<int> CancerCreepCount;
+	public AudioClip[] sounds;
 
 	// Use this for initialization
 	void Start () 
@@ -106,6 +107,8 @@ public class WaveData : MonoBehaviour {
 	/// </summary>
 	public void NextWave()
 	{
+		audio.clip = sounds[0];
+		audio.Play();
 		//hide the next wave button and increase the wave
 		button.SetActive(false);
 		waveNum++;

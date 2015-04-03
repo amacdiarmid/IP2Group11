@@ -14,9 +14,12 @@ public class creepMovement : MonoBehaviour {
 	public int value;
 	public int goldGain;
 	private WaveData wave;
+	public Color originalColor;
+	public AudioClip[] sounds;
 
 	// Use this for initialization
 	void Start () {
+		originalColor = gameObject.renderer.material.color;
 		movement = new Vector3(2, 1.2f, 0) / speed;
 		i++;
 		foreach (var item in GameObject.Find("finish").GetComponent<endNode>().path)
@@ -160,9 +163,26 @@ public class creepMovement : MonoBehaviour {
 
 		if (HP <= 0)
 		{
+			audio.clip = sounds[0];
 			wave.deadCreeps++;
 			player.AddGold(goldGain);
+			audio.Play ();
+			float clipLength = (float) audio.clip.length;
+			Wait (clipLength);
 			Destroy(this.gameObject);
 		}
+	}
+
+	IEnumerator Wait(float time)
+	{
+		yield return new WaitForSeconds(time);
+		gameObject.renderer.material.color = originalColor;
+	}
+
+	public void materialChange()
+	{
+
+		gameObject.renderer.material.color = Color.red;
+		StartCoroutine (Wait (0.1f));
 	}
 }

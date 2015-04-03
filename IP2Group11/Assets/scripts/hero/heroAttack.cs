@@ -24,6 +24,7 @@ public class heroAttack : MonoBehaviour {
 	private bool medCanUse;
 	private bool heavyCanUse;
 	private bool AOECanUse;
+	public AudioClip[] sounds;
 
 	// Use this for initialization
 	void Start () {
@@ -57,6 +58,8 @@ public class heroAttack : MonoBehaviour {
 			{
 				heavyCanUse = false;
 				heavyAttack();
+				audio.clip = sounds[0];
+				audio.Play ();
 			}
 		}
 		//the AOE attack button has been called
@@ -66,6 +69,8 @@ public class heroAttack : MonoBehaviour {
 			{
 				AOECanUse = false;
 				AOEAttack(1);
+				audio.clip = sounds[1];
+				audio.Play ();
 			}
 		}
 		else
