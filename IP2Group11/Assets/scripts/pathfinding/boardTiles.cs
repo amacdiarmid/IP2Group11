@@ -5,22 +5,24 @@ using System.Collections.Generic;
 public class boardTiles : MonoBehaviour {
 
 	//variable for the start node(where the creeps spawn and where the path must start from)
-	public startNode start;
+	[HideInInspector] public startNode start;
 	//list containing each of the 2 scripts attatched to each tile
-	public List<pathNodes> tileNodes;
-	public List<spawnTower> tileSpawns;
+	[HideInInspector] public List<pathNodes> tileNodes;
+	[HideInInspector] public List<spawnTower> tileSpawns;
 	//the hero on the board and where they are selected to be moved
 	[HideInInspector] public bool heroSelected;
 	[HideInInspector] public heroMovement hero;
-	//the gameobject that contais the tower info
-	private towerData towers;
+	//the object that controls the camera movement
+	private cameraMovement camMove;
+	Vector2 minBounds;
+	Vector2 maxBounds;
 
 	// Use this for initialization
 	void Start () 
 	{
-		//set the hero and the towerData object
+		//set the hero and the camMove object
 		hero = GameObject.Find("hero").GetComponent<heroMovement>();
-		towers = GameObject.Find("Game Data").GetComponent<towerData>();
+		camMove = GameObject.Find("Main Camera").GetComponent<cameraMovement>();
 		//remove eveything from the list to then add all the tiles to the list
 		tileNodes.Clear();
 		foreach(GameObject tile in GameObject.FindGameObjectsWithTag("Tile"))
@@ -31,8 +33,31 @@ public class boardTiles : MonoBehaviour {
 			{
 				//if the tile can be build on then add to this list as well
 				tileSpawns.Add(tile.GetComponent<spawnTower>());
-			}	
+			}
+			else if (tile.name == "start")
+			{
+				start = tile.GetComponent<startNode>();
+			}
+			//check to see if that is a corner tile
+			if (tile.transform.position.x > maxBounds.x)
+			{
+				maxBounds.x = tile.transform.position.x;
+			}
+			else if (tile.transform.position.x < minBounds.x)
+			{
+				minBounds.x = tile.transform.position.x;
+			}
+			if (tile.transform.position.y > maxBounds.y)
+			{
+				maxBounds.y = tile.transform.position.y;
+			}
+			else if (tile.transform.position.y < minBounds.y)
+			{
+				minBounds.y = tile.transform.position.y;
+			}
 		}
+		camMove.maxBound = maxBounds;
+		camMove.minBound = minBounds;
 	}
 	/// <summary>
 	/// used to reset the infomation from the previous path find for all the tiles

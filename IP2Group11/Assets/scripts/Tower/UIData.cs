@@ -2,14 +2,17 @@
 using UnityEngine.UI;
 using System.Collections;
 
+public enum UIWheel
+{
+	BuyWheel,
+	upgradeWheel
+};
+
 public class UIData : MonoBehaviour {
 
-	private boardTiles board;
 	private towerData towers;
 	//buy towers
 	public GameObject towerUI;
-	private Vector3 towerPos;
-	private bool towerMoved;
 	public Button buyLightning;
 	public Button buyLocust;
 	public Button buyVolcano;
@@ -17,58 +20,58 @@ public class UIData : MonoBehaviour {
 	public Text towerText;
 	//sell/upgrade towers
 	public GameObject upgradeUI;
-	private Vector3 upgradePos;
-	private bool upgradeMoved;
-	public Button upgradeTower;
-	public Button sellTower;
+	public Button upgradeTowerBut;
+	public Button sellTowerBut;
 	public Text upgradeText;
+	[HideInInspector] public GameObject tempTile;
 
 	// Use this for initialization
 	void Start () 
 	{
-		board = GameObject.Find("board").GetComponent<boardTiles>();
 		towers = GameObject.Find("Game Data").GetComponent<towerData>();
-		towerPos = towerUI.transform.position;
-		upgradePos = upgradeUI.transform.position;
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		
 	}
 
-	public void move(GameObject tile)
+	public void visability(bool state)
 	{
-		spawnTower a = tile.GetComponent<spawnTower>();
-		//remove events
-		buyLightning.onClick.RemoveAllListeners();
-		buyLocust.onClick.RemoveAllListeners();
-		buyVolcano.onClick.RemoveAllListeners();
-		buyWall.onClick.RemoveAllListeners();
-		upgradeTower.onClick.RemoveAllListeners();
-		sellTower.onClick.RemoveAllListeners();
-		//add events
-		buyLightning.onClick.AddListener(() => a.spawnWall(towers.lightningTower));
-		buyLocust.onClick.AddListener(() => a.spawnWall(towers.locustTower));
-		buyVolcano.onClick.AddListener(() => a.spawnWall(towers.volcanoTower));
-		buyWall.onClick.AddListener(() => a.spawnWall(towers.wallTower));
-		sellTower.onClick.AddListener(() => a.destroyWall());
-		upgradeTower.onClick.AddListener (() => a.UpgradeTower());
-		//add text
-		towerText.text = towers.lightningTower.GetComponent<towerBehaviour>().cost + "  " + towers.locustTower.GetComponent<towerBehaviour>().cost + "  " + towers.volcanoTower.GetComponent<towerBehaviour>().cost + "  " + towers.wallTower.GetComponent<towerBehaviour>().cost;
-		upgradeText.text = a.GetComponent<spawnTower>().getUpCost() + "  " + a.GetComponent<spawnTower>().getSellCost();
+		upgradeUI.SetActive(false);
+		towerUI.SetActive(false);
+		tempTile = null;
 	}
 
-	public void hide()
+	public void visability(bool state, UIWheel wheel, GameObject tile)
 	{
-		if (towerMoved == false)
+		if (wheel == UIWheel.BuyWheel)
 		{
-			towerUI.transform.position = towerPos;
+			towerUI.SetActive(state);
+			towerUI.transform.position = tile.transform.position;
+			towerText.text = towers.lightningTower.GetComponent<towerBehaviour>().cost + "  " + towers.locustTower.GetComponent<towerBehaviour>().cost + "  " + towers.volcanoTower.GetComponent<towerBehaviour>().cost + "  " + towers.wallTower.GetComponent<towerBehaviour>().cost;
+			tempTile = tile;
 		}
-		if (upgradeMoved == false)
+		else if (wheel == UIWheel.upgradeWheel)
 		{
-			upgradeUI.transform.position = upgradePos;
-		}	
+			upgradeUI.SetActive(state);
+			upgradeUI.transform.position = tile.transform.position;
+			upgradeText.text = tile.GetComponent<spawnTower>().getUpCost() + "  " + tile.GetComponent<spawnTower>().getSellCost();
+			tempTile = tile;
+		}
+		else
+		{
+			Debug.Log("UIError");
+		}		
+	}
+
+	public void buildTower(GameObject tower)
+	{
+		tempTile.GetComponent<spawnTower>().spawnWall(tower);
+	}
+
+	public void sellTower()
+	{
+		tempTile.GetComponent<spawnTower>().destroyWall();
+	}
+
+	public void upgradeTower()
+	{
+		tempTile.GetComponent<spawnTower>().UpgradeTower();
 	}
 }

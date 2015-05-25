@@ -19,7 +19,7 @@ public class creepMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		originalColor = gameObject.renderer.material.color;
+		originalColor = gameObject.GetComponent<Renderer>().material.color;
 		movement = new Vector3(2, 1.2f, 0) / speed;
 		i++;
 		foreach (var item in GameObject.Find("finish").GetComponent<endNode>().path)
@@ -27,15 +27,13 @@ public class creepMovement : MonoBehaviour {
 			path.Add(item);
 		} 
 		go = true;
-		float a = path[i].x - path[i - 1].x;
-		float b = path[i].y - path[i - 1].y;
 		player = GameObject.Find("Game Data").GetComponent<PlayerData>();
 		wave = GameObject.Find("Game Data").GetComponent<WaveData>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = -(int)this.gameObject.transform.position.y;
+		this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = -(int)this.gameObject.transform.position.y + 10;
 		if (go == true)
 		{
 			//"up" is NE
@@ -73,11 +71,6 @@ public class creepMovement : MonoBehaviour {
 						moveUp();
 					}
 				}
-				else
-				{
-					float a = path[i].x - path[i - 1].x;
-					float b = path[i].y - path[i - 1].y;
-				}
 			}
 			else if (path[i].x - path[i - 1].x <= -2)
 			{
@@ -108,17 +101,6 @@ public class creepMovement : MonoBehaviour {
 						moveDown();
 					}
 				}
-				else
-				{
-					float a = path[i].x - path[i - 1].x;
-					float b = path[i].y - path[i - 1].y;
-				}
-				
-			}
-			else
-			{
-				float a = path[i].x - path[i - 1].x;
-				float b =  path[i].y - path[i - 1].y;
 			}
 			if (i == path.Count)
 			{
@@ -163,11 +145,11 @@ public class creepMovement : MonoBehaviour {
 
 		if (HP <= 0)
 		{
-			audio.clip = sounds[0];
+			GetComponent<AudioSource>().clip = sounds[0];
 			wave.deadCreeps++;
 			player.AddGold(goldGain);
-			audio.Play ();
-			float clipLength = (float) audio.clip.length;
+			GetComponent<AudioSource>().Play ();
+			float clipLength = (float) GetComponent<AudioSource>().clip.length;
 			Wait (clipLength);
 			Destroy(this.gameObject);
 		}
@@ -176,13 +158,13 @@ public class creepMovement : MonoBehaviour {
 	IEnumerator Wait(float time)
 	{
 		yield return new WaitForSeconds(time);
-		gameObject.renderer.material.color = originalColor;
+		gameObject.GetComponent<Renderer>().material.color = originalColor;
 	}
 
 	public void materialChange()
 	{
 
-		gameObject.renderer.material.color = Color.red;
+		gameObject.GetComponent<Renderer>().material.color = Color.red;
 		StartCoroutine (Wait (0.1f));
 	}
 }

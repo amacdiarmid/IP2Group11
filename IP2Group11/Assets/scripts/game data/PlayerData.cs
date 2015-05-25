@@ -2,6 +2,12 @@
 using System.Collections;
 using UnityEngine.UI;
 
+public enum errorName
+{
+	location,
+	cost
+};
+
 public class PlayerData : MonoBehaviour {
 
 	//the wave data variable
@@ -13,6 +19,7 @@ public class PlayerData : MonoBehaviour {
 	public Text goldText;
 	public Text healthText;
 	public Text waveText;
+	public Text errorText;
 	//buttons to show next level, retry and quit(i.e. go to main menu)
 	public Button level;
 	public Button retry;
@@ -90,5 +97,25 @@ public class PlayerData : MonoBehaviour {
 	public void nextLevel(string name)
 	{
 		Application.LoadLevel(name);
+	}
+
+	public IEnumerator ShowError(errorName error)
+	{
+		string text;
+		if (error == errorName.cost)
+		{
+			text = "Not enough gold";
+		}
+		else if (error == errorName.location)
+		{
+			text = "Can't place tower here";
+		}
+		else
+		{
+			text = "";
+		}
+		errorText.text = text;
+		yield return new WaitForSeconds(1.0f);
+		errorText.text = "";
 	}
 }

@@ -7,7 +7,6 @@ public class startNode : pathNodes {
 	//varibles that contain the board infomation, tower infomation and the hero
 	private boardTiles board;
 	private towerData towers;
-	private heroMovement hero;
 
 	// Use this for initialization
 	void Start () 
@@ -18,7 +17,6 @@ public class startNode : pathNodes {
 		end = GameObject.Find("board/finish").GetComponent<endNode>();
 		board = GameObject.Find("board").GetComponent<boardTiles>();
 		towers = GameObject.Find("Game Data").GetComponent<towerData>();
-		hero = GameObject.Find("hero").GetComponent<heroMovement>();
 		//set the checked directions to unchecked (true)
 		Up = true;
 		Down = true;

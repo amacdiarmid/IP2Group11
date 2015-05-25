@@ -307,7 +307,7 @@ public class pathNodes : MonoBehaviour {
 	public virtual bool rayUp()
 	{
 		//this sets the distance from the origin that the ray cast will start
-		size = new Vector2(renderer.bounds.size.x / 2, renderer.bounds.size.y / 2);
+		size = new Vector2(GetComponent<Renderer>().bounds.size.x / 2, GetComponent<Renderer>().bounds.size.y / 2);
 		//this will send a raycast froma point in a direction to find the next tile 
 		//(the layer mask was not in the first few tests this is why there is a method to hide the colliders do they didnt get in they way)
 		RaycastHit2D hit = Physics2D.Raycast(origin + size, new Vector2(1, 1), Mathf.Infinity, LayerMask.GetMask("Tile"));
@@ -361,7 +361,7 @@ public class pathNodes : MonoBehaviour {
 	public virtual bool rayDown()
 	{
 		//this sets the distance from the origin that the ray cast will start
-		size = new Vector2(-renderer.bounds.size.x / 2, -renderer.bounds.size.y / 2);
+		size = new Vector2(-GetComponent<Renderer>().bounds.size.x / 2, -GetComponent<Renderer>().bounds.size.y / 2);
 		//this will send a raycast froma point in a direction to find the next tile 
 		//(the layer mask was not in the first few tests this is why there is a method to hide the colliders do they didnt get in they way)
 		RaycastHit2D hit = Physics2D.Raycast(origin + size, new Vector2(-1, -1), Mathf.Infinity, LayerMask.GetMask("Tile"));
@@ -415,7 +415,7 @@ public class pathNodes : MonoBehaviour {
 	public virtual bool rayLeft()
 	{
 		//this sets the distance from the origin that the ray cast will start
-		size = new Vector2(-renderer.bounds.size.x / 2, renderer.bounds.size.y / 2);
+		size = new Vector2(-GetComponent<Renderer>().bounds.size.x / 2, GetComponent<Renderer>().bounds.size.y / 2);
 		//this will send a raycast froma point in a direction to find the next tile 
 		//(the layer mask was not in the first few tests this is why there is a method to hide the colliders do they didnt get in they way)
 		RaycastHit2D hit = Physics2D.Raycast(origin + size, new Vector2(-1, 1), Mathf.Infinity, LayerMask.GetMask("Tile"));
@@ -469,7 +469,7 @@ public class pathNodes : MonoBehaviour {
 	public virtual bool rayRight()
 	{
 		//this sets the distance from the origin that the ray cast will start
-		size = new Vector2(renderer.bounds.size.x / 2, -renderer.bounds.size.y / 2);
+		size = new Vector2(GetComponent<Renderer>().bounds.size.x / 2, -GetComponent<Renderer>().bounds.size.y / 2);
 		//this will send a raycast froma point in a direction to find the next tile 
 		//(the layer mask was not in the first few tests this is why there is a method to hide the colliders do they didnt get in they way)
 		RaycastHit2D hit = Physics2D.Raycast(origin + size, new Vector2(1, -1), Mathf.Infinity, LayerMask.GetMask("Tile"));

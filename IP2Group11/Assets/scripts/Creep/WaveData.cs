@@ -16,8 +16,6 @@ public class WaveData : MonoBehaviour {
 	//buttonf to call the next wave
 	public GameObject button;
 	
-	//wave infomation variables
-	private bool started = false;
 	// creep timer depending on how long between each creep spawn
 	public float creepTimer;
 	// ints holding how many creeps have spawned and how many have been killed
@@ -62,19 +60,19 @@ public class WaveData : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		Debug.Log(waveNum +" " +BasicCreepCount.Count +" wave check");
+		//Debug.Log(waveNum +" " +BasicCreepCount.Count +" wave check");
 		if (waveNum >= 0 && waveNum < BasicCreepCount.Count)
 		{
 			//if the first wave has been called and has not reached the final wave
-			Debug.Log("1 loop check");
+			//Debug.Log("1 loop check");
 			if (wait == false)
 			{
 				//if you are not waiting for the wave timer to finish
-				Debug.Log("2 loop check" + deadCreeps + " " + spawnedCreeps);
+				//Debug.Log("2 loop check" + deadCreeps + " " + spawnedCreeps);
 				if (deadCreeps >= spawnedCreeps * 0.8f)
 				{
 					//if 80% of the spawned creeps are dead then you can start the next wave
-					Debug.Log("3 loop check");
+					//Debug.Log("3 loop check");
 					curTime = Time.time;
 					//begin waiting
 					wait = true;
@@ -84,7 +82,7 @@ public class WaveData : MonoBehaviour {
 			if (wait == true && Time.time - curTime >= waveWaitTime)
 			{
 				//if the waiting has started and the game time has gone over the wait time then start the next wave
-				Debug.Log("4 loop check");
+				//Debug.Log("4 loop check");
 				wait = false;
 				NextWave();
 			}
@@ -92,7 +90,7 @@ public class WaveData : MonoBehaviour {
 		else if (waveNum == BasicCreepCount.Count)
 		{
 			//if you reach the final wave
-			Debug.Log("5 loop check");
+			//Debug.Log("5 loop check");
 			if (deadCreeps == spawnedCreeps)
 				{
 					//and all the creeps are dead then you win
@@ -107,8 +105,8 @@ public class WaveData : MonoBehaviour {
 	/// </summary>
 	public void NextWave()
 	{
-		audio.clip = sounds[0];
-		audio.Play();
+		GetComponent<AudioSource>().clip = sounds[0];
+		GetComponent<AudioSource>().Play();
 		//hide the next wave button and increase the wave
 		button.SetActive(false);
 		waveNum++;

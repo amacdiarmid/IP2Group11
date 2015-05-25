@@ -16,11 +16,11 @@ public class projectileBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = -(int)this.gameObject.transform.position.y;
+		this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = -(int)this.gameObject.transform.position.y + 30;
 		if (target) {
 			// Fly towards the target        
 			Vector3 dir = target.position - transform.position;
-			rigidbody2D.velocity = dir.normalized * speed;
+			GetComponent<Rigidbody2D>().velocity = dir.normalized * speed;
 		} else {
 			// Otherwise destroy self
 			Destroy(gameObject);

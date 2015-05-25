@@ -16,11 +16,11 @@ public class towerBehaviour : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = -(int)this.gameObject.transform.position.y;
+		this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = -(int)this.gameObject.transform.position.y + 20;
 		this.gameObject.GetComponent<CircleCollider2D>().radius = areaOfAttack;
 		upgradeCost = cost * 2;
-		audio.clip = sounds[0];
-		audio.Play ();
+		GetComponent<AudioSource>().clip = sounds[0];
+		GetComponent<AudioSource>().Play ();
 	}
 	
 	// Update is called once per frame
@@ -36,8 +36,8 @@ public class towerBehaviour : MonoBehaviour {
 			if (canFire == true)
 			{			
 				GameObject shot = (GameObject)Instantiate(projectile, transform.position, Quaternion.identity);
-				audio.clip = sounds[1];
-				audio.Play();
+				GetComponent<AudioSource>().clip = sounds[1];
+				GetComponent<AudioSource>().Play();
 				shot.GetComponent<projectileBehaviour>().target = other.transform;
 				shot.GetComponent<projectileBehaviour>().damage = damage;
 				shot.GetComponent<projectileBehaviour>().speed = speed;
@@ -55,13 +55,13 @@ public class towerBehaviour : MonoBehaviour {
 
 	public void HideCollider()
 	{
-		if (this.gameObject.collider2D.enabled == false)
+		if (this.gameObject.GetComponent<Collider2D>().enabled == false)
 		{
-			this.gameObject.collider2D.enabled = true;
+			this.gameObject.GetComponent<Collider2D>().enabled = true;
 		}
 		else
 		{
-			this.gameObject.collider2D.enabled = false;
+			this.gameObject.GetComponent<Collider2D>().enabled = false;
 		}
 	}
 

@@ -10,17 +10,17 @@ public class backgroundMusic : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		DontDestroyOnLoad(this);
-		audio.clip = song[choice];
+		GetComponent<AudioSource>().clip = song[choice];
 		current = choice;
-		audio.Play ();
+		GetComponent<AudioSource>().Play ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(choice != current)
 		{
-			audio.clip = song[choice];
-			audio.Play ();
+			GetComponent<AudioSource>().clip = song[choice];
+			GetComponent<AudioSource>().Play ();
 			current = choice;
 		}
 	}

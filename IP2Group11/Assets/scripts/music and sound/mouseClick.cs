@@ -14,8 +14,8 @@ public class mouseClick : MonoBehaviour {
 	void Update () {
 		if(Input.GetMouseButtonDown(0))
 		{
-			audio.clip = click;
-			audio.Play ();
+			GetComponent<AudioSource>().clip = click;
+			GetComponent<AudioSource>().Play ();
 		}
 	}
 }

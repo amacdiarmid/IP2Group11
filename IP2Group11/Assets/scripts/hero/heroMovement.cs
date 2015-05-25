@@ -25,7 +25,7 @@ public class heroMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//set the sprite to a layer to 99 so it as above the boared but under the UI
-		this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 99;
+		this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = -(int)this.gameObject.transform.position.y + 40;
 		//set the board object and the state machine
 		board = GameObject.Find("board").GetComponent<boardTiles>();
 		animator = GetComponent<Animator>();
@@ -50,7 +50,7 @@ public class heroMovement : MonoBehaviour {
 				move = false;
 			}
 		}
-		if (Input.GetButtonUp("move"))
+		if (Input.GetButtonUp("Move"))
 		{
 			//if the move button has been pressed
 			//set the animation to selected

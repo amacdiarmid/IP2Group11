@@ -43,7 +43,7 @@ public class heroAttack : MonoBehaviour {
 	void Update () 
 	{
 		//the medium attack button has been called
-		if (Input.GetButtonUp("ability1"))
+		if (Input.GetButtonUp("Medium Attack"))
 		{
 			if (medCanUse == true)
 			{
@@ -52,25 +52,25 @@ public class heroAttack : MonoBehaviour {
 			}
 		}
 		//the Heavy attack button has been called
-		else if (Input.GetButtonUp("ability2"))
+		else if (Input.GetButtonUp("Heavy Attack"))
 		{
 			if (heavyCanUse == true)
 			{
 				heavyCanUse = false;
 				heavyAttack();
-				audio.clip = sounds[0];
-				audio.Play ();
+				GetComponent<AudioSource>().clip = sounds[0];
+				GetComponent<AudioSource>().Play ();
 			}
 		}
 		//the AOE attack button has been called
-		else if (Input.GetButtonUp("ability3"))
+		else if (Input.GetButtonUp("AOE Attack"))
 		{
 			if (AOECanUse == true)
 			{
 				AOECanUse = false;
 				AOEAttack(1);
-				audio.clip = sounds[1];
-				audio.Play ();
+				GetComponent<AudioSource>().clip = sounds[1];
+				GetComponent<AudioSource>().Play ();
 			}
 		}
 		else
@@ -88,13 +88,13 @@ public class heroAttack : MonoBehaviour {
 	/// </summary>
 	void autoAttack()
 	{
-		Debug.Log("start auto attack");
+		//Debug.Log("start auto attack");
 		//send a raycast NE to see if there is a creep
 		RaycastHit2D hitNE = Physics2D.Raycast(this.transform.position, new Vector2(2, 1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
 		if (hitNE)
 		{
 			//if there is then there is an attack
-			Debug.Log("auto attack");
+			//Debug.Log("auto attack");
 			hitNE.collider.GetComponent<creepMovement>().removeHealth(autoDamage);
 			StartCoroutine(autoWait());
 		}
@@ -105,7 +105,7 @@ public class heroAttack : MonoBehaviour {
 			if (hitSE)
 			{
 				//if there is then there is an attack
-				Debug.Log("auto attack");
+				//Debug.Log("auto attack");
 				hitSE.collider.GetComponent<creepMovement>().removeHealth(autoDamage);
 				StartCoroutine(autoWait());
 			}
@@ -116,7 +116,7 @@ public class heroAttack : MonoBehaviour {
 				if (hitSW)
 				{
 					//if there is then there is an attack
-					Debug.Log("auto attack");
+					//Debug.Log("auto attack");
 					hitSW.collider.GetComponent<creepMovement>().removeHealth(autoDamage);
 					StartCoroutine(autoWait());
 				}
@@ -127,14 +127,14 @@ public class heroAttack : MonoBehaviour {
 					if (hitNW)
 					{
 						//if there is then there is an attack
-						Debug.Log("auto attack");
+						//Debug.Log("auto attack");
 						hitNW.collider.GetComponent<creepMovement>().removeHealth(autoDamage);
 						StartCoroutine(autoWait());
 					}
 					if (!hitNW)
 					{
 						//if there was no attack then the ability is reset
-						Debug.Log("No auto attack");
+						//Debug.Log("No auto attack");
 						autoCanUse = true;
 					}
 				}

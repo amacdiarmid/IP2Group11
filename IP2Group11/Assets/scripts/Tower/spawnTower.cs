@@ -4,9 +4,6 @@ using UnityEngine.EventSystems;
 
 public class spawnTower : MonoBehaviour {
 
-	private bool mouseOver;
-	private bool mouseDown;
-	private towerData towerData;
 	private pathNodes Node;
 	private bool wall;
 	private GameObject tower;
@@ -19,7 +16,6 @@ public class spawnTower : MonoBehaviour {
 	void Start () 
 	{
 		Node = this.GetComponent<pathNodes>();
-		towerData = GameObject.Find("Game Data").GetComponent<towerData>();
 		towerUI = GameObject.Find("Game Data").GetComponent<UIData>();
 		start = GameObject.Find("board/start").GetComponent<startNode>();
 		board = GameObject.Find("board").GetComponent<boardTiles>();
@@ -41,10 +37,14 @@ public class spawnTower : MonoBehaviour {
 			if (wall == true)
 			{
 				Debug.Log("no current ui on tower");
-				towerUI.hide();
-				towerUI.upgradeUI.transform.position = this.transform.position;
-				//towerUI.StartCoroutine("upgradeWait");
-				towerUI.move(this.gameObject);
+				if (towerUI.tempTile == this.gameObject)
+				{
+					towerUI.visability(false);
+				}
+				else
+				{
+					towerUI.visability(true, UIWheel.upgradeWheel, this.gameObject);
+				}	
 			}
 			else
 			{
@@ -53,15 +53,20 @@ public class spawnTower : MonoBehaviour {
 				{
 					Debug.Log("no current ui on empty space");
 					Node.Wall = false;
-					towerUI.hide();
-					towerUI.towerUI.transform.position = this.transform.position;
-					//towerUI.StartCoroutine("upgradeWait");
-					towerUI.move(this.gameObject);
+					if (towerUI.tempTile == this.gameObject)
+					{
+						towerUI.visability(false);
+					}
+					else
+					{
+						towerUI.visability(true, UIWheel.BuyWheel,this.gameObject);
+					}	
 				}
 				else
 				{
 					Debug.Log("removing the tower ui");
-					towerUI.hide();
+					playerData.StartCoroutine("ShowError", errorName.location);
+					towerUI.visability(false);
 					Node.Wall = false;
 				}
 			}
@@ -82,8 +87,12 @@ public class spawnTower : MonoBehaviour {
 			wall = true;
 			tower = (GameObject)Instantiate(tempTower, this.transform.position, Quaternion.identity);
 			tower.transform.parent = transform;
-			towerUI.hide();
+			towerUI.visability(false);
 			playerData.RemoveGold(tempTower.GetComponent<towerBehaviour>().cost);
+		}
+		else
+		{
+			playerData.StartCoroutine("ShowError", errorName.cost);
 		}
 	}
 
@@ -91,7 +100,7 @@ public class spawnTower : MonoBehaviour {
 	{
 		Node.Wall = false;
 		wall = false;
-		towerUI.hide();
+		towerUI.visability(false);
 		playerData.AddGold(tower.GetComponent<towerBehaviour>().Refund);
 		Destroy(tower);
 	}
@@ -100,10 +109,14 @@ public class spawnTower : MonoBehaviour {
 	{
 		if (playerData.playerGold>=tower.GetComponent<towerBehaviour>().upgradeCost)
 		{
-			towerUI.hide();
+			towerUI.visability(false);
 			playerData.RemoveGold(tower.GetComponent<towerBehaviour>().upgradeCost);
 			tower.GetComponent<towerBehaviour>().UpgradeTower();
-		}	
+		}
+		else
+		{
+			playerData.StartCoroutine("ShowError", errorName.cost);
+		}
 	}
 
 	public int getUpCost()
