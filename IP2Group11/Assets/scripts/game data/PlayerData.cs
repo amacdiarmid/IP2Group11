@@ -11,7 +11,7 @@ public enum errorName
 public class PlayerData : MonoBehaviour {
 
 	//the wave data variable
-	private WaveData wave;
+	private waveControl wave;
 	//players current gold and health
 	public int playerHealth;
 	public int playerGold;
@@ -24,17 +24,19 @@ public class PlayerData : MonoBehaviour {
 	public Button level;
 	public Button retry;
 	public Button quit;
+	private bool pause;
 
 	// Use this for initialization
 	void Start () {
 		//sets the game to play(out of pause mode)
 		Time.timeScale = 1;
 		//gets the wave data object
-		wave = GameObject.Find("Game Data").GetComponent<WaveData>();
+		wave = GameObject.Find("Game Data").GetComponent<waveControl>();
 		//hides the buttons
 		retry.gameObject.SetActive(false);
 		quit.gameObject.SetActive(false);
 		level.gameObject.SetActive(false);
+		pause = false;
 	}
 	
 	// Update is called once per frame
@@ -42,7 +44,12 @@ public class PlayerData : MonoBehaviour {
 		//updats the current gold health and wave infomation
 		goldText.text = "" + playerGold;
 		healthText.text = "" + playerHealth;
-		waveText.text = "" + wave.curWave + "/" +wave.BasicCreepCount.Count;
+		waveText.text = "" + wave.curWave + "/" +wave.totalWaves;
+
+		if (Input.GetButtonUp("pause"))
+		{
+			pauseMenu();
+		}
 	}
 	/// <summary>
 	/// this is called when a player reaches the nexus
@@ -117,5 +124,23 @@ public class PlayerData : MonoBehaviour {
 		errorText.text = text;
 		yield return new WaitForSeconds(1.0f);
 		errorText.text = "";
+	}
+
+	public void pauseMenu()
+	{
+		if (pause == false)
+		{
+			pause = true;
+			Time.timeScale = 0;
+			retry.gameObject.SetActive(true);
+			quit.gameObject.SetActive(true);
+		}
+		else
+		{
+			pause = false;
+			Time.timeScale = 1;
+			retry.gameObject.SetActive(false);
+			quit.gameObject.SetActive(false);
+		}		
 	}
 }

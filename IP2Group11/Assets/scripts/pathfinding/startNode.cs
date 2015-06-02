@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class startNode : pathNodes {
 
 	//contains inherited variables as well
 	//varibles that contain the board infomation, tower infomation and the hero
 	private boardTiles board;
-	private towerData towers;
+	public GameObject finish;
+	public List<GameObject> comPath = new List<GameObject>();
+	private List<GameObject> prevPath = new List<GameObject>();
 
 	// Use this for initialization
 	void Start () 
@@ -14,14 +17,12 @@ public class startNode : pathNodes {
 		//set the sprite order in layer to -ve the y co-ordinate
 		this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = -(int)this.gameObject.transform.position.y;
 		//set the varibles to the correct objects 
-		end = GameObject.Find("board/finish").GetComponent<endNode>();
 		board = GameObject.Find("board").GetComponent<boardTiles>();
-		towers = GameObject.Find("Game Data").GetComponent<towerData>();
 		//set the checked directions to unchecked (true)
-		Up = true;
-		Down = true;
-		Left = true;
-		Right = true;
+		NEChecked = false;
+		SWChecked = false;
+		NWChecked = false;
+		SEChecked = false;
 		//start the inital pathfind
 		startPath();
 	}
@@ -33,24 +34,38 @@ public class startNode : pathNodes {
 	/// <returns>returns true when there is a confirmed path</returns>
 	public bool startPath()
 	{
-		//resets the done variable to false so the pathfinding will work
-		done = false;
 		//removes old corords from previous pathfinds
 		board.clearDirections();
+		foreach (var item in comPath)
+		{
+			item.gameObject.GetComponent<Renderer>().material.color = Color.white;
+			prevPath.Add(item);
+		}
+		comPath.Clear();
 		//hides the colliders for the towers on the board
-		towers.hideCollider();
-		if (recieveRay() == true)
+		if (recieveRay(comPath, finish, direction.none) == true)
 		{
 			//if the return ray is true then there is a found path and can return true.
 			//and the colliders can return to the towers
-			towers.hideCollider();
+			comPath.Reverse();
+			prevPath.Clear();
+			foreach (var item in comPath)
+			{
+				item.gameObject.GetComponent<Renderer>().material.color = Color.red;
+			}
 			return true;
 		}
 		else
 		{
 			//if the return ray is false then there is no found path and can return false.
 			//and the colliders can return to the towers
-			towers.hideCollider();
+			comPath.Clear();
+			foreach (var item in prevPath)
+			{
+				item.gameObject.GetComponent<Renderer>().material.color = Color.red;
+				comPath.Add(item);
+			}
+			prevPath.Clear();
 			return false;
 		}
 	}

@@ -1,0 +1,517 @@
+fileFormatVersion: 2
+guid: c698f92ee14092440bd55f6952e82594
+timeCreated: 1432725401
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Down_Left_0
+    21300002: Down_Left_1
+    21300004: Down_Left_2
+    21300006: Down_Left_3
+    21300008: Down_Left_4
+    21300010: Down_Left_5
+    21300012: Down_Left_6
+    21300014: Down_Left_7
+    21300016: Down_Left_8
+    21300018: Down_Left_9
+    21300020: Down_Left_10
+    21300022: Down_Left_11
+    21300024: Down_Left_12
+    21300026: Down_Left_13
+    21300028: Down_Left_14
+    21300030: Down_Left_15
+    21300032: Down_Left_16
+    21300034: Down_Left_17
+    21300036: Down_Left_18
+    21300038: Down_Left_19
+    21300040: Down_Left_20
+    21300042: Down_Left_21
+    21300044: Down_Left_22
+    21300046: Down_Left_23
+    21300048: Down_Left_24
+    21300050: Down_Left_25
+    21300052: Down_Left_26
+    21300054: Down_Left_27
+    21300056: Down_Left_28
+    21300058: Down_Left_29
+    21300060: Down_Left_30
+    21300062: Down_Left_31
+    21300064: Down_Left_32
+    21300066: Down_Left_33
+    21300068: Down_Left_34
+    21300070: Down_Left_35
+    21300072: Down_Left_36
+    21300074: Down_Left_37
+    21300076: Down_Left_38
+    21300078: Down_Left_39
+    21300080: Down_Left_40
+    21300082: Down_Left_41
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 130
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Down_Left_0
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 1474
+        width: 200
+        height: 412
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_1
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 1474
+        width: 198
+        height: 413
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_2
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 1474
+        width: 202
+        height: 413
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_3
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 1478
+        width: 208
+        height: 412
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_4
+      rect:
+        serializedVersion: 2
+        x: 1315
+        y: 1478
+        width: 212
+        height: 412
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_5
+      rect:
+        serializedVersion: 2
+        x: 1624
+        y: 1478
+        width: 218
+        height: 412
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_6
+      rect:
+        serializedVersion: 2
+        x: 1919
+        y: 1478
+        width: 237
+        height: 415
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_7
+      rect:
+        serializedVersion: 2
+        x: 2214
+        y: 1478
+        width: 254
+        height: 416
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_8
+      rect:
+        serializedVersion: 2
+        x: 2509
+        y: 1481
+        width: 274
+        height: 413
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_9
+      rect:
+        serializedVersion: 2
+        x: 2807
+        y: 1481
+        width: 295
+        height: 413
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_10
+      rect:
+        serializedVersion: 2
+        x: 3122
+        y: 1478
+        width: 285
+        height: 416
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_11
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 1001
+        width: 275
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_12
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 998
+        width: 268
+        height: 423
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_13
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 995
+        width: 261
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_14
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 991
+        width: 254
+        height: 426
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_15
+      rect:
+        serializedVersion: 2
+        x: 1292
+        y: 988
+        width: 245
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_16
+      rect:
+        serializedVersion: 2
+        x: 1607
+        y: 985
+        width: 238
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_17
+      rect:
+        serializedVersion: 2
+        x: 1922
+        y: 981
+        width: 231
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_18
+      rect:
+        serializedVersion: 2
+        x: 2237
+        y: 978
+        width: 225
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_19
+      rect:
+        serializedVersion: 2
+        x: 2552
+        y: 974
+        width: 218
+        height: 440
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_20
+      rect:
+        serializedVersion: 2
+        x: 2867
+        y: 971
+        width: 211
+        height: 443
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_21
+      rect:
+        serializedVersion: 2
+        x: 3172
+        y: 968
+        width: 215
+        height: 446
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_22
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 491
+        width: 217
+        height: 447
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_23
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 491
+        width: 215
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_24
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 495
+        width: 218
+        height: 446
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_25
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 495
+        width: 214
+        height: 449
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_26
+      rect:
+        serializedVersion: 2
+        x: 1305
+        y: 498
+        width: 212
+        height: 446
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_27
+      rect:
+        serializedVersion: 2
+        x: 1607
+        y: 498
+        width: 218
+        height: 446
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_28
+      rect:
+        serializedVersion: 2
+        x: 1909
+        y: 501
+        width: 228
+        height: 447
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_29
+      rect:
+        serializedVersion: 2
+        x: 2210
+        y: 501
+        width: 242
+        height: 447
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_30
+      rect:
+        serializedVersion: 2
+        x: 2512
+        y: 505
+        width: 258
+        height: 443
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_31
+      rect:
+        serializedVersion: 2
+        x: 2830
+        y: 505
+        width: 242
+        height: 443
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_32
+      rect:
+        serializedVersion: 2
+        x: 3149
+        y: 508
+        width: 228
+        height: 440
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_33
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 35
+        width: 221
+        height: 440
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_34
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 39
+        width: 211
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_35
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 42
+        width: 205
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_36
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 42
+        width: 194
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_37
+      rect:
+        serializedVersion: 2
+        x: 1326
+        y: 45
+        width: 191
+        height: 426
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_38
+      rect:
+        serializedVersion: 2
+        x: 1634
+        y: 45
+        width: 191
+        height: 423
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_39
+      rect:
+        serializedVersion: 2
+        x: 1942
+        y: 49
+        width: 195
+        height: 419
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_40
+      rect:
+        serializedVersion: 2
+        x: 2248
+        y: 52
+        width: 197
+        height: 416
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Down_Left_41
+      rect:
+        serializedVersion: 2
+        x: 2556
+        y: 55
+        width: 201
+        height: 410
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -2,6 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 
+enum countdown
+{
+	auto,
+	medium,
+	heavy,
+	AOE,
+};
+
 public class heroAttack : MonoBehaviour {
 
 	//the range for each attack
@@ -14,6 +22,7 @@ public class heroAttack : MonoBehaviour {
 	public float medCooldown;
 	public float heavyCooldown;
 	public float AOECooldown;
+	public float AOELength;
 	//the damage for each attack
 	public int autoDamage;
 	public int medDamage;
@@ -24,65 +33,73 @@ public class heroAttack : MonoBehaviour {
 	private bool medCanUse;
 	private bool heavyCanUse;
 	private bool AOECanUse;
+	public GameObject AOEData;
+	private GameObject tempAOEData;
 	public AudioClip[] sounds;
+	private heroMovement HeroMovement;
+	private Animator animator;
 
 	// Use this for initialization
 	void Start () {
-		//show the AOE collider, set the size of the radius, then hide it
-		this.gameObject.GetComponent<CircleCollider2D>().enabled = true;
-		this.gameObject.GetComponent<CircleCollider2D>().radius = AOERange;
-		this.gameObject.GetComponent<CircleCollider2D>().enabled = false;
 		//set all the abilities to true so they can be used
 		autoCanUse = true;
 		medCanUse = true;
 		heavyCanUse = true;
 		AOECanUse = true;
+		HeroMovement = this.gameObject.GetComponent<heroMovement>();
+		animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		//the medium attack button has been called
-		if (Input.GetButtonUp("Medium Attack"))
+		if (HeroMovement.move == false)
 		{
-			if (medCanUse == true)
+			//the medium attack button has been called
+			if (Input.GetButtonUp("Medium Attack"))
 			{
-				medCanUse = false;
-				medAttack();
+				if (medCanUse == true)
+				{
+					medCanUse = false;
+					medAttack();
+					GetComponent<AudioSource>().clip = sounds[0];
+					GetComponent<AudioSource>().Play();
+				}
 			}
-		}
-		//the Heavy attack button has been called
-		else if (Input.GetButtonUp("Heavy Attack"))
-		{
-			if (heavyCanUse == true)
+			//the Heavy attack button has been called
+			else if (Input.GetButtonUp("Heavy Attack"))
 			{
-				heavyCanUse = false;
-				heavyAttack();
-				GetComponent<AudioSource>().clip = sounds[0];
-				GetComponent<AudioSource>().Play ();
+				if (heavyCanUse == true)
+				{
+					heavyCanUse = false;
+					heavyAttack();
+					GetComponent<AudioSource>().clip = sounds[0];
+					GetComponent<AudioSource>().Play();
+				}
 			}
-		}
-		//the AOE attack button has been called
-		else if (Input.GetButtonUp("AOE Attack"))
-		{
-			if (AOECanUse == true)
+			//the AOE attack button has been called
+			else if (Input.GetButtonUp("AOE Attack"))
 			{
-				AOECanUse = false;
-				AOEAttack(1);
-				GetComponent<AudioSource>().clip = sounds[1];
-				GetComponent<AudioSource>().Play ();
+				if (AOECanUse == true)
+				{
+					AOECanUse = false;
+					AOEAttack();
+					GetComponent<AudioSource>().clip = sounds[1];
+					GetComponent<AudioSource>().Play ();
+				}
 			}
-		}
-		else
-		{
-			//the no attack has been called so the auto attack can be called if it is ready
-			if (autoCanUse == true)
+			else
 			{
-				autoCanUse = false;
-				autoAttack();
+				//the no attack has been called so the auto attack can be called if it is ready
+				if (autoCanUse == true)
+				{
+					autoCanUse = false;
+					//autoAttack();
+				}
 			}
-		}
+		}		
 	}
+
 	/// <summary>
 	/// this is called if the auto attack has been slected in the update
 	/// </summary>
@@ -94,9 +111,10 @@ public class heroAttack : MonoBehaviour {
 		if (hitNE)
 		{
 			//if there is then there is an attack
-			//Debug.Log("auto attack");
+			Debug.Log("auto attack");
+			animator.SetTrigger("auto");
 			hitNE.collider.GetComponent<creepMovement>().removeHealth(autoDamage);
-			StartCoroutine(autoWait());
+			StartCoroutine("cooldown", countdown.auto);
 		}
 		if (!hitNE)
 		{
@@ -105,9 +123,10 @@ public class heroAttack : MonoBehaviour {
 			if (hitSE)
 			{
 				//if there is then there is an attack
-				//Debug.Log("auto attack");
+				Debug.Log("auto attack");
+				animator.SetTrigger("auto");
 				hitSE.collider.GetComponent<creepMovement>().removeHealth(autoDamage);
-				StartCoroutine(autoWait());
+				StartCoroutine("cooldown", countdown.auto);
 			}
 			if (!hitSE)
 			{
@@ -116,9 +135,10 @@ public class heroAttack : MonoBehaviour {
 				if (hitSW)
 				{
 					//if there is then there is an attack
-					//Debug.Log("auto attack");
+					Debug.Log("auto attack");
+					animator.SetTrigger("auto");
 					hitSW.collider.GetComponent<creepMovement>().removeHealth(autoDamage);
-					StartCoroutine(autoWait());
+					StartCoroutine("cooldown", countdown.auto);
 				}
 				if (!hitSW)
 				{
@@ -127,9 +147,10 @@ public class heroAttack : MonoBehaviour {
 					if (hitNW)
 					{
 						//if there is then there is an attack
-						//Debug.Log("auto attack");
+						Debug.Log("auto attack");
+						animator.SetTrigger("auto");
 						hitNW.collider.GetComponent<creepMovement>().removeHealth(autoDamage);
-						StartCoroutine(autoWait());
+						StartCoroutine("cooldown", countdown.auto);
 					}
 					if (!hitNW)
 					{
@@ -141,6 +162,7 @@ public class heroAttack : MonoBehaviour {
 			}
 		}
 	}
+
 	/// <summary>
 	/// this is called if the medium attack has been slected in the update
 	/// </summary>
@@ -152,8 +174,9 @@ public class heroAttack : MonoBehaviour {
 		{
 			//if there is then there is an attack
 			Debug.Log("med attack");
+			animator.SetTrigger("med");
 			hitNE.collider.GetComponent<creepMovement>().removeHealth(medDamage);
-			StartCoroutine(medWait());
+			StartCoroutine("cooldown", countdown.medium);
 		}
 		if (!hitNE)
 		{
@@ -163,8 +186,9 @@ public class heroAttack : MonoBehaviour {
 			{
 				//if there is then there is an attack
 				Debug.Log("med attack");
+				animator.SetTrigger("med");
 				hitSE.collider.GetComponent<creepMovement>().removeHealth(medDamage);
-				StartCoroutine(medWait());
+				StartCoroutine("cooldown", countdown.medium);
 			}
 			if (!hitSE)
 			{
@@ -174,8 +198,9 @@ public class heroAttack : MonoBehaviour {
 				{
 					//if there is then there is an attack
 					Debug.Log("med attack");
+					animator.SetTrigger("med");
 					hitSW.collider.GetComponent<creepMovement>().removeHealth(medDamage);
-					StartCoroutine(medWait());
+					StartCoroutine("cooldown", countdown.medium);
 				}
 				if (!hitSW)
 				{
@@ -185,8 +210,9 @@ public class heroAttack : MonoBehaviour {
 					{
 						//if there is then there is an attack
 						Debug.Log("med attack");
+						animator.SetTrigger("med");
 						hitNW.collider.GetComponent<creepMovement>().removeHealth(medDamage);
-						StartCoroutine(medWait());
+						StartCoroutine("cooldown", countdown.medium);
 					}
 					if (!hitNW)
 					{
@@ -201,6 +227,7 @@ public class heroAttack : MonoBehaviour {
 	/// <summary>
 	/// this is called if the heavy attack has been slected in the update
 	/// </summary>
+	/// 
 	void heavyAttack()
 	{
 		//send a raycast NE to see if there is a creep
@@ -209,8 +236,9 @@ public class heroAttack : MonoBehaviour {
 		{
 			//if there is then there is an attack
 			Debug.Log("heavy attack");
+			animator.SetTrigger("heavy");
 			hitNE.collider.GetComponent<creepMovement>().removeHealth(heavyDamage);
-			StartCoroutine(heavyWait());
+			StartCoroutine("cooldown", countdown.heavy);
 		}
 		if (!hitNE)
 		{
@@ -220,8 +248,9 @@ public class heroAttack : MonoBehaviour {
 			{
 				//if there is then there is an attack
 				Debug.Log("heavy attack");
+				animator.SetTrigger("heavy");
 				hitSE.collider.GetComponent<creepMovement>().removeHealth(heavyDamage);
-				StartCoroutine(heavyWait());
+				StartCoroutine("cooldown", countdown.heavy);
 			}
 			if (!hitSE)
 			{
@@ -231,8 +260,9 @@ public class heroAttack : MonoBehaviour {
 				{
 					//if there is then there is an attack
 					Debug.Log("heavy attack");
+					animator.SetTrigger("heavy");
 					hitSW.collider.GetComponent<creepMovement>().removeHealth(heavyDamage);
-					StartCoroutine(heavyWait());
+					StartCoroutine("cooldown", countdown.heavy);
 				}
 				if (!hitSW)
 				{
@@ -242,8 +272,9 @@ public class heroAttack : MonoBehaviour {
 					{
 						//if there is then there is an attack
 						Debug.Log("heavy attack");
+						animator.SetTrigger("heavy");
 						hitNW.collider.GetComponent<creepMovement>().removeHealth(heavyDamage);
-						StartCoroutine(heavyWait());
+						StartCoroutine("cooldown", countdown.heavy);
 					}
 					if (!hitNW)
 					{
@@ -259,91 +290,42 @@ public class heroAttack : MonoBehaviour {
 	/// this is called if the AOE attack has been slected in the update
 	/// the paramiter is used to determine if this is the first or second call to this method
 	/// </summary>
-	/// <param name="i"></param>
-	void AOEAttack(int i)
+	void AOEAttack()
 	{
 		Debug.Log("AOE attack");
-		if (i == 1)
-		{
-			//if this is the first call then activate the AOE collider
-			this.gameObject.GetComponent<CircleCollider2D>().enabled = true;
-		}
-		else
-		{
-			//if this is no the first call then hide the AOE collider
-			this.gameObject.GetComponent<CircleCollider2D>().enabled = false;
-			StartCoroutine(AOEWait());
-		}	
+		tempAOEData = Instantiate(AOEData, this.transform.position, Quaternion.identity) as GameObject;
+		tempAOEData.GetComponent<AOEData>().stats(AOERange, AOEDamage);
+		StartCoroutine("cooldown", countdown.AOE);
 	}
-	/// <summary>
-	/// when the collider is active. every creep inside gets damage
-	/// </summary>
-	/// <param name="other"></param>
-	void onTriggerStay(Collider2D other)
-	{
-		//if the collider is active
-		if (this.gameObject.GetComponent<CircleCollider2D>().enabled == true)
-		{
-			//if the other is a creep
-			if (other.gameObject.tag == "Creep")
-			{
-				//deal damage 
-				other.gameObject.GetComponent<creepMovement>().removeHealth(AOEDamage);
-			}
-		}
-	}
+
 	/// <summary>
 	/// cooldown for the auto attack
 	/// called after the attack
 	/// </summary>
 	/// <returns></returns>
-	IEnumerator autoWait()
+	IEnumerator cooldown(countdown coutdwn)
 	{
-		Debug.Log("co routine test start");
-		yield return new WaitForSeconds(autoCooldown);
-		autoCanUse = true;
-		Debug.Log("co routine test end");
+		if (coutdwn == countdown.auto)
+		{
+			yield return new WaitForSeconds(autoCooldown);
+			autoCanUse = true;
+		}
+		else if (coutdwn == countdown.medium)
+		{
+			yield return new WaitForSeconds(medCooldown);
+			medCanUse = true;
+		}
+		else if (coutdwn == countdown.heavy)
+		{
+			yield return new WaitForSeconds(heavyCooldown);
+			heavyCanUse = true;
+		}
+		else if (coutdwn == countdown.AOE)
+		{
+			yield return new WaitForSeconds(AOELength);
+			Destroy(tempAOEData);
+			yield return new WaitForSeconds(AOECooldown);
+			AOECanUse = true;
+		}
 	}
-	/// <summary>
-	/// cooldown for the medium attack
-	/// called after the attack
-	/// </summary>
-	/// <returns></returns>
-	IEnumerator medWait()
-	{
-		yield return new WaitForSeconds(medCooldown);
-		medCanUse = true;
-	}
-	/// <summary>
-	/// cooldown for the heavy attack
-	/// called after the attack
-	/// </summary>
-	/// <returns></returns>
-	IEnumerator heavyWait()
-	{
-		yield return new WaitForSeconds(heavyCooldown);
-		heavyCanUse = true;
-	}
-	/// <summary>
-	/// cooldown for the AOE attack
-	/// called after the attack
-	/// </summary>
-	/// <returns></returns>
-	IEnumerator AOEWait()
-	{
-		yield return new WaitForSeconds(AOECooldown);
-		AOECanUse = true;
-	}
-	/// <summary>
-	/// this is called after the AOE collider is active 
-	/// it will keep the collider active for 1 second
-	/// before calling the AOE attack again to hide the collider
-	/// </summary>
-	/// <returns></returns>
-	IEnumerator Wait()
-	{
-		yield return new WaitForSeconds(1);
-		AOEAttack(2);
-	}
-
 }

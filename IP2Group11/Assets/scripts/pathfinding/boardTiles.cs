@@ -67,10 +67,10 @@ public class boardTiles : MonoBehaviour {
 		foreach (var tile in tileNodes)
 		{
 			//for every tile reset its search directions to unserched (true)
-			tile.Up = true;
-			tile.Down = true;
-			tile.Left = true;
-			tile.Right = true;
+			tile.NEChecked = false;
+			tile.SWChecked = false;
+			tile.NWChecked = false;
+			tile.SEChecked = false;
 		}
 	}
 	/// <summary>

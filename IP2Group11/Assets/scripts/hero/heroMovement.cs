@@ -14,7 +14,7 @@ public class heroMovement : MonoBehaviour {
 	//the heros speed limited by the range of 0-10
 	[Range(0, 10)] public float speed;
 	//if the player is moving or not
-	public bool move;
+	[HideInInspector] public bool move;
 	//used for moving the player 
 	private Vector3 movement;
 	private float distance;
@@ -56,7 +56,7 @@ public class heroMovement : MonoBehaviour {
 			//set the animation to selected
 			//call the method to find the new location
 			animator.SetTrigger("selected");
-			Debug.Log("hero selected 1");
+			//Debug.Log("hero selected 1");
 			Select();
 		}
 		
@@ -100,7 +100,7 @@ public class heroMovement : MonoBehaviour {
 		else
 		{
 			//condition in case something goes wrong
-			Debug.Log("movement gone wrong");
+			//Debug.Log("movement gone wrong");
 		}
 		//calculate the distance from the new and current pos
 		distance = Vector3.Distance(currentPos, posToMove);
@@ -121,14 +121,14 @@ public class heroMovement : MonoBehaviour {
 		if (selected == true)
 		{
 			//if the player is already selected unselect
-			Debug.Log("hero selected 2");
+			//Debug.Log("hero selected 2");
 			selected = false;
 			board.heroSelected = false;
 		}
 		else
 		{
 			//if the player isn't already selected select
-			Debug.Log("hero selected 3");
+			//Debug.Log("hero selected 3");
 			selected = true;
 			board.heroSelected = true;
 		}

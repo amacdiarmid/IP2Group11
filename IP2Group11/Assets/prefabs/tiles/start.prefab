@@ -11,7 +11,7 @@ GameObject:
   - 114: {fileID: 11404250}
   - 212: {fileID: 21204250}
   - 58: {fileID: 5804250}
-  - 114: {fileID: 11433370}
+  - 114: {fileID: 11422696}
   m_Layer: 8
   m_Name: start
   m_TagString: Tile
@@ -92,7 +92,7 @@ MonoBehaviour:
   origin: {x: 0, y: 0}
   size: {x: 0, y: 0}
   path: []
---- !u!114 &11433370
+--- !u!114 &11422696
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -100,15 +100,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 104250}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06fa304c09330054caf4493a7ba5c6ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 4836bad5b0a0c6e4299780f53db0d256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creepTimer: 0
-  basicCreep: {fileID: 0}
-  BasicCreepCount: 0
-  CancerCreep: {fileID: 0}
-  CancerCreepCount: 0
-  data: {fileID: 0}
+  done: 0
+  waves:
+  - {fileID: 11451112, guid: 219ff75a4327ddd4fb6ef78c21d77d53, type: 2}
+  - {fileID: 11438570, guid: f8e9c6a2325a17f4d97813b337a77f75, type: 2}
+  - {fileID: 11410634, guid: 722eb95f27c19c647b246971cfc6866e, type: 2}
+  - {fileID: 11404142, guid: 391670453f7e40c489ddda2e9dd9a1b9, type: 2}
+  - {fileID: 11438826, guid: 171be370d022efe4190d5aa50e1dd126, type: 2}
 --- !u!212 &21204250
 SpriteRenderer:
   m_ObjectHideFlags: 1

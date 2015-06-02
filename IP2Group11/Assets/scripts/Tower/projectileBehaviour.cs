@@ -8,22 +8,32 @@ public class projectileBehaviour : MonoBehaviour {
 	[HideInInspector] public int damage;
 	private bool hit = false;
 	private Animator animator;
+	private Vector3 startPos;
+	private float startTime;
 
 	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator>();
+		startPos = this.transform.position;
+		startTime = Time.time;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = -(int)this.gameObject.transform.position.y + 30;
-		if (target) {
+		if (target) 
+		{
 			// Fly towards the target        
-			Vector3 dir = target.position - transform.position;
-			GetComponent<Rigidbody2D>().velocity = dir.normalized * speed;
-		} else {
+			float distCovered = (Time.time - startTime) * speed;
+			float journeyLength = Vector3.Distance(startPos, target.position);
+			float fracJourney = distCovered / journeyLength;
+			transform.position = Vector3.Lerp(startPos, target.position, fracJourney);
+		} 
+		else 
+		{
 			// Otherwise destroy self
-			Destroy(gameObject);
+			Destroy(this.gameObject);
 		}
 	}
 
@@ -41,7 +51,6 @@ public class projectileBehaviour : MonoBehaviour {
 			}		
 		}
 	}
-
 	void Destroy()
 	{
 		Destroy(this.gameObject);

@@ -30,13 +30,13 @@ public class spawnTower : MonoBehaviour {
 
 	void OnMouseUp()
 	{
-		Debug.Log("click");
+		//Debug.Log("click");
 		if (board.heroSelected == false)
 		{
 			Debug.Log("hero is not active");
 			if (wall == true)
 			{
-				Debug.Log("no current ui on tower");
+				//Debug.Log("no current ui on tower");
 				if (towerUI.tempTile == this.gameObject)
 				{
 					towerUI.visability(false);
@@ -51,7 +51,7 @@ public class spawnTower : MonoBehaviour {
 				Node.Wall = true;
 				if (start.startPath() == true)
 				{
-					Debug.Log("no current ui on empty space");
+					//Debug.Log("no current ui on empty space");
 					Node.Wall = false;
 					if (towerUI.tempTile == this.gameObject)
 					{
@@ -64,7 +64,7 @@ public class spawnTower : MonoBehaviour {
 				}
 				else
 				{
-					Debug.Log("removing the tower ui");
+					//Debug.Log("removing the tower ui");
 					playerData.StartCoroutine("ShowError", errorName.location);
 					towerUI.visability(false);
 					Node.Wall = false;
@@ -73,7 +73,7 @@ public class spawnTower : MonoBehaviour {
 		}
 		else
 		{
-			Debug.Log("hero is selected");
+			//Debug.Log("hero is selected");
 			board.sendNewPos(transform.position);
 		}
 	}
