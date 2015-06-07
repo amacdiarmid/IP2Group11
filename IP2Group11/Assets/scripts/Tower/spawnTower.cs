@@ -6,7 +6,7 @@ public class spawnTower : MonoBehaviour {
 
 	private pathNodes Node;
 	private bool wall;
-	private GameObject tower;
+	private towerBehaviour tower;
 	private startNode start;
 	private UIData towerUI;
 	private boardTiles board;
@@ -78,17 +78,16 @@ public class spawnTower : MonoBehaviour {
 		}
 	}
 
-	public void spawnWall(GameObject tempTower)
+	public void buildTower(GameObject tempTower)
 	{
-		Debug.Log(tempTower);
-		if (wall == false && start.startPath() == true && playerData.playerGold>=tempTower.GetComponent<towerBehaviour>().cost)
+		if (wall == false && start.startPath() == true && playerData.playerGold>=tempTower.GetComponent<towerBehaviour>().cost[tempTower.GetComponent<towerBehaviour>().towerLevel])
 		{
 			Node.Wall = true;
 			wall = true;
-			tower = (GameObject)Instantiate(tempTower, this.transform.position, Quaternion.identity);
+			tower = Instantiate(tempTower, this.transform.position, Quaternion.identity) as towerBehaviour;
 			tower.transform.parent = transform;
 			towerUI.visability(false);
-			playerData.RemoveGold(tempTower.GetComponent<towerBehaviour>().cost);
+			playerData.RemoveGold(tempTower.GetComponent<towerBehaviour>().cost[tempTower.GetComponent<towerBehaviour>().towerLevel]);
 		}
 		else
 		{
@@ -96,50 +95,51 @@ public class spawnTower : MonoBehaviour {
 		}
 	}
 
-	public void destroyWall()
+	public void destroyTower()
 	{
 		Node.Wall = false;
 		wall = false;
 		towerUI.visability(false);
-		playerData.AddGold(tower.GetComponent<towerBehaviour>().Refund);
+		playerData.AddGold(tower.Refund[tower.towerLevel]);
 		Destroy(tower);
 	}
 
 	public void UpgradeTower()
 	{
-		if (playerData.playerGold>=tower.GetComponent<towerBehaviour>().upgradeCost)
+		if (tower.towerLevel < tower.maxTowerLevel)
 		{
-			towerUI.visability(false);
-			playerData.RemoveGold(tower.GetComponent<towerBehaviour>().upgradeCost);
-			tower.GetComponent<towerBehaviour>().UpgradeTower();
+			if (playerData.playerGold >= tower.cost[tower.towerLevel + 1])
+			{
+				towerUI.visability(false);
+				tower.towerLevel++;
+				playerData.RemoveGold(tower.cost[tower.towerLevel]);
+				tower.GetComponent<towerBehaviour>().UpgradeTower();
+			}
+			else
+			{
+				playerData.StartCoroutine("ShowError", errorName.cost);
+			}
 		}
 		else
 		{
-			playerData.StartCoroutine("ShowError", errorName.cost);
-		}
+			playerData.StartCoroutine("ShowError", errorName.upgrade);
+		}	
 	}
 
-	public int getUpCost()
+	public string getUpCost()
 	{
-		if (!tower)
+		if (tower.towerLevel < tower.maxTowerLevel)
 		{
-			return 0;
+			return tower.cost[tower.towerLevel + 1].ToString();
 		}
 		else
 		{
-			return tower.gameObject.GetComponent<towerBehaviour>().upgradeCost;
+			return "";
 		}
 	}
 
 	public int getSellCost()
 	{
-		if (!tower)
-		{
-			return 0;
-		}
-		else
-		{
-			return tower.gameObject.GetComponent<towerBehaviour>().Refund;
-		}
+		return tower.Refund[tower.towerLevel];
 	}
 }

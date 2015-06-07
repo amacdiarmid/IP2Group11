@@ -1,24 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class towerBehaviour : MonoBehaviour {
 
 	public GameObject projectile;
-	public float RateOfFire;
+	public List<float> RateOfFire;
 	private bool canFire = true;
-	public float areaOfAttack;
-	public int damage;
-	public int speed;
-	public int cost;
-	public int upgradeCost;
-	public int Refund;
+	public List<float> areaOfAttack;
+	public List<int> damage;
+	public List<int> speed;
+	public List<int> cost;
+	public List<int> Refund;
 	public AudioClip[] sounds;
+	[HideInInspector] public int towerLevel;
+	public int maxTowerLevel;
 
 	// Use this for initialization
 	void Start () {
+		towerLevel = 0;
 		this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = -(int)this.gameObject.transform.position.y + 20;
-		this.gameObject.GetComponent<CircleCollider2D>().radius = areaOfAttack;
-		upgradeCost = cost * 2;
+		this.gameObject.GetComponent<CircleCollider2D>().radius = areaOfAttack[towerLevel];
 		GetComponent<AudioSource>().clip = sounds[0];
 		GetComponent<AudioSource>().Play ();
 	}
@@ -39,8 +41,8 @@ public class towerBehaviour : MonoBehaviour {
 				GetComponent<AudioSource>().clip = sounds[1];
 				GetComponent<AudioSource>().Play();
 				shot.GetComponent<projectileBehaviour>().target = other.transform;
-				shot.GetComponent<projectileBehaviour>().damage = damage;
-				shot.GetComponent<projectileBehaviour>().speed = speed;
+				shot.GetComponent<projectileBehaviour>().damage = damage[towerLevel];
+				shot.GetComponent<projectileBehaviour>().speed = speed[towerLevel];
 				canFire = false;
 				StartCoroutine("Wait");
 			}		
@@ -49,7 +51,7 @@ public class towerBehaviour : MonoBehaviour {
 
 	IEnumerator Wait()
 	{
-		yield return new WaitForSeconds(RateOfFire);
+		yield return new WaitForSeconds(RateOfFire[towerLevel]);
 		canFire = true;
 	}
 
@@ -68,11 +70,7 @@ public class towerBehaviour : MonoBehaviour {
 	public void UpgradeTower()
 	{
 		//should use floats for precision
-		damage *= 2;
-		speed /= 2;
-		upgradeCost *= 2;
-		Refund *= 2;
-		areaOfAttack *= 2;
-		this.gameObject.GetComponent<CircleCollider2D>().radius = areaOfAttack;
+		towerLevel++;
+		this.gameObject.GetComponent<CircleCollider2D>().radius = areaOfAttack[towerLevel];
 	}
 }

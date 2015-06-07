@@ -52,11 +52,6 @@ public class heroMovement : MonoBehaviour {
 		}
 		if (Input.GetButtonUp("Move"))
 		{
-			//if the move button has been pressed
-			//set the animation to selected
-			//call the method to find the new location
-			animator.SetTrigger("selected");
-			//Debug.Log("hero selected 1");
 			Select();
 		}
 		
@@ -118,6 +113,7 @@ public class heroMovement : MonoBehaviour {
 	/// </summary>
 	public void Select()
 	{
+		animator.SetTrigger("selected");
 		if (selected == true)
 		{
 			//if the player is already selected unselect

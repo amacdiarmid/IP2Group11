@@ -119,6 +119,9 @@ MonoBehaviour:
   spawns:
   - {fileID: 0}
   nextWaveBut: {fileID: 0}
+  sounds:
+  - {fileID: 8300000, guid: 33720563f976501458f14c511a437a5c, type: 3}
+  - {fileID: 8300000, guid: 85b5b5c87a635f347ba049c445070365, type: 3}
 --- !u!114 &11438310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,7 +159,6 @@ MonoBehaviour:
   locustTower: {fileID: 174848, guid: 00b6f6533e8b7e640955883957b7f03e, type: 2}
   volcanoTower: {fileID: 123208, guid: b607519792bcfcc42a157905d0f330f7, type: 2}
   wallTower: {fileID: 112356, guid: 0624ec184a3961444a2c8d57514fb8ff, type: 2}
-  towers: []
 --- !u!114 &11445688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902509b275e300946b17ad51fef82154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 10
+  playerHealth: 20
   playerGold: 160
   goldText: {fileID: 0}
   healthText: {fileID: 0}

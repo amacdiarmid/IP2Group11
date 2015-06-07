@@ -38,7 +38,6 @@ public class startNode : pathNodes {
 		board.clearDirections();
 		foreach (var item in comPath)
 		{
-			item.gameObject.GetComponent<Renderer>().material.color = Color.white;
 			prevPath.Add(item);
 		}
 		comPath.Clear();
@@ -49,10 +48,6 @@ public class startNode : pathNodes {
 			//and the colliders can return to the towers
 			comPath.Reverse();
 			prevPath.Clear();
-			foreach (var item in comPath)
-			{
-				item.gameObject.GetComponent<Renderer>().material.color = Color.red;
-			}
 			return true;
 		}
 		else
@@ -62,7 +57,6 @@ public class startNode : pathNodes {
 			comPath.Clear();
 			foreach (var item in prevPath)
 			{
-				item.gameObject.GetComponent<Renderer>().material.color = Color.red;
 				comPath.Add(item);
 			}
 			prevPath.Clear();

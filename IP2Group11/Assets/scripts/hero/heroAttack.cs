@@ -1,14 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
-
-enum countdown
-{
-	auto,
-	medium,
-	heavy,
-	AOE,
-};
 
 public class heroAttack : MonoBehaviour {
 
@@ -23,6 +16,10 @@ public class heroAttack : MonoBehaviour {
 	public float heavyCooldown;
 	public float AOECooldown;
 	public float AOELength;
+	//storage for game time 
+	private float medGameTime;
+	private float heavyGameTime;
+	private float AOEGameTime;
 	//the damage for each attack
 	public int autoDamage;
 	public int medDamage;
@@ -38,6 +35,12 @@ public class heroAttack : MonoBehaviour {
 	public AudioClip[] sounds;
 	private heroMovement HeroMovement;
 	private Animator animator;
+	//button panels
+	public RectTransform medPanel;
+	public RectTransform heavyPanel;
+	public RectTransform AOEPanel;
+	//slash gameobject
+	public slashData slashData;
 
 	// Use this for initialization
 	void Start () {
@@ -57,36 +60,18 @@ public class heroAttack : MonoBehaviour {
 		{
 			//the medium attack button has been called
 			if (Input.GetButtonUp("Medium Attack"))
-			{
-				if (medCanUse == true)
-				{
-					medCanUse = false;
-					medAttack();
-					GetComponent<AudioSource>().clip = sounds[0];
-					GetComponent<AudioSource>().Play();
-				}
+			{	
+				medAttack();
 			}
 			//the Heavy attack button has been called
 			else if (Input.GetButtonUp("Heavy Attack"))
 			{
-				if (heavyCanUse == true)
-				{
-					heavyCanUse = false;
-					heavyAttack();
-					GetComponent<AudioSource>().clip = sounds[0];
-					GetComponent<AudioSource>().Play();
-				}
+				heavyAttack();
 			}
 			//the AOE attack button has been called
 			else if (Input.GetButtonUp("AOE Attack"))
 			{
-				if (AOECanUse == true)
-				{
-					AOECanUse = false;
-					AOEAttack();
-					GetComponent<AudioSource>().clip = sounds[1];
-					GetComponent<AudioSource>().Play ();
-				}
+				AOEAttack();
 			}
 			else
 			{
@@ -94,10 +79,57 @@ public class heroAttack : MonoBehaviour {
 				if (autoCanUse == true)
 				{
 					autoCanUse = false;
-					//autoAttack();
+					autoAttack();
 				}
 			}
-		}		
+		}
+		if (medCanUse == false)
+		{
+			float time = Time.time - medGameTime;
+			if (time >= medCooldown)
+			{
+				medCanUse = true;
+				medPanel.gameObject.SetActive(false);
+			}
+			else
+			{
+				medPanel.localScale = new Vector3(1 - (time / medCooldown), 1, 1);
+			}
+		}
+		if (heavyCanUse == false)
+		{
+			float time = Time.time - heavyGameTime;
+			if (time >= heavyCooldown)
+			{
+				heavyCanUse = true;
+				heavyPanel.gameObject.SetActive(false);
+			}
+			else
+			{
+				heavyPanel.localScale = new Vector3(1 - (time / heavyCooldown), 1, 1);
+			}
+		}
+		if (AOECanUse == false)
+		{
+			float time = Time.time - AOEGameTime;
+			if (time >= AOECooldown)
+			{
+				AOECanUse = true;
+				AOEPanel.gameObject.SetActive(false);
+			}
+			else
+			{
+				AOEPanel.localScale = new Vector3(1 - (time / AOECooldown), 1, 1);
+			}
+		}
+		if (autoCanUse == false)
+		{
+			float time = Time.time;
+			if (time >= autoCooldown)
+			{
+				autoCanUse = true;
+			}
+		}
 	}
 
 	/// <summary>
@@ -105,227 +137,61 @@ public class heroAttack : MonoBehaviour {
 	/// </summary>
 	void autoAttack()
 	{
-		//Debug.Log("start auto attack");
-		//send a raycast NE to see if there is a creep
-		RaycastHit2D hitNE = Physics2D.Raycast(this.transform.position, new Vector2(2, 1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
-		if (hitNE)
-		{
-			//if there is then there is an attack
-			Debug.Log("auto attack");
-			animator.SetTrigger("auto");
-			hitNE.collider.GetComponent<creepMovement>().removeHealth(autoDamage);
-			StartCoroutine("cooldown", countdown.auto);
-		}
-		if (!hitNE)
-		{
-			//send a raycast SE to see if there is a creep if there isnt on NE
-			RaycastHit2D hitSE = Physics2D.Raycast(this.transform.position, new Vector2(2, -1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
-			if (hitSE)
-			{
-				//if there is then there is an attack
-				Debug.Log("auto attack");
-				animator.SetTrigger("auto");
-				hitSE.collider.GetComponent<creepMovement>().removeHealth(autoDamage);
-				StartCoroutine("cooldown", countdown.auto);
-			}
-			if (!hitSE)
-			{
-				//send a raycast SW to see if there is a creep if there isnt on SE
-				RaycastHit2D hitSW = Physics2D.Raycast(this.transform.position, new Vector2(-2, -1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
-				if (hitSW)
-				{
-					//if there is then there is an attack
-					Debug.Log("auto attack");
-					animator.SetTrigger("auto");
-					hitSW.collider.GetComponent<creepMovement>().removeHealth(autoDamage);
-					StartCoroutine("cooldown", countdown.auto);
-				}
-				if (!hitSW)
-				{
-					//send a raycast NW to see if there is a creep if there isnt on SW
-					RaycastHit2D hitNW = Physics2D.Raycast(this.transform.position, new Vector2(-2, 1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
-					if (hitNW)
-					{
-						//if there is then there is an attack
-						Debug.Log("auto attack");
-						animator.SetTrigger("auto");
-						hitNW.collider.GetComponent<creepMovement>().removeHealth(autoDamage);
-						StartCoroutine("cooldown", countdown.auto);
-					}
-					if (!hitNW)
-					{
-						//if there was no attack then the ability is reset
-						//Debug.Log("No auto attack");
-						autoCanUse = true;
-					}
-				}
-			}
-		}
+		GetComponent<AudioSource>().clip = sounds[0];
+		GetComponent<AudioSource>().Play();
+		animator.SetTrigger("auto");
 	}
 
 	/// <summary>
 	/// this is called if the medium attack has been slected in the update
 	/// </summary>
-	void medAttack()
+	public void medAttack()
 	{
-		//send a raycast NE to see if there is a creep
-		RaycastHit2D hitNE = Physics2D.Raycast(this.transform.position, new Vector2(2, 1.2f), medAttackRange, LayerMask.GetMask("Creep"));
-		if (hitNE)
+		if (medCanUse == true)
 		{
-			//if there is then there is an attack
-			Debug.Log("med attack");
+			medCanUse = false;
+			medPanel.gameObject.SetActive(true);
+			medPanel.localScale = new Vector3(1, 1, 1);
+			medGameTime = Time.time;
+			GetComponent<AudioSource>().clip = sounds[0];
+			GetComponent<AudioSource>().Play();
 			animator.SetTrigger("med");
-			hitNE.collider.GetComponent<creepMovement>().removeHealth(medDamage);
-			StartCoroutine("cooldown", countdown.medium);
-		}
-		if (!hitNE)
-		{
-			//send a raycast SE to see if there is a creep if there isnt on NE
-			RaycastHit2D hitSE = Physics2D.Raycast(this.transform.position, new Vector2(2, -1.2f), medAttackRange, LayerMask.GetMask("Creep"));
-			if (hitSE)
-			{
-				//if there is then there is an attack
-				Debug.Log("med attack");
-				animator.SetTrigger("med");
-				hitSE.collider.GetComponent<creepMovement>().removeHealth(medDamage);
-				StartCoroutine("cooldown", countdown.medium);
-			}
-			if (!hitSE)
-			{
-				//send a raycast SW to see if there is a creep if there isnt on SE
-				RaycastHit2D hitSW = Physics2D.Raycast(this.transform.position, new Vector2(-2, -1.2f), medAttackRange, LayerMask.GetMask("Creep"));
-				if (hitSW)
-				{
-					//if there is then there is an attack
-					Debug.Log("med attack");
-					animator.SetTrigger("med");
-					hitSW.collider.GetComponent<creepMovement>().removeHealth(medDamage);
-					StartCoroutine("cooldown", countdown.medium);
-				}
-				if (!hitSW)
-				{
-					//send a raycast NW to see if there is a creep if there isnt on SW
-					RaycastHit2D hitNW = Physics2D.Raycast(this.transform.position, new Vector2(-2, 1.2f), medAttackRange, LayerMask.GetMask("Creep"));
-					if (hitNW)
-					{
-						//if there is then there is an attack
-						Debug.Log("med attack");
-						animator.SetTrigger("med");
-						hitNW.collider.GetComponent<creepMovement>().removeHealth(medDamage);
-						StartCoroutine("cooldown", countdown.medium);
-					}
-					if (!hitNW)
-					{
-						//if there was no attack then the ability is reset
-						Debug.Log("No med attack");
-						medCanUse = true;
-					}
-				}
-			}
-		}
+		}		
 	}
+
 	/// <summary>
 	/// this is called if the heavy attack has been slected in the update
 	/// </summary>
 	/// 
-	void heavyAttack()
+	public void heavyAttack()
 	{
-		//send a raycast NE to see if there is a creep
-		RaycastHit2D hitNE = Physics2D.Raycast(this.transform.position, new Vector2(2, 1.2f), heavyAttackRange, LayerMask.GetMask("Creep"));
-		if (hitNE)
+		if (heavyCanUse == true)
 		{
-			//if there is then there is an attack
-			Debug.Log("heavy attack");
+			heavyCanUse = false;
+			heavyPanel.gameObject.SetActive(true);
+			heavyPanel.localScale = new Vector3(1, 1, 1);
+			heavyGameTime = Time.time;
+			GetComponent<AudioSource>().clip = sounds[0];
+			GetComponent<AudioSource>().Play();
 			animator.SetTrigger("heavy");
-			hitNE.collider.GetComponent<creepMovement>().removeHealth(heavyDamage);
-			StartCoroutine("cooldown", countdown.heavy);
-		}
-		if (!hitNE)
-		{
-			//send a raycast SE to see if there is a creep if there isnt on NE
-			RaycastHit2D hitSE = Physics2D.Raycast(this.transform.position, new Vector2(2, -1.2f), heavyAttackRange, LayerMask.GetMask("Creep"));
-			if (hitSE)
-			{
-				//if there is then there is an attack
-				Debug.Log("heavy attack");
-				animator.SetTrigger("heavy");
-				hitSE.collider.GetComponent<creepMovement>().removeHealth(heavyDamage);
-				StartCoroutine("cooldown", countdown.heavy);
-			}
-			if (!hitSE)
-			{
-				//send a raycast SW to see if there is a creep if there isnt on SE
-				RaycastHit2D hitSW = Physics2D.Raycast(this.transform.position, new Vector2(-2, -1.2f), heavyAttackRange, LayerMask.GetMask("Creep"));
-				if (hitSW)
-				{
-					//if there is then there is an attack
-					Debug.Log("heavy attack");
-					animator.SetTrigger("heavy");
-					hitSW.collider.GetComponent<creepMovement>().removeHealth(heavyDamage);
-					StartCoroutine("cooldown", countdown.heavy);
-				}
-				if (!hitSW)
-				{
-					//send a raycast NW to see if there is a creep if there isnt on SW
-					RaycastHit2D hitNW = Physics2D.Raycast(this.transform.position, new Vector2(-2, 1.2f), heavyAttackRange, LayerMask.GetMask("Creep"));
-					if (hitNW)
-					{
-						//if there is then there is an attack
-						Debug.Log("heavy attack");
-						animator.SetTrigger("heavy");
-						hitNW.collider.GetComponent<creepMovement>().removeHealth(heavyDamage);
-						StartCoroutine("cooldown", countdown.heavy);
-					}
-					if (!hitNW)
-					{
-						//if there was no attack then the ability is reset
-						Debug.Log("No heavy attack");
-						heavyCanUse = true;
-					}
-				}
-			}
 		}
 	}
 	/// <summary>
 	/// this is called if the AOE attack has been slected in the update
 	/// the paramiter is used to determine if this is the first or second call to this method
 	/// </summary>
-	void AOEAttack()
+	public void AOEAttack()
 	{
-		Debug.Log("AOE attack");
-		tempAOEData = Instantiate(AOEData, this.transform.position, Quaternion.identity) as GameObject;
-		tempAOEData.GetComponent<AOEData>().stats(AOERange, AOEDamage);
-		StartCoroutine("cooldown", countdown.AOE);
-	}
-
-	/// <summary>
-	/// cooldown for the auto attack
-	/// called after the attack
-	/// </summary>
-	/// <returns></returns>
-	IEnumerator cooldown(countdown coutdwn)
-	{
-		if (coutdwn == countdown.auto)
+		if (AOECanUse == true)
 		{
-			yield return new WaitForSeconds(autoCooldown);
-			autoCanUse = true;
-		}
-		else if (coutdwn == countdown.medium)
-		{
-			yield return new WaitForSeconds(medCooldown);
-			medCanUse = true;
-		}
-		else if (coutdwn == countdown.heavy)
-		{
-			yield return new WaitForSeconds(heavyCooldown);
-			heavyCanUse = true;
-		}
-		else if (coutdwn == countdown.AOE)
-		{
-			yield return new WaitForSeconds(AOELength);
-			Destroy(tempAOEData);
-			yield return new WaitForSeconds(AOECooldown);
-			AOECanUse = true;
+			AOECanUse = false;
+			GetComponent<AudioSource>().clip = sounds[1];
+			GetComponent<AudioSource>().Play();
+			AOEPanel.gameObject.SetActive(true);
+			AOEPanel.localScale = new Vector3(1, 1, 1);
+			AOEGameTime = Time.time;
+			tempAOEData = Instantiate(AOEData, this.transform.position, Quaternion.identity) as GameObject;
+			tempAOEData.GetComponent<AOEData>().stats(AOERange, AOEDamage);
 		}
 	}
 }

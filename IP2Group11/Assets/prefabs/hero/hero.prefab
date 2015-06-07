@@ -183,7 +183,7 @@ MonoBehaviour:
   autoDamage: 2
   medDamage: 5
   heavyDamage: 8
-  AOEDamage: 10
+  AOEDamage: 5
   AOEData: {fileID: 171640, guid: 2f9d5425bc157e040ba6aa49656f6712, type: 2}
   sounds:
   - {fileID: 8300000, guid: 361a58ba26076614d855528f0a62fbb3, type: 3}

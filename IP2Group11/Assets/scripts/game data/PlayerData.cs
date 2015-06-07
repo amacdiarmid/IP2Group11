@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public enum errorName
 {
 	location,
-	cost
+	cost,
+	upgrade
 };
 
 public class PlayerData : MonoBehaviour {
@@ -116,6 +117,10 @@ public class PlayerData : MonoBehaviour {
 		else if (error == errorName.location)
 		{
 			text = "Can't place tower here";
+		}
+		else if (error == errorName.upgrade)
+		{
+			text = "Maximum tower level";
 		}
 		else
 		{

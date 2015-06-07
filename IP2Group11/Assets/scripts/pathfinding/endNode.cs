@@ -23,7 +23,6 @@ public class endNode : pathNodes {
 	/// <returns>this will return true and send the "recieved ray" back througth all the ties</returns>
 	public override bool recieveRay(List<GameObject> tempPath, GameObject tempTarget, direction tempDirect)
 	{
-		Debug.Log("hit end");
 		//add the postion to the array
 		tempPath.Add(this.gameObject);
 		//remove any duplicates in the list

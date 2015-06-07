@@ -35,6 +35,14 @@ public class creepMovement : MonoBehaviour {
 			path.Add(item.transform.position);
 		}
 		distance = Vector3.Distance(path[postion], path[postion + 1]);
+		if (path[postion].x > path[postion + 1].x)
+		{
+			transform.localScale = new Vector3(1, 1, 1);
+		}
+		else
+		{
+			transform.localScale = new Vector3(-1, 1, 1);
+		}
 		go = true;
 	}
 	
@@ -62,6 +70,14 @@ public class creepMovement : MonoBehaviour {
 				{
 					distance = Vector3.Distance(path[postion], path[postion + 1]);	
 					startTime = Time.time;
+					if (path[postion].x > path[postion + 1].x)
+					{
+						transform.localScale = new Vector3(1, 1, 1);
+					}
+					else
+					{
+						transform.localScale = new Vector3(-1, 1, 1);
+					}
 				}	
 			}		
 		}

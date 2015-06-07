@@ -181,7 +181,6 @@ public class pathNodes : MonoBehaviour
 					return true;
 				}
 			}
-			Debug.Log("error in pathfinding section 1");
 			return false;
 		}
 		else if (topHalf == true && leftHalf == true)
@@ -222,7 +221,6 @@ public class pathNodes : MonoBehaviour
 					return true;
 				}
 			}
-			Debug.Log("error in pathfinding section 2");
 			return false;
 		}
 		else if (bottomHalf == true && rightHalf == true)
@@ -263,7 +261,6 @@ public class pathNodes : MonoBehaviour
 					return true;
 				}
 			}
-			Debug.Log("error in pathfinding section 3");
 			return false;
 		}
 		else if (bottomHalf == true && leftHalf == true)
@@ -304,7 +301,6 @@ public class pathNodes : MonoBehaviour
 					return true;
 				}
 			}
-			Debug.Log("error in pathfinding section 4");
 			return false;
 		}
 		else if (sameX == true && rightHalf == true)
@@ -345,7 +341,6 @@ public class pathNodes : MonoBehaviour
 					return true;
 				}
 			}
-			Debug.Log("error in pathfinding section 5");
 			return false;
 		}
 		else if (sameX == true && leftHalf == true)
@@ -386,7 +381,6 @@ public class pathNodes : MonoBehaviour
 					return true;
 				}
 			}
-			Debug.Log("error in pathfinding section 6");
 			return false;
 		}
 		else if (topHalf == true && sameY == true)
@@ -427,7 +421,6 @@ public class pathNodes : MonoBehaviour
 					return true;
 				}
 			}
-			Debug.Log("error in pathfinding section 7");
 			return false;
 		}
 		else if (bottomHalf == true && sameY == true)
@@ -468,10 +461,8 @@ public class pathNodes : MonoBehaviour
 					return true;
 				}
 			}
-			Debug.Log("error in pathfinding section 8");
 			return false;
 		}
-		Debug.Log("error in pathfinding");
 		return false;
 	}
 

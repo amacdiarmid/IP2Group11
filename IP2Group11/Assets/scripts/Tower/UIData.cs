@@ -62,12 +62,12 @@ public class UIData : MonoBehaviour {
 
 	public void buildTower(GameObject tower)
 	{
-		tempTile.GetComponent<spawnTower>().spawnWall(tower);
+		tempTile.GetComponent<spawnTower>().buildTower(tower);
 	}
 
 	public void sellTower()
 	{
-		tempTile.GetComponent<spawnTower>().destroyWall();
+		tempTile.GetComponent<spawnTower>().destroyTower();
 	}
 
 	public void upgradeTower()
