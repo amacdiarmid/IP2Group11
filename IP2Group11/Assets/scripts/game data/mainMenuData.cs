@@ -3,17 +3,14 @@ using System.Collections;
 
 public class mainMenuData : menuData {
 
-	public GameObject mainCam;
-	public GameObject optionsCam;
-	public GameObject creditsCam;
-
-	
+	public GameObject main;
+	public GameObject levelSelect;
+	public GameObject options;
+	public GameObject credits;
 
 	// Use this for initialization
 	void Start () {
-		mainCam.SetActive(true);
-		optionsCam.SetActive(false);
-		creditsCam.SetActive(false);
+
 	}
 	
 	// Update is called once per frame
@@ -21,21 +18,31 @@ public class mainMenuData : menuData {
 	{
 		if (menu == "main")
 		{
-			mainCam.SetActive(true);
-			optionsCam.SetActive(false);
-			creditsCam.SetActive(false);
+			main.SetActive(true);
+			levelSelect.SetActive(false);
+			options.SetActive(false);
+			credits.SetActive(false);
+		}
+		else if (menu == "level select")
+		{
+			main.SetActive(false);
+			levelSelect.SetActive(true);
+			options.SetActive(false);
+			credits.SetActive(false);
 		}
 		else if (menu == "options")
 		{
-			optionsCam.SetActive(true);
-			mainCam.SetActive(false);
-			creditsCam.SetActive(false);
+			main.SetActive(false);
+			levelSelect.SetActive(false);
+			options.SetActive(true);
+			credits.SetActive(false);
 		}
 		else if (menu == "credits")
 		{
-			creditsCam.SetActive(true);
-			optionsCam.SetActive(false);
-			mainCam.SetActive(false);
+			main.SetActive(false);
+			levelSelect.SetActive(false);
+			options.SetActive(false);
+			credits.SetActive(true);
 		}
 		else
 		{

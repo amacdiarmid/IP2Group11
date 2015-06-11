@@ -80,14 +80,18 @@ public class spawnTower : MonoBehaviour {
 
 	public void buildTower(GameObject tempTower)
 	{
-		if (wall == false && start.startPath() == true && playerData.playerGold>=tempTower.GetComponent<towerBehaviour>().cost[tempTower.GetComponent<towerBehaviour>().towerLevel])
+		if (wall == false && start.startPath() == true && playerData.playerGold>=tempTower.GetComponent<towerBehaviour>().cost[0])
 		{
 			Node.Wall = true;
 			wall = true;
-			tower = Instantiate(tempTower, this.transform.position, Quaternion.identity) as towerBehaviour;
-			tower.transform.parent = transform;
+			Debug.Log(tempTower);
+			GameObject intsTower = Instantiate(tempTower, this.transform.position, Quaternion.identity) as GameObject;
+			Debug.Log(intsTower);
+			tower = intsTower.GetComponent<towerBehaviour>();
+			tower.gameObject.transform.parent = this.transform;
+			tower.towerLevel = 0;
 			towerUI.visability(false);
-			playerData.RemoveGold(tempTower.GetComponent<towerBehaviour>().cost[tempTower.GetComponent<towerBehaviour>().towerLevel]);
+			playerData.RemoveGold(tempTower.GetComponent<towerBehaviour>().cost[0]);
 		}
 		else
 		{
@@ -106,7 +110,7 @@ public class spawnTower : MonoBehaviour {
 
 	public void UpgradeTower()
 	{
-		if (tower.towerLevel < tower.maxTowerLevel)
+		if (tower.towerLevel < tower.maxTowerLevel-1)
 		{
 			if (playerData.playerGold >= tower.cost[tower.towerLevel + 1])
 			{
@@ -128,13 +132,14 @@ public class spawnTower : MonoBehaviour {
 
 	public string getUpCost()
 	{
-		if (tower.towerLevel < tower.maxTowerLevel)
+		if (tower.towerLevel < tower.maxTowerLevel - 1)
 		{
-			return tower.cost[tower.towerLevel + 1].ToString();
+			Debug.Log(tower.towerLevel);
+			return tower.cost[tower.towerLevel+1].ToString();
 		}
 		else
 		{
-			return "";
+			return "Max Level";
 		}
 	}
 

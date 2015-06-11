@@ -172,10 +172,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoAttackRange: 3
-  medAttackRange: 5
-  heavyAttackRange: 7
+  medAttackRange: 4
+  heavyAttackRange: 5
   AOERange: 4.5
-  autoCooldown: 1
+  autoCooldown: 3
   medCooldown: 5
   heavyCooldown: 8
   AOECooldown: 20
@@ -188,6 +188,9 @@ MonoBehaviour:
   sounds:
   - {fileID: 8300000, guid: 361a58ba26076614d855528f0a62fbb3, type: 3}
   - {fileID: 8300000, guid: b76429c1fa8339a428a6a8ed577405be, type: 3}
+  medPanel: {fileID: 0}
+  heavyPanel: {fileID: 0}
+  AOEPanel: {fileID: 0}
 --- !u!212 &21235106
 SpriteRenderer:
   m_ObjectHideFlags: 1

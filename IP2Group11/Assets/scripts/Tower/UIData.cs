@@ -44,7 +44,7 @@ public class UIData : MonoBehaviour {
 		{
 			towerUI.SetActive(state);
 			towerUI.transform.position = tile.transform.position;
-			towerText.text = towers.lightningTower.GetComponent<towerBehaviour>().cost + "  " + towers.locustTower.GetComponent<towerBehaviour>().cost + "  " + towers.volcanoTower.GetComponent<towerBehaviour>().cost + "  " + towers.wallTower.GetComponent<towerBehaviour>().cost;
+			towerText.text = towers.lightningTower.GetComponent<towerBehaviour>().cost[0] + "  " + towers.locustTower.GetComponent<towerBehaviour>().cost[0] + "  " + towers.volcanoTower.GetComponent<towerBehaviour>().cost[0] + "  " + towers.wallTower.GetComponent<towerBehaviour>().cost[0];
 			tempTile = tile;
 		}
 		else if (wheel == UIWheel.upgradeWheel)

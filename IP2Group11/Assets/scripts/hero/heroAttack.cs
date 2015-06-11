@@ -39,8 +39,6 @@ public class heroAttack : MonoBehaviour {
 	public RectTransform medPanel;
 	public RectTransform heavyPanel;
 	public RectTransform AOEPanel;
-	//slash gameobject
-	public slashData slashData;
 
 	// Use this for initialization
 	void Start () {
@@ -137,9 +135,56 @@ public class heroAttack : MonoBehaviour {
 	/// </summary>
 	void autoAttack()
 	{
-		GetComponent<AudioSource>().clip = sounds[0];
-		GetComponent<AudioSource>().Play();
-		animator.SetTrigger("auto");
+		//send a raycast NE to see if there is a creep
+		RaycastHit2D hitNE = Physics2D.Raycast(this.transform.position, new Vector2(2, 1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
+		if (hitNE)
+		{
+			GetComponent<AudioSource>().clip = sounds[0];
+			GetComponent<AudioSource>().Play();
+			hitNE.collider.GetComponent<creepMovement>().removeHealth(autoDamage);
+			animator.SetTrigger("auto");
+		}
+		if (!hitNE)
+		{
+			//send a raycast SE to see if there is a creep if there isnt on NE
+			RaycastHit2D hitSE = Physics2D.Raycast(this.transform.position, new Vector2(2, -1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
+			if (hitSE)
+			{
+				GetComponent<AudioSource>().clip = sounds[0];
+				GetComponent<AudioSource>().Play();
+				hitSE.collider.GetComponent<creepMovement>().removeHealth(autoDamage);
+				animator.SetTrigger("auto");
+			}
+			if (!hitSE)
+			{
+				//send a raycast SW to see if there is a creep if there isnt on SE
+				RaycastHit2D hitSW = Physics2D.Raycast(this.transform.position, new Vector2(-2, -1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
+				if (hitSW)
+				{
+					GetComponent<AudioSource>().clip = sounds[0];
+					GetComponent<AudioSource>().Play();
+					hitSW.collider.GetComponent<creepMovement>().removeHealth(autoDamage);
+					animator.SetTrigger("auto");
+				}
+				if (!hitSW)
+				{
+					//send a raycast NW to see if there is a creep if there isnt on SW
+					RaycastHit2D hitNW = Physics2D.Raycast(this.transform.position, new Vector2(-2, 1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
+					if (hitNW)
+					{
+						GetComponent<AudioSource>().clip = sounds[0];
+						GetComponent<AudioSource>().Play();
+						hitNW.collider.GetComponent<creepMovement>().removeHealth(autoDamage);
+						animator.SetTrigger("auto");
+					}
+					if (!hitNW)
+					{
+						//if there was no attack then the ability is reset
+						autoCanUse = true;
+					}
+				}
+			}
+		}
 	}
 
 	/// <summary>
@@ -156,6 +201,38 @@ public class heroAttack : MonoBehaviour {
 			GetComponent<AudioSource>().clip = sounds[0];
 			GetComponent<AudioSource>().Play();
 			animator.SetTrigger("med");
+			RaycastHit2D hitNE = Physics2D.Raycast(this.transform.position, new Vector2(2, 1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
+			if (hitNE)
+			{
+				hitNE.collider.GetComponent<creepMovement>().removeHealth(medDamage);
+			}
+			if (!hitNE)
+			{
+				//send a raycast SE to see if there is a creep if there isnt on NE
+				RaycastHit2D hitSE = Physics2D.Raycast(this.transform.position, new Vector2(2, -1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
+				if (hitSE)
+				{
+					hitSE.collider.GetComponent<creepMovement>().removeHealth(medDamage);
+				}
+				if (!hitSE)
+				{
+					//send a raycast SW to see if there is a creep if there isnt on SE
+					RaycastHit2D hitSW = Physics2D.Raycast(this.transform.position, new Vector2(-2, -1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
+					if (hitSW)
+					{
+						hitSW.collider.GetComponent<creepMovement>().removeHealth(medDamage);
+					}
+					if (!hitSW)
+					{
+						//send a raycast NW to see if there is a creep if there isnt on SW
+						RaycastHit2D hitNW = Physics2D.Raycast(this.transform.position, new Vector2(-2, 1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
+						if (hitNW)
+						{
+							hitNW.collider.GetComponent<creepMovement>().removeHealth(medDamage);
+						}
+					}
+				}
+			}
 		}		
 	}
 
@@ -174,6 +251,29 @@ public class heroAttack : MonoBehaviour {
 			GetComponent<AudioSource>().clip = sounds[0];
 			GetComponent<AudioSource>().Play();
 			animator.SetTrigger("heavy");
+			RaycastHit2D hitNE = Physics2D.Raycast(this.transform.position, new Vector2(2, 1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
+			if (hitNE)
+			{
+				hitNE.collider.GetComponent<creepMovement>().removeHealth(heavyDamage);
+			}
+			//send a raycast SE to see if there is a creep if there isnt on NE
+			RaycastHit2D hitSE = Physics2D.Raycast(this.transform.position, new Vector2(2, -1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
+			if (hitSE)
+			{
+				hitSE.collider.GetComponent<creepMovement>().removeHealth(heavyDamage);
+			}
+			//send a raycast SW to see if there is a creep if there isnt on SE
+			RaycastHit2D hitSW = Physics2D.Raycast(this.transform.position, new Vector2(-2, -1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
+			if (hitSW)
+			{
+				hitSW.collider.GetComponent<creepMovement>().removeHealth(heavyDamage);
+			}
+			//send a raycast NW to see if there is a creep if there isnt on SW
+			RaycastHit2D hitNW = Physics2D.Raycast(this.transform.position, new Vector2(-2, 1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
+			if (hitNW)
+			{
+				hitNW.collider.GetComponent<creepMovement>().removeHealth(heavyDamage);
+			}
 		}
 	}
 	/// <summary>

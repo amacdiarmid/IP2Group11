@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 8a536bc246d4a3242861e99a7df3798e
+timeCreated: 1433844349
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Locust Swarm0001
@@ -50,6 +52,9 @@ TextureImporter:
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 4096
@@ -60,6 +65,7 @@ TextureImporter:
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
+  rGBM: 0
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
@@ -81,7 +87,7 @@ TextureImporter:
         width: 498
         height: 513
       alignment: 9
-      pivot: {x: .5, y: .300000012}
+      pivot: {x: .5, y: .289999992}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0002
       rect:
@@ -91,7 +97,7 @@ TextureImporter:
         width: 498
         height: 505
       alignment: 9
-      pivot: {x: .5, y: .300000012}
+      pivot: {x: .5, y: .294999987}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0003
       rect:
@@ -111,7 +117,7 @@ TextureImporter:
         width: 498
         height: 486
       alignment: 9
-      pivot: {x: .5, y: .300000012}
+      pivot: {x: .5, y: .305000007}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0005
       rect:
@@ -121,7 +127,7 @@ TextureImporter:
         width: 498
         height: 471
       alignment: 9
-      pivot: {x: .5, y: .300000012}
+      pivot: {x: .5, y: .314999998}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0006
       rect:
@@ -131,7 +137,7 @@ TextureImporter:
         width: 498
         height: 478
       alignment: 9
-      pivot: {x: .5, y: .300000012}
+      pivot: {x: .5, y: .305000007}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0007
       rect:
@@ -141,7 +147,7 @@ TextureImporter:
         width: 498
         height: 502
       alignment: 9
-      pivot: {x: .5, y: .300000012}
+      pivot: {x: .5, y: .294999987}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0008
       rect:
@@ -151,7 +157,7 @@ TextureImporter:
         width: 498
         height: 511
       alignment: 9
-      pivot: {x: .5, y: .300000012}
+      pivot: {x: .5, y: .289999992}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0009
       rect:
@@ -161,7 +167,7 @@ TextureImporter:
         width: 498
         height: 489
       alignment: 9
-      pivot: {x: .5, y: .300000012}
+      pivot: {x: .5, y: .305000007}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0010
       rect:
@@ -171,7 +177,7 @@ TextureImporter:
         width: 498
         height: 446
       alignment: 9
-      pivot: {x: .5, y: .300000012}
+      pivot: {x: .5, y: .335000008}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0011
       rect:
@@ -181,7 +187,7 @@ TextureImporter:
         width: 498
         height: 446
       alignment: 9
-      pivot: {x: .5, y: .300000012}
+      pivot: {x: .501999974, y: .338999987}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0012
       rect:
@@ -191,7 +197,7 @@ TextureImporter:
         width: 498
         height: 454
       alignment: 9
-      pivot: {x: .5, y: .300000012}
+      pivot: {x: .5, y: .330000013}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0013
       rect:
@@ -201,7 +207,7 @@ TextureImporter:
         width: 498
         height: 496
       alignment: 9
-      pivot: {x: .5, y: .300000012}
+      pivot: {x: .5, y: .305000007}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0014
       rect:
@@ -211,7 +217,7 @@ TextureImporter:
         width: 498
         height: 495
       alignment: 9
-      pivot: {x: .5, y: .300000012}
+      pivot: {x: .5, y: .303000003}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0015
       rect:
@@ -221,7 +227,7 @@ TextureImporter:
         width: 498
         height: 477
       alignment: 9
-      pivot: {x: .5, y: .300000012}
+      pivot: {x: .5, y: .314999998}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0016
       rect:
@@ -231,7 +237,7 @@ TextureImporter:
         width: 498
         height: 488
       alignment: 9
-      pivot: {x: .5, y: .319999993}
+      pivot: {x: .5, y: .310000002}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0017
       rect:
@@ -241,17 +247,17 @@ TextureImporter:
         width: 498
         height: 473
       alignment: 9
-      pivot: {x: .5, y: .330000013}
+      pivot: {x: .5, y: .314999998}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0018
       rect:
         serializedVersion: 2
         x: 1145
-        y: 1182
+        y: 1181
         width: 498
         height: 450
       alignment: 9
-      pivot: {x: .5, y: .340000004}
+      pivot: {x: .503000021, y: .335000008}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0019
       rect:
@@ -271,7 +277,7 @@ TextureImporter:
         width: 498
         height: 388
       alignment: 9
-      pivot: {x: .5, y: .400000006}
+      pivot: {x: .504999995, y: .38499999}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0021
       rect:
@@ -281,17 +287,17 @@ TextureImporter:
         width: 498
         height: 418
       alignment: 9
-      pivot: {x: .5, y: .389999986}
+      pivot: {x: .5, y: .35800001}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0022
       rect:
         serializedVersion: 2
         x: 598
-        y: 644
+        y: 645
         width: 498
         height: 450
       alignment: 9
-      pivot: {x: .5, y: .360000014}
+      pivot: {x: .5, y: .330000013}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0023
       rect:
@@ -301,7 +307,7 @@ TextureImporter:
         width: 498
         height: 492
       alignment: 9
-      pivot: {x: .5, y: .300000012}
+      pivot: {x: .5, y: .305000007}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0024
       rect:
@@ -311,7 +317,7 @@ TextureImporter:
         width: 498
         height: 495
       alignment: 9
-      pivot: {x: .5, y: .300000012}
+      pivot: {x: .5, y: .301999986}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0025
       rect:
@@ -321,7 +327,7 @@ TextureImporter:
         width: 498
         height: 469
       alignment: 9
-      pivot: {x: .5, y: .300000012}
+      pivot: {x: .5, y: .32100001}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0026
       rect:
@@ -331,7 +337,7 @@ TextureImporter:
         width: 498
         height: 432
       alignment: 9
-      pivot: {x: .5, y: .340000004}
+      pivot: {x: .503000021, y: .344999999}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0027
       rect:
@@ -341,7 +347,7 @@ TextureImporter:
         width: 498
         height: 415
       alignment: 9
-      pivot: {x: .5, y: .340000004}
+      pivot: {x: .5, y: .35800001}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0028
       rect:
@@ -351,7 +357,7 @@ TextureImporter:
         width: 498
         height: 451
       alignment: 9
-      pivot: {x: .5, y: .300000012}
+      pivot: {x: .5, y: .330000013}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0029
       rect:
@@ -361,7 +367,7 @@ TextureImporter:
         width: 498
         height: 470
       alignment: 9
-      pivot: {x: .5, y: .300000012}
+      pivot: {x: .5, y: .319000006}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Locust Swarm0030
       rect:
@@ -371,7 +377,9 @@ TextureImporter:
         width: 498
         height: 496
       alignment: 9
-      pivot: {x: .5, y: .300000012}
+      pivot: {x: .5, y: .303000003}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 

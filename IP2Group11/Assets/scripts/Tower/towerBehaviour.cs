@@ -24,12 +24,6 @@ public class towerBehaviour : MonoBehaviour {
 		GetComponent<AudioSource>().clip = sounds[0];
 		GetComponent<AudioSource>().Play ();
 	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-
-	}
 
 	void OnTriggerStay2D(Collider2D other)
 	{
@@ -70,7 +64,8 @@ public class towerBehaviour : MonoBehaviour {
 	public void UpgradeTower()
 	{
 		//should use floats for precision
-		towerLevel++;
+		//towerLevel++;
 		this.gameObject.GetComponent<CircleCollider2D>().radius = areaOfAttack[towerLevel];
 	}
+
 }

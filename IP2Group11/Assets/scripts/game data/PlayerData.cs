@@ -26,6 +26,7 @@ public class PlayerData : MonoBehaviour {
 	public Button retry;
 	public Button quit;
 	private bool pause;
+	public int levelID;
 
 	// Use this for initialization
 	void Start () {
@@ -100,6 +101,34 @@ public class PlayerData : MonoBehaviour {
 		level.gameObject.SetActive(true);
 		//set game to pause
 		Time.timeScale = 0;
+		if (saveData.saveControl.basicLevelActive <= levelID)
+		{
+			saveData.saveControl.basicLevelActive = levelID + 1;
+		}
+		if (playerHealth == 20)
+		{
+			errorText.text = "3/3 points";
+			if (saveData.saveControl.basicLevelScore[levelID] < 3)
+			{
+				saveData.saveControl.basicLevelScore[levelID] = 3;
+			}
+		}
+		else if (playerHealth >= 10)
+		{
+			errorText.text = "2/3 points";
+			if (saveData.saveControl.basicLevelScore[levelID] < 2)
+			{
+				saveData.saveControl.basicLevelScore[levelID] = 2;
+			}
+		}
+		else
+		{
+			errorText.text = "1/3 points";
+			if (saveData.saveControl.basicLevelScore[levelID] < 1)
+			{
+				saveData.saveControl.basicLevelScore[levelID] = 1;
+			}
+		}
 	}
 	//loads the level from the string in the OnClick buttion even in the inspector
 	public void nextLevel(string name)
