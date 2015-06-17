@@ -22,6 +22,7 @@ public class pathNodes : MonoBehaviour
 	public bool Wall;
 	private List<GameObject> path;
 	private GameObject target;
+	public bool debug;
 
 	// Use this for initialization
 	void Start()
@@ -48,6 +49,10 @@ public class pathNodes : MonoBehaviour
 			RaycastHit2D NEhit = Physics2D.Raycast(center + size, direct, Mathf.Infinity, LayerMask.GetMask("Tile"));
 			if (NEhit)
 			{
+				if (debug)
+				{
+					Debug.Log(this.gameObject + " " + NEhit.collider.gameObject);
+				}
 				return NEhit.collider.gameObject;
 			}
 		}
@@ -59,6 +64,10 @@ public class pathNodes : MonoBehaviour
 			RaycastHit2D SEhit = Physics2D.Raycast(center + size, direct, Mathf.Infinity, LayerMask.GetMask("Tile"));
 			if (SEhit)
 			{
+				if (debug)
+				{
+					Debug.Log(this.gameObject + " " + SEhit.collider.gameObject);
+				}
 				return SEhit.collider.gameObject;
 			}
 		}
@@ -70,6 +79,10 @@ public class pathNodes : MonoBehaviour
 			RaycastHit2D SWhit = Physics2D.Raycast(center + size, direct, Mathf.Infinity, LayerMask.GetMask("Tile"));
 			if (SWhit)
 			{
+				if (debug)
+				{
+					Debug.Log(this.gameObject + " " + SWhit.collider.gameObject);
+				}
 				return SWhit.collider.gameObject;
 			}
 		}
@@ -81,6 +94,10 @@ public class pathNodes : MonoBehaviour
 			RaycastHit2D NWhit = Physics2D.Raycast(center + size, direct, Mathf.Infinity, LayerMask.GetMask("Tile"));
 			if (NWhit)
 			{
+				if (debug)
+				{
+					Debug.Log(this.gameObject + " " + NWhit.collider.gameObject);
+				}
 				return NWhit.collider.gameObject;
 			}
 		}
@@ -93,6 +110,11 @@ public class pathNodes : MonoBehaviour
 	/// <returns>retuns true on the "recive ray" from reaching the endtile</returns>
 	public virtual bool recieveRay(List<GameObject> tempPath, GameObject tempTarget, direction tempDirect)
 	{
+		if (debug)
+		{
+			Debug.Log(this.gameObject + " " + tempTarget + " " + tempTarget.transform.position);
+		}
+
 		path = tempPath;
 		target = tempTarget;
 		if (tempDirect == direction.NE)
@@ -118,352 +140,199 @@ public class pathNodes : MonoBehaviour
 		bool leftHalf = false;
 		bool sameY = false;
 
+		if (debug)
+		{
+			Debug.Log(this.gameObject + " " + this.transform.position.y + " " + tempTarget.transform.position.y);
+		}
 		if (this.transform.position.y < target.transform.position.y)
 		{
+			if (debug)
+			{
+				Debug.Log(this.gameObject + " " + this.transform.position +" " + "top");
+			}		
 			topHalf = true;
 		}
 		else if (this.transform.position.y > target.transform.position.y)
 		{
+			if (debug)
+			{
+				Debug.Log(this.gameObject + " " + this.transform.position + " " + "bot");
+			}
 			bottomHalf = true;
 		}
 		else
 		{
+			if (debug)
+			{
+				Debug.Log(this.gameObject + " " + this.transform.position + " " + "x");
+			}
 			sameX = true;
 		}
-		if (this.transform.position.x < target.transform.position.y)
+		if (debug)
 		{
+			Debug.Log(this.gameObject + " " + this.transform.position.x + " " + tempTarget.transform.position.x);
+		}
+		if (this.transform.position.x < target.transform.position.x)
+		{
+			if (debug)
+			{
+				Debug.Log(this.gameObject + " " + this.transform.position + " " + "rig");
+			}
 			rightHalf = true;
 		}
 		else if (this.transform.position.x > target.transform.position.x)
 		{
+			if (debug)
+			{
+				Debug.Log(this.gameObject + " " + this.transform.position + " " + "lef");
+			}
 			leftHalf = true;
 		}
 		else
 		{
+			if (debug)
+			{
+				Debug.Log(this.gameObject + " " + this.transform.position + " " + "y");
+			}
 			sameY = true;
 		}
 
-		if (topHalf == true && rightHalf == true)
+		if ((topHalf || sameX) && rightHalf)
 		{
-			//1st priority
-			if (NEChecked == false)
+			if (debug)
 			{
-				NEChecked = true;
-				if (rayDirection(direction.NE) == true)
+				Debug.Log(this.gameObject + " " + "1 " + topHalf + bottomHalf + sameX + rightHalf + leftHalf + sameY);
+			}
+			//1st priority
+			if (rayDirection(direction.NE) == true)
+			{
+				if (debug)
 				{
-					return true;
+					Debug.Log(this.gameObject + " " + "NE true");
 				}
+				return true;
 			}
 			//2nd priority
-			if (SEChecked == false)
+			else if (rayDirection(direction.SE) == true)
 			{
-				SEChecked = true;
-				if (rayDirection(direction.SE) == true)
+				if (debug)
 				{
-					return true;
+					Debug.Log(this.gameObject + " " + "SE true");
 				}
+				return true;
 			}
 			//3th priority
-			if (NWChecked == false)
+			else if (rayDirection(direction.NW) == true)
 			{
-				NWChecked = true;
-				if (rayDirection(direction.NW) == true)
-				{
-					return true;
-				}
+				return true;
 			}
 			//4th priority
-			if (SWChecked == false)
+			else if (rayDirection(direction.SW) == true)
 			{
-				SWChecked = true;
-				if (rayDirection(direction.SW) == true)
-				{
-					return true;
-				}
+				return true;
 			}
-			return false;
-		}
-		else if (topHalf == true && leftHalf == true)
-		{
-			//1st priority
-			if (NWChecked == false)
+			else
 			{
-				NWChecked = true;
-				if (rayDirection(direction.NW) == true)
-				{
-					return true;
-				}
+				return false;
+			}
+		}
+		else if (topHalf && (leftHalf || sameY))
+		{
+			if (debug)
+			{
+				Debug.Log(this.gameObject + " " + "2 " + topHalf + bottomHalf + sameX + rightHalf + leftHalf + sameY);
+			}
+			//1st priority
+			if (rayDirection(direction.NW) == true)
+			{
+				return true;
 			}
 			//2nd priority
-			if (NEChecked == false)
+			else if (rayDirection(direction.NE) == true)
 			{
-				NEChecked = true;
-				if (rayDirection(direction.NE) == true)
-				{
-					return true;
-				}
+				return true;
 			}
 			//3rd priority
-			if (SWChecked == false)
+			else if (rayDirection(direction.SW) == true)
 			{
-				SWChecked = true;
-				if (rayDirection(direction.SW) == true)
-				{
-					return true;
-				}
+				return true;
 			}
 			//4th priority
-			if (SEChecked == false)
+			else if (rayDirection(direction.SE) == true)
 			{
-				SEChecked = true;
-				if (rayDirection(direction.SE) == true)
-				{
-					return true;
-				}
+				return true;
 			}
-			return false;
-		}
-		else if (bottomHalf == true && rightHalf == true)
-		{
-			//1st priority
-			if (SEChecked == false)
+			else
 			{
-				SEChecked = true;
-				if (rayDirection(direction.SE) == true)
-				{
-					return true;
-				}
+				return false;
+			}
+		}
+		else if (bottomHalf && (rightHalf || sameY))
+		{
+			if (debug)
+			{
+				Debug.Log(this.gameObject + " " + "3 " + topHalf + bottomHalf + sameX + rightHalf + leftHalf + sameY);
+			}
+			//1st priority
+			if (rayDirection(direction.SE) == true)
+			{
+				return true;
 			}
 			//2nd priority
-			if (SWChecked == false)
+			else if (rayDirection(direction.SW) == true)
 			{
-				SWChecked = true;
-				if (rayDirection(direction.SW) == true)
-				{
-					return true;
-				}
+				return true;
 			}
 			//3rd priority
-			if (NEChecked == false)
+			else if (rayDirection(direction.NE) == true)
 			{
-				NEChecked = true;
-				if (rayDirection(direction.NE) == true)
-				{
-					return true;
-				}
+				return true;
 			}
 			//4th priority
-			if (NWChecked == false)
+			else if (rayDirection(direction.NW) == true)
 			{
-				NWChecked = true;
-				if (rayDirection(direction.NW) == true)
-				{
-					return true;
-				}
+				return true;
 			}
-			return false;
-		}
-		else if (bottomHalf == true && leftHalf == true)
-		{
-			//1st priority
-			if (SWChecked == false)
+			else
 			{
-				SWChecked = true;
-				if (rayDirection(direction.SW) == true)
-				{
-					return true;
-				}
+				return false;
+			}
+		}
+		else if ((bottomHalf || sameX) && leftHalf)
+		{
+			if (debug)
+			{
+				Debug.Log(this.gameObject + " " + "4 " + topHalf + bottomHalf + sameX + rightHalf + leftHalf + sameY);
+			}
+			//1st priority
+			if (rayDirection(direction.SW) == true)
+			{
+				return true;
 			}
 			//2nd priority
-			if (NWChecked == false)
+			else if (rayDirection(direction.NW) == true)
 			{
-				NWChecked = true;
-				if (rayDirection(direction.NW) == true)
-				{
-					return true;
-				}
+				return true;
 			}
 			//3rd priority
-			if (SEChecked == false)
+			else if (rayDirection(direction.SE) == true)
 			{
-				SEChecked = true;
-				if (rayDirection(direction.SE) == true)
-				{
-					return true;
-				}
+				return true;
 			}
 			//4th priority
-			if (NEChecked == false)
+			else if (rayDirection(direction.NE) == true)
 			{
-				NEChecked = true;
-				if (rayDirection(direction.NE) == true)
-				{
-					return true;
-				}
+				return true;
 			}
-			return false;
+			else
+			{
+				return false;
+			}
 		}
-		else if (sameX == true && rightHalf == true)
+		else
 		{
-			//1st priority
-			if (NEChecked == false)
-			{
-				NEChecked = true;
-				if (rayDirection(direction.NE) == true)
-				{
-					return true;
-				}
-			}
-			//2nd priority
-			if (SEChecked == false)
-			{
-				SEChecked = true;
-				if (rayDirection(direction.SE) == true)
-				{
-					return true;
-				}
-			}
-			//3th priority
-			if (NWChecked == false)
-			{
-				NWChecked = true;
-				if (rayDirection(direction.NW) == true)
-				{
-					return true;
-				}
-			}
-			//4th priority
-			if (SWChecked == false)
-			{
-				SWChecked = true;
-				if (rayDirection(direction.SW) == true)
-				{
-					return true;
-				}
-			}
 			return false;
 		}
-		else if (sameX == true && leftHalf == true)
-		{
-			//1st priority
-			if (NWChecked == false)
-			{
-				NWChecked = true;
-				if (rayDirection(direction.NW) == true)
-				{
-					return true;
-				}
-			}
-			//2nd priority
-			if (SWChecked == false)
-			{
-				SWChecked = true;
-				if (rayDirection(direction.SW) == true)
-				{
-					return true;
-				}
-			}
-			//3rd priority
-			if (NEChecked == false)
-			{
-				NEChecked = true;
-				if (rayDirection(direction.NE) == true)
-				{
-					return true;
-				}
-			}
-			//4th priority
-			if (SEChecked == false)
-			{
-				SEChecked = true;
-				if (rayDirection(direction.SE) == true)
-				{
-					return true;
-				}
-			}
-			return false;
-		}
-		else if (topHalf == true && sameY == true)
-		{
-			//1st priority
-			if (NEChecked == false)
-			{
-				NEChecked = true;
-				if (rayDirection(direction.NE) == true)
-				{
-					return true;
-				}
-			}
-			//2nd priority
-			if (NWChecked == false)
-			{
-				NWChecked = true;
-				if (rayDirection(direction.NW) == true)
-				{
-					return true;
-				}
-			}
-			//3rd priority
-			if (SEChecked == false)
-			{
-				SEChecked = true;
-				if (rayDirection(direction.SE) == true)
-				{
-					return true;
-				}
-			}
-			//4th priority
-			if (SWChecked == false)
-			{
-				SWChecked = true;
-				if (rayDirection(direction.SW) == true)
-				{
-					return true;
-				}
-			}
-			return false;
-		}
-		else if (bottomHalf == true && sameY == true)
-		{
-			//1st priority
-			if (SWChecked == false)
-			{
-				SWChecked = true;
-				if (rayDirection(direction.SW) == true)
-				{
-					return true;
-				}
-			}
-			//2nd priority
-			if (SEChecked == false)
-			{
-				SEChecked = true;
-				if (rayDirection(direction.SE) == true)
-				{
-					return true;
-				}
-			}
-			//3rd priority
-			if (NWChecked == false)
-			{
-				NWChecked = true;
-				if (rayDirection(direction.NW) == true)
-				{
-					return true;
-				}
-			}
-			//4th priority
-			if (NEChecked == false)
-			{
-				NEChecked = true;
-				if (rayDirection(direction.NE) == true)
-				{
-					return true;
-				}
-			}
-			return false;
-		}
-		return false;
 	}
 
 	/// <summary>
@@ -477,24 +346,63 @@ public class pathNodes : MonoBehaviour
 		//this sets the distance from the origin that the ray cast will start	
 		if (tempDirect == direction.NE)
 		{
-			tempTile = getAdjacentTiles(direction.NE).GetComponent<pathNodes>();
+			if (NEChecked == false)
+			{
+				NEChecked = true;
+				tempTile = getAdjacentTiles(direction.NE).GetComponent<pathNodes>();
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else if (tempDirect == direction.SE)
 		{
-			tempTile = getAdjacentTiles(direction.SE).GetComponent<pathNodes>();
-
+			if (SEChecked == false)
+			{
+				SEChecked = true;
+				tempTile = getAdjacentTiles(direction.SE).GetComponent<pathNodes>();
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else if (tempDirect == direction.SW)
 		{
-			tempTile = getAdjacentTiles(direction.SW).GetComponent<pathNodes>();
+			if (SWChecked == false)
+			{
+				SWChecked = true;
+				tempTile = getAdjacentTiles(direction.SW).GetComponent<pathNodes>();
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else if (tempDirect == direction.NW)
+		{
+			if (NWChecked == false)
+			{
+				NWChecked = true;
+				tempTile = getAdjacentTiles(direction.NW).GetComponent<pathNodes>();
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
-			tempTile = getAdjacentTiles(direction.NW).GetComponent<pathNodes>();
+			return false;
 		}
 		//remove blank tiles and wall tiles
 		if (!tempTile || tempTile.Wall == true)
 		{
+			if (debug)
+			{
+				Debug.Log(this.gameObject + " " + "wall");
+			}
 			return false;
 		}
 		//if the object hit is a tile and is not a wall (or tower or terrain) send on the ray

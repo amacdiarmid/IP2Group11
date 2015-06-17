@@ -84,14 +84,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373191099bad4374792c51243b515b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Up: 0
-  Down: 0
-  Left: 0
-  Right: 0
+  NEChecked: 0
+  SWChecked: 0
+  NWChecked: 0
+  SEChecked: 0
   Wall: 0
-  origin: {x: 0, y: 0}
-  size: {x: 0, y: 0}
-  path: []
+  debug: 0
+  finish: {fileID: 0}
+  comPath: []
+  tempColour: {r: 0, g: 0, b: 0, a: 0}
+  sprite: {fileID: 21254528}
 --- !u!114 &11422696
 MonoBehaviour:
   m_ObjectHideFlags: 1

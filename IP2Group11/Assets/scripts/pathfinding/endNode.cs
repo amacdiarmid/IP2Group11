@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 public class endNode : pathNodes {
+	
+	public SpriteRenderer sprite;
 
 	// Use this for initialization
 	void Start () 
@@ -15,6 +17,7 @@ public class endNode : pathNodes {
 		SWChecked = false;
 		NWChecked = false;
 		SEChecked = false;
+		sprite.sortingOrder = -(int)this.gameObject.transform.position.y;
 	}
 	/// <summary>
 	/// called whenever this tile has been hit by a raycast sent from another tile
@@ -23,10 +26,17 @@ public class endNode : pathNodes {
 	/// <returns>this will return true and send the "recieved ray" back througth all the ties</returns>
 	public override bool recieveRay(List<GameObject> tempPath, GameObject tempTarget, direction tempDirect)
 	{
-		//add the postion to the array
-		tempPath.Add(this.gameObject);
-		//remove any duplicates in the list
-		tempPath = tempPath.Distinct().ToList();
-		return true;
+		if (tempTarget == this.gameObject)
+		{
+			//add the postion to the array
+			tempPath.Add(this.gameObject);
+			//remove any duplicates in the list
+			tempPath = tempPath.Distinct().ToList();
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }

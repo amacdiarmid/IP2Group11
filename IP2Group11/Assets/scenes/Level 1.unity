@@ -876,6 +876,10 @@ Prefab:
       propertyPath: playerGold
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 11445688, guid: e64eb73ebd2a4f74f9b86f4c64fa0d38, type: 2}
+      propertyPath: levelNo
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e64eb73ebd2a4f74f9b86f4c64fa0d38, type: 2}
   m_IsPrefabParent: 0

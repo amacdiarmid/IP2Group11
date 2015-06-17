@@ -83,15 +83,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0738622bac1bbe4d82cbbae18c448ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Up: 0
-  Down: 0
-  Left: 0
-  Right: 0
+  NEChecked: 0
+  SWChecked: 0
+  NWChecked: 0
+  SEChecked: 0
   Wall: 0
-  origin: {x: 0, y: 0}
-  size: {x: 0, y: 0}
-  path: []
-  board: {fileID: 0}
+  debug: 0
+  sprite: {fileID: 21247420}
 --- !u!212 &21222696
 SpriteRenderer:
   m_ObjectHideFlags: 1

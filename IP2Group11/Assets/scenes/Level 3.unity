@@ -2665,6 +2665,10 @@ Prefab:
       propertyPath: levelID
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11445688, guid: e64eb73ebd2a4f74f9b86f4c64fa0d38, type: 2}
+      propertyPath: levelNo
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e64eb73ebd2a4f74f9b86f4c64fa0d38, type: 2}
   m_IsPrefabParent: 0
@@ -2679,6 +2683,10 @@ Canvas:
   m_PrefabParentObject: {fileID: 22366662, guid: 4f6b7bd75c7f09d43b67ebea09789245,
     type: 2}
   m_PrefabInternal: {fileID: 1443852377}
+--- !u!1 &846175214 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 122696, guid: 236cb3ae17ae8c142b272bf063f50789, type: 2}
+  m_PrefabInternal: {fileID: 1170556055}
 --- !u!1001 &865831934
 Prefab:
   m_ObjectHideFlags: 0
@@ -3594,7 +3602,7 @@ Prefab:
     - target: {fileID: 11404250, guid: ece2eab2a78b62445b99d3785d4605a8, type: 2}
       propertyPath: finish
       value: 
-      objectReference: {fileID: 122696, guid: 236cb3ae17ae8c142b272bf063f50789, type: 2}
+      objectReference: {fileID: 846175214}
     - target: {fileID: 11422696, guid: ece2eab2a78b62445b99d3785d4605a8, type: 2}
       propertyPath: waves.Array.data[0]
       value: 
