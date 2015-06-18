@@ -49,4 +49,9 @@ public class mainMenuData : menuData {
 			Debug.Log("menu change error");
 		}
 	}
+
+	public void setQuality(int qualityIndex)
+	{
+		QualitySettings.SetQualityLevel(qualityIndex);
+	}
 }
