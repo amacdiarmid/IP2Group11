@@ -54,4 +54,14 @@ public class mainMenuData : menuData {
 	{
 		QualitySettings.SetQualityLevel(qualityIndex);
 	}
+
+	public void openBlog()
+	{
+		Application.OpenURL("https://amacdiarmid.wordpress.com/");
+	}
+
+	public void openTwitter()
+	{
+		Application.OpenURL("https://twitter.com/amacdiarmid01");
+	}
 }
