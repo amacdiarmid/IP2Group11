@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: 20
-  playerGold: 160
+  playerGold: 150
   goldText: {fileID: 0}
   healthText: {fileID: 0}
   waveText: {fileID: 0}
@@ -179,6 +179,7 @@ MonoBehaviour:
   level: {fileID: 0}
   retry: {fileID: 0}
   quit: {fileID: 0}
+  levelNo: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -19,12 +19,14 @@ public class waveControl : MonoBehaviour {
 		buttonCon = GameObject.Find("Game Data").GetComponent<PlayerData>();
 		nextWaveBut.gameObject.SetActive(true);
 		victoryCheck = false;
+		totalCreeps = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (victoryCheck == true)
 		{
+			Debug.Log(totalCreeps);
 			if (totalCreeps == 0)
 			{
 				buttonCon.victory();
@@ -39,7 +41,6 @@ public class waveControl : MonoBehaviour {
 		this.GetComponent<AudioSource>().clip = sounds[0];
 		this.GetComponent<AudioSource>().Play();
 		nextWaveBut.gameObject.SetActive(false);
-		totalCreeps = 0;
 		curWave++;
 		foreach (var spawn in spawns)
 		{
@@ -59,6 +60,7 @@ public class waveControl : MonoBehaviour {
 		}
 		if (curWave == totalWaves)
 		{
+			Debug.Log("victory check");
 			victoryCheck = true;
 		}
 		else

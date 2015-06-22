@@ -105,7 +105,7 @@ public class spawnTower : MonoBehaviour {
 		wall = false;
 		towerUI.visability(false);
 		playerData.AddGold(tower.Refund[tower.towerLevel]);
-		Destroy(tower);
+		Destroy(tower.gameObject);
 	}
 
 	public void UpgradeTower()
@@ -130,17 +130,40 @@ public class spawnTower : MonoBehaviour {
 		}	
 	}
 
-	public string getUpCost()
+	public bool canLevelUp()
 	{
 		if (tower.towerLevel < tower.maxTowerLevel - 1)
 		{
-			Debug.Log(tower.towerLevel);
-			return tower.cost[tower.towerLevel+1].ToString();
+			return true;
 		}
 		else
 		{
-			return "Max Level";
+			return false;
 		}
+	}
+
+	public string getUpCost()
+	{
+		//Debug.Log(tower.towerLevel);
+		return tower.cost[tower.towerLevel+1].ToString();
+	}
+
+	public string getUpDam()
+	{
+		//Debug.Log(tower.towerLevel);
+		return tower.damage[tower.towerLevel + 1].ToString();
+	}
+
+	public string getUpRange()
+	{
+		//Debug.Log(tower.towerLevel);
+		return tower.areaOfAttack[tower.towerLevel + 1].ToString();
+	}
+
+	public string getUpRateOfFire()
+	{
+		//Debug.Log(tower.towerLevel);
+		return tower.RateOfFire[tower.towerLevel + 1].ToString();
 	}
 
 	public int getSellCost()

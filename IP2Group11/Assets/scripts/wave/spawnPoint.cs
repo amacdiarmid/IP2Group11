@@ -24,7 +24,6 @@ public class spawnPoint : MonoBehaviour {
 	{
 		done = false;
 		curWave++;
-		waveCon.totalCreeps += waves[curWave].creeps.Count;
 		for (int i = 0; i < waves[curWave].creeps.Count; i++)
 		{
 			GameObject tempCreep = Instantiate(waves[curWave].creeps[i], this.transform.position, Quaternion.identity) as GameObject;

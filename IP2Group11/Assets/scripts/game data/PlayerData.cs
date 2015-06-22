@@ -129,6 +129,7 @@ public class PlayerData : MonoBehaviour {
 				saveData.saveControl.basicLevelScore[levelNo - 1] = 1;
 			}
 		}
+		saveData.saveControl.save();
 	}
 	//loads the level from the string in the OnClick buttion even in the inspector
 	public void nextLevel(string name)

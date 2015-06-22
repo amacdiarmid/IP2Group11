@@ -41,23 +41,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creeps:
   - {fileID: 180198, guid: be5b4c2527798af4d8191ca57548c306, type: 2}
-  - {fileID: 180198, guid: be5b4c2527798af4d8191ca57548c306, type: 2}
-  - {fileID: 180198, guid: be5b4c2527798af4d8191ca57548c306, type: 2}
-  - {fileID: 180198, guid: be5b4c2527798af4d8191ca57548c306, type: 2}
-  - {fileID: 180198, guid: be5b4c2527798af4d8191ca57548c306, type: 2}
   time:
   - 1
-  - 2
-  - 3
-  - 4
-  - 5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: time.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: creeps.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: creeps.Array.data[1]
+      value: 
+      objectReference: {fileID: 180198, guid: be5b4c2527798af4d8191ca57548c306, type: 2}
+    - target: {fileID: 0}
+      propertyPath: creeps.Array.data[2]
+      value: 
+      objectReference: {fileID: 180198, guid: be5b4c2527798af4d8191ca57548c306, type: 2}
+    - target: {fileID: 0}
+      propertyPath: creeps.Array.data[3]
+      value: 
+      objectReference: {fileID: 180198, guid: be5b4c2527798af4d8191ca57548c306, type: 2}
+    - target: {fileID: 0}
+      propertyPath: creeps.Array.data[4]
+      value: 
+      objectReference: {fileID: 180198, guid: be5b4c2527798af4d8191ca57548c306, type: 2}
+    - target: {fileID: 0}
+      propertyPath: time.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: time.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: time.Array.data[3]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: time.Array.data[4]
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 155296}

@@ -44,14 +44,14 @@ public class UIData : MonoBehaviour {
 		{
 			towerUI.SetActive(state);
 			towerUI.transform.position = tile.transform.position;
-			towerText.text = towers.lightningTower.GetComponent<towerBehaviour>().cost[0] + "  " + towers.locustTower.GetComponent<towerBehaviour>().cost[0] + "  " + towers.volcanoTower.GetComponent<towerBehaviour>().cost[0] + "  " + towers.wallTower.GetComponent<towerBehaviour>().cost[0];
+			towerText.text = "";
 			tempTile = tile;
 		}
 		else if (wheel == UIWheel.upgradeWheel)
 		{
 			upgradeUI.SetActive(state);
 			upgradeUI.transform.position = tile.transform.position;
-			upgradeText.text = tile.GetComponent<spawnTower>().getUpCost() + "  " + tile.GetComponent<spawnTower>().getSellCost();
+			upgradeText.text = "";
 			tempTile = tile;
 		}
 		else
@@ -73,5 +73,44 @@ public class UIData : MonoBehaviour {
 	public void upgradeTower()
 	{
 		tempTile.GetComponent<spawnTower>().UpgradeTower();
+	}
+
+	public void buyHoverText(int ID)
+	{
+		if (ID == 1)
+		{
+			towerText.text = "cost: " + towers.lightningTower.GetComponent<towerBehaviour>().cost[0] + "  damage: " + towers.lightningTower.GetComponent<towerBehaviour>().damage[0] + "  range: " + towers.lightningTower.GetComponent<towerBehaviour>().areaOfAttack[0] + "  speed: " + towers.lightningTower.GetComponent<towerBehaviour>().RateOfFire[0];
+		}
+		else if (ID == 2)
+		{
+			towerText.text = "cost: " + towers.locustTower.GetComponent<towerBehaviour>().cost[0] + "  damage: " + towers.locustTower.GetComponent<towerBehaviour>().damage[0] + "  range: " + towers.locustTower.GetComponent<towerBehaviour>().areaOfAttack[0] + "  speed: " + towers.locustTower.GetComponent<towerBehaviour>().RateOfFire[0];
+		}
+		else if (ID == 3)
+		{
+			towerText.text = "cost: " + towers.volcanoTower.GetComponent<towerBehaviour>().cost[0] + "  damage: " + towers.volcanoTower.GetComponent<towerBehaviour>().damage[0] + "  range: " + towers.volcanoTower.GetComponent<towerBehaviour>().areaOfAttack[0] + "  speed: " + towers.volcanoTower.GetComponent<towerBehaviour>().RateOfFire[0];
+		}
+		else if (ID == 4)
+		{
+			towerText.text = "cost: " + towers.wallTower.GetComponent<towerBehaviour>().cost[0];
+		}
+	}
+
+	public void upgradeHoverText(int ID)
+	{
+		if (ID == 1)
+		{
+			if (tempTile.GetComponent<spawnTower>().canLevelUp() == true)
+			{
+				upgradeText.text = "cost: " + tempTile.GetComponent<spawnTower>().getUpCost() + "  damage: " + tempTile.GetComponent<spawnTower>().getUpDam() + "  range: " + tempTile.GetComponent<spawnTower>().getUpRange() + "  speed: " + tempTile.GetComponent<spawnTower>().getUpRateOfFire();
+			}
+			else
+			{
+				upgradeText.text = "Max Level";
+			}
+		}
+		else if (ID == 2)
+		{
+			upgradeText.text = "refund: " + tempTile.GetComponent<spawnTower>().getSellCost();
+		}
 	}
 }
