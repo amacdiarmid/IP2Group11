@@ -1,18 +1,55 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
-public class mainMenuData : menuData {
+public class mainMenuData : menuData
+{
 
 	public GameObject main;
 	public GameObject levelSelect;
 	public GameObject options;
 	public GameObject credits;
+	public GameObject music;
+
+	public List<GameObject> webHide;
+	public List<GameObject> webShow;
+
+	public Slider qualitySlide;
+	public Text qualityText;
+	public Slider masterSlide;
+	public Text masterText;
+	public Slider SFXSlider;
+	public Text SFXText;
+	public Slider musicSlider;
+	public Text musicText;
 
 	// Use this for initialization
-	void Start () {
+	void Start()
+	{
+#if UNITY_WEBPLAYER || UNITY_WEBGL
+		foreach (var item in webHide)
+		{
+			item.SetActive(false);
+		}
+		foreach (var item in webShow)
+		{
+			item.SetActive(true);
+		} 		
+#endif
 
+#if !UNITY_WEBPLAYER || !UNITY_WEBGL
+		qualitySlide.value = PlayerPrefs.GetInt("qualityLevel");
+		masterSlide.value = PlayerPrefs.GetInt("masterVol");
+		SFXSlider.value = PlayerPrefs.GetInt("SFXVol");
+		musicSlider.value = PlayerPrefs.GetInt("musicVol");
+#endif
+		masterText.text = "master volume: " + (int)masterSlide.value + " %";
+		SFXText.text = "SFX volume: " + (int)SFXSlider.value + " %";
+		musicText.text = "music volume: " + (int)musicSlider.value + " %";
+		qualityText.text = "quality setting: " + QualitySettings.names[QualitySettings.GetQualityLevel()];
 	}
-	
+
 	// Update is called once per frame
 	public void changeMenu(string menu)
 	{
@@ -22,6 +59,7 @@ public class mainMenuData : menuData {
 			levelSelect.SetActive(false);
 			options.SetActive(false);
 			credits.SetActive(false);
+			music.SetActive(false);
 		}
 		else if (menu == "level select")
 		{
@@ -29,6 +67,7 @@ public class mainMenuData : menuData {
 			levelSelect.SetActive(true);
 			options.SetActive(false);
 			credits.SetActive(false);
+			music.SetActive(false);
 		}
 		else if (menu == "options")
 		{
@@ -36,6 +75,7 @@ public class mainMenuData : menuData {
 			levelSelect.SetActive(false);
 			options.SetActive(true);
 			credits.SetActive(false);
+			music.SetActive(false);
 		}
 		else if (menu == "credits")
 		{
@@ -43,16 +83,58 @@ public class mainMenuData : menuData {
 			levelSelect.SetActive(false);
 			options.SetActive(false);
 			credits.SetActive(true);
+			music.SetActive(false);
+		}
+		else if (menu == "music")
+		{
+			main.SetActive(false);
+			levelSelect.SetActive(false);
+			options.SetActive(false);
+			credits.SetActive(false);
+			music.SetActive(true);
 		}
 		else
 		{
 			Debug.Log("menu change error");
 		}
+		mouseClick.mouseCLK.playClick();
 	}
 
-	public void setQuality(int qualityIndex)
+	public void setQuality()
 	{
-		QualitySettings.SetQualityLevel(qualityIndex);
+		QualitySettings.SetQualityLevel((int)qualitySlide.value);
+		qualityText.text = "quality setting: " + QualitySettings.names[QualitySettings.GetQualityLevel()];
+#if !UNITY_WEBPLAYER || !UNITY_WEBGL
+		PlayerPrefs.SetInt("qualityLevel", (int)qualitySlide.value);
+#endif
+	}
+
+	public void setMaster()
+	{
+		SFXSlider.value = masterSlide.value;
+		musicSlider.value = masterSlide.value;
+		masterText.text = "master volume: " + (int)masterSlide.value + " %";
+#if !UNITY_WEBPLAYER || !UNITY_WEBGL
+		PlayerPrefs.SetInt("masterVol", (int)masterSlide.value);
+#endif
+	}
+
+	public void setSFX()
+	{
+		mouseClick.mouseCLK.updateVol((int)SFXSlider.value);
+		SFXText.text = "SFX volume: " + (int)SFXSlider.value + " %";
+#if !UNITY_WEBPLAYER || !UNITY_WEBGL
+		PlayerPrefs.SetInt("SFXVol", (int)SFXSlider.value);
+#endif
+	}
+
+	public void setMusic()
+	{
+		backgroundMusic.BKGMusic.updateVol((int)musicSlider.value);
+		musicText.text = "music volume: " + (int)musicSlider.value + " %";
+#if !UNITY_WEBPLAYER || !UNITY_WEBGL
+		PlayerPrefs.SetInt("musicVol", (int)musicSlider.value);
+#endif
 	}
 
 	public void openBlog()
@@ -63,5 +145,16 @@ public class mainMenuData : menuData {
 	public void openTwitter()
 	{
 		Application.OpenURL("https://twitter.com/amacdiarmid01");
+	}
+
+	public void openIncomp()
+	{
+		Application.OpenURL("http://incompetech.com/wordpress/");
+	}
+
+	public void ChangeSong(int number)
+	{
+		backgroundMusic.BKGMusic.SetChoice(number);
+		mouseClick.mouseCLK.playClick();
 	}
 }

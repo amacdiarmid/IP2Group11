@@ -28,7 +28,7 @@ public class UIData : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		towers = GameObject.Find("Game Data").GetComponent<towerData>();
+		towers = PlayerData.data.gameObject.GetComponent<towerData>();
 	}
 
 	public void visability(bool state)

@@ -15,14 +15,17 @@ public class towerBehaviour : MonoBehaviour {
 	public AudioClip[] sounds;
 	[HideInInspector] public int towerLevel;
 	public int maxTowerLevel;
+	private AudioSource audioCom;
 
 	// Use this for initialization
 	void Start () {
 		towerLevel = 0;
 		this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = -(int)this.gameObject.transform.position.y + 20;
 		this.gameObject.GetComponent<CircleCollider2D>().radius = areaOfAttack[towerLevel];
-		GetComponent<AudioSource>().clip = sounds[0];
-		GetComponent<AudioSource>().Play ();
+		audioCom = this.gameObject.GetComponent<AudioSource>();
+		audioCom.volume = mouseClick.mouseCLK.volume / 100;
+		audioCom.clip = sounds[0];
+		audioCom.Play ();
 	}
 
 	void OnTriggerStay2D(Collider2D other)
@@ -32,8 +35,9 @@ public class towerBehaviour : MonoBehaviour {
 			if (canFire == true)
 			{			
 				GameObject shot = (GameObject)Instantiate(projectile, transform.position, Quaternion.identity);
-				GetComponent<AudioSource>().clip = sounds[1];
-				GetComponent<AudioSource>().Play();
+				audioCom.volume = mouseClick.mouseCLK.volume / 100;
+				audioCom.clip = sounds[1];
+				audioCom.Play();
 				shot.GetComponent<projectileBehaviour>().target = other.transform;
 				shot.GetComponent<projectileBehaviour>().damage = damage[towerLevel];
 				shot.GetComponent<projectileBehaviour>().speed = speed[towerLevel];

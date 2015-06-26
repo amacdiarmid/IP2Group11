@@ -2,36 +2,66 @@
 using System.Collections;
 
 public class backgroundMusic : MonoBehaviour {
-	
-	public int choice = 0;
+
+	private int songNo;
 	public AudioClip[] song;
 	private int current;
+	public float volume;
+	public static backgroundMusic BKGMusic;
+	private AudioSource audioCom;
+
+	void Awake()
+	{
+		if (BKGMusic == null)
+		{
+			DontDestroyOnLoad(this);
+			BKGMusic = this;
+		}
+		else if (BKGMusic != this)
+		{
+			Destroy(this);
+		}
+	}
 
 	// Use this for initialization
 	void Start () {
 		DontDestroyOnLoad(this);
-		GetComponent<AudioSource>().clip = song[choice];
-		current = choice;
-		GetComponent<AudioSource>().Play ();
+		audioCom = this.gameObject.GetComponent<AudioSource>();
+		audioCom.clip = song[songNo];
+		audioCom.Play ();
+		StartCoroutine(songWait());
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(choice != current)
-		{
-			GetComponent<AudioSource>().clip = song[choice];
-			GetComponent<AudioSource>().Play ();
-			current = choice;
-		}
-	}
 
-	public int GetChoice()
-	{
-		return choice;
 	}
 	
 	public void SetChoice(int choice)
 	{
-		this.choice = choice;
+		audioCom.clip = song[choice];
+		audioCom.Play();
+		songNo = choice;
+		StopCoroutine(songWait());
+		StartCoroutine(songWait());
+	}
+
+	public void updateVol(int tempVolume)
+	{
+		volume = tempVolume;
+		audioCom.volume = volume/100;
+	}
+
+	IEnumerator songWait()
+	{
+		yield return new WaitForSeconds(song[songNo].length);
+		if (songNo == song.Length)
+		{
+			SetChoice(0);
+		}
+		else
+		{
+			SetChoice(songNo + 1);
+		}
 	}
 }

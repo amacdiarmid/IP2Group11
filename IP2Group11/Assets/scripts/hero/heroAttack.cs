@@ -33,6 +33,7 @@ public class heroAttack : MonoBehaviour {
 	public GameObject AOEData;
 	private GameObject tempAOEData;
 	public AudioClip[] sounds;
+	private AudioSource audioCom;
 	private heroMovement HeroMovement;
 	private Animator animator;
 	//button panels
@@ -49,6 +50,8 @@ public class heroAttack : MonoBehaviour {
 		AOECanUse = true;
 		HeroMovement = this.gameObject.GetComponent<heroMovement>();
 		animator = GetComponent<Animator>();
+		audioCom = this.gameObject.GetComponent<AudioSource>();
+		audioCom.volume = mouseClick.mouseCLK.volume / 100;
 	}
 	
 	// Update is called once per frame
@@ -135,12 +138,13 @@ public class heroAttack : MonoBehaviour {
 	/// </summary>
 	void autoAttack()
 	{
+		audioCom.volume = mouseClick.mouseCLK.volume / 100;
 		//send a raycast NE to see if there is a creep
 		RaycastHit2D hitNE = Physics2D.Raycast(this.transform.position, new Vector2(2, 1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
 		if (hitNE)
 		{
-			GetComponent<AudioSource>().clip = sounds[0];
-			GetComponent<AudioSource>().Play();
+			audioCom.clip = sounds[0];
+			audioCom.Play();
 			hitNE.collider.GetComponent<creepMovement>().removeHealth(autoDamage);
 			animator.SetTrigger("auto");
 		}
@@ -150,8 +154,8 @@ public class heroAttack : MonoBehaviour {
 			RaycastHit2D hitSE = Physics2D.Raycast(this.transform.position, new Vector2(2, -1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
 			if (hitSE)
 			{
-				GetComponent<AudioSource>().clip = sounds[0];
-				GetComponent<AudioSource>().Play();
+				audioCom.clip = sounds[0];
+				audioCom.Play();
 				hitSE.collider.GetComponent<creepMovement>().removeHealth(autoDamage);
 				animator.SetTrigger("auto");
 			}
@@ -161,8 +165,8 @@ public class heroAttack : MonoBehaviour {
 				RaycastHit2D hitSW = Physics2D.Raycast(this.transform.position, new Vector2(-2, -1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
 				if (hitSW)
 				{
-					GetComponent<AudioSource>().clip = sounds[0];
-					GetComponent<AudioSource>().Play();
+					audioCom.clip = sounds[0];
+					audioCom.Play();
 					hitSW.collider.GetComponent<creepMovement>().removeHealth(autoDamage);
 					animator.SetTrigger("auto");
 				}
@@ -172,8 +176,8 @@ public class heroAttack : MonoBehaviour {
 					RaycastHit2D hitNW = Physics2D.Raycast(this.transform.position, new Vector2(-2, 1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
 					if (hitNW)
 					{
-						GetComponent<AudioSource>().clip = sounds[0];
-						GetComponent<AudioSource>().Play();
+						audioCom.clip = sounds[0];
+						audioCom.Play();
 						hitNW.collider.GetComponent<creepMovement>().removeHealth(autoDamage);
 						animator.SetTrigger("auto");
 					}
@@ -198,8 +202,9 @@ public class heroAttack : MonoBehaviour {
 			medPanel.gameObject.SetActive(true);
 			medPanel.localScale = new Vector3(1, 1, 1);
 			medGameTime = Time.time;
-			GetComponent<AudioSource>().clip = sounds[0];
-			GetComponent<AudioSource>().Play();
+			audioCom.volume = mouseClick.mouseCLK.volume / 100;
+			audioCom.clip = sounds[0];
+			audioCom.Play();
 			animator.SetTrigger("med");
 			RaycastHit2D hitNE = Physics2D.Raycast(this.transform.position, new Vector2(2, 1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
 			if (hitNE)
@@ -248,8 +253,9 @@ public class heroAttack : MonoBehaviour {
 			heavyPanel.gameObject.SetActive(true);
 			heavyPanel.localScale = new Vector3(1, 1, 1);
 			heavyGameTime = Time.time;
-			GetComponent<AudioSource>().clip = sounds[0];
-			GetComponent<AudioSource>().Play();
+			audioCom.volume = mouseClick.mouseCLK.volume / 100;
+			audioCom.clip = sounds[0];
+			audioCom.Play();
 			animator.SetTrigger("heavy");
 			RaycastHit2D hitNE = Physics2D.Raycast(this.transform.position, new Vector2(2, 1.2f), autoAttackRange, LayerMask.GetMask("Creep"));
 			if (hitNE)
@@ -285,8 +291,9 @@ public class heroAttack : MonoBehaviour {
 		if (AOECanUse == true)
 		{
 			AOECanUse = false;
-			GetComponent<AudioSource>().clip = sounds[1];
-			GetComponent<AudioSource>().Play();
+			audioCom.volume = mouseClick.mouseCLK.volume / 100;
+			audioCom.clip = sounds[1];
+			audioCom.Play();
 			AOEPanel.gameObject.SetActive(true);
 			AOEPanel.localScale = new Vector3(1, 1, 1);
 			AOEGameTime = Time.time;

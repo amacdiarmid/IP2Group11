@@ -5,17 +5,38 @@ public class mouseClick : MonoBehaviour {
 
 	public AudioClip click;
 
+	public float volume;
+	public static mouseClick mouseCLK;
+	private AudioSource audioCom;
+
+	void Awake()
+	{
+		if (mouseCLK == null)
+		{
+			DontDestroyOnLoad(this);
+			mouseCLK = this;
+		}
+		else if (mouseCLK != this)
+		{
+			Destroy(this);
+		}
+		audioCom = this.gameObject.GetComponent<AudioSource>();
+		audioCom.clip = click;
+	}
+
 	// Use this for initialization
 	void Start () {
 		DontDestroyOnLoad(this);	
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		if(Input.GetMouseButtonDown(0))
-		{
-			GetComponent<AudioSource>().clip = click;
-			GetComponent<AudioSource>().Play ();
-		}
+	public void updateVol(int tempVolume)
+	{
+		volume = tempVolume;
+		audioCom.volume = volume/100;
+	}
+
+	public void playClick()
+	{
+		audioCom.Play();
 	}
 }

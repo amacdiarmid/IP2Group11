@@ -13,13 +13,16 @@ public class waveControl : MonoBehaviour {
 	private PlayerData buttonCon;
 	public Button nextWaveBut;
 	public List<AudioClip> sounds;
+	private AudioSource audioCom;
 
 	// Use this for initialization
 	void Start () {
-		buttonCon = GameObject.Find("Game Data").GetComponent<PlayerData>();
+		buttonCon = PlayerData.data;
 		nextWaveBut.gameObject.SetActive(true);
 		victoryCheck = false;
 		totalCreeps = 0;
+		audioCom = this.gameObject.GetComponent<AudioSource>();
+		audioCom.volume = mouseClick.mouseCLK.volume / 100;
 	}
 	
 	// Update is called once per frame
@@ -30,16 +33,18 @@ public class waveControl : MonoBehaviour {
 			if (totalCreeps == 0)
 			{
 				buttonCon.victory();
-				this.GetComponent<AudioSource>().clip = sounds[1];
-				this.GetComponent<AudioSource>().Play();
+				audioCom.volume = mouseClick.mouseCLK.volume / 100;
+				audioCom.clip = sounds[1];
+				audioCom.Play();
 			}
 		}
 	}
 
 	public void nextWave()
 	{
-		this.GetComponent<AudioSource>().clip = sounds[0];
-		this.GetComponent<AudioSource>().Play();
+		audioCom.volume = mouseClick.mouseCLK.volume / 100;
+		audioCom.clip = sounds[0];
+		audioCom.Play();
 		nextWaveBut.gameObject.SetActive(false);
 		curWave++;
 		foreach (var spawn in spawns)
@@ -66,8 +71,9 @@ public class waveControl : MonoBehaviour {
 		else
 		{
 			nextWaveBut.gameObject.SetActive(true);
-			this.GetComponent<AudioSource>().clip = sounds[1];
-			this.GetComponent<AudioSource>().Play();
+			audioCom.volume = mouseClick.mouseCLK.volume / 100;
+			audioCom.clip = sounds[1];
+			audioCom.Play();
 		}
 	}
 }

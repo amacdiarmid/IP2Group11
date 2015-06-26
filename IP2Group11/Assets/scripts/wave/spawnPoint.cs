@@ -12,7 +12,7 @@ public class spawnPoint : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		waveCon = GameObject.Find("Game Data").GetComponent<waveControl>();
+		waveCon = PlayerData.data.GetComponent<waveControl>();
 	}
 	
 	// Update is called once per frame

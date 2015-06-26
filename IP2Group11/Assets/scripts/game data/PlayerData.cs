@@ -27,13 +27,19 @@ public class PlayerData : MonoBehaviour {
 	public Button quit;
 	private bool pause;
 	public int levelNo;
+	[HideInInspector] public static PlayerData data;
+
+	void Awake()
+	{
+		data = this;
+	}
 
 	// Use this for initialization
 	void Start () {
 		//sets the game to play(out of pause mode)
 		Time.timeScale = 1;
 		//gets the wave data object
-		wave = GameObject.Find("Game Data").GetComponent<waveControl>();
+		wave = data.GetComponent<waveControl>();
 		//hides the buttons
 		retry.gameObject.SetActive(false);
 		quit.gameObject.SetActive(false);

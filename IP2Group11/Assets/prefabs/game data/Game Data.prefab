@@ -11,8 +11,8 @@ GameObject:
   - 114: {fileID: 11441486}
   - 114: {fileID: 11438310}
   - 114: {fileID: 11445688}
-  - 82: {fileID: 8240098}
   - 114: {fileID: 11407678}
+  - 82: {fileID: 8240098}
   m_Layer: 0
   m_Name: Game Data
   m_TagString: Untagged

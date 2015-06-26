@@ -16,10 +16,10 @@ public class spawnTower : MonoBehaviour {
 	void Start () 
 	{
 		Node = this.GetComponent<pathNodes>();
-		towerUI = GameObject.Find("Game Data").GetComponent<UIData>();
+		playerData = PlayerData.data;
+		towerUI = playerData.gameObject.GetComponent<UIData>();
 		start = GameObject.Find("board/start").GetComponent<startNode>();
 		board = GameObject.Find("board").GetComponent<boardTiles>();
-		playerData = GameObject.Find("Game Data").GetComponent<PlayerData>();
 	}
 	
 	// Update is called once per frame

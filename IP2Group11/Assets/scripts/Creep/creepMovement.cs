@@ -16,16 +16,19 @@ public class creepMovement : MonoBehaviour {
 	public AudioClip[] sounds;
 	private float startTime;
 	private float distance;
+	private AudioSource audioCom;
 
 	// Use this for initialization
 	void Start () 
 	{
-		player = GameObject.Find("Game Data").GetComponent<PlayerData>();
-		wave = GameObject.Find("Game Data").GetComponent<waveControl>();
+		player = PlayerData.data;
+		wave = player.gameObject.GetComponent<waveControl>();
 		Physics2D.IgnoreLayerCollision(8, 9);
 		Physics2D.IgnoreLayerCollision(9, 10);
 		startTime = Time.time;
 		postion = 0;
+		audioCom = this.gameObject.GetComponent<AudioSource>();
+		audioCom.volume = mouseClick.mouseCLK.volume / 100;
 	}
 
 	public void addPath(List<GameObject> tempPath)
@@ -89,11 +92,12 @@ public class creepMovement : MonoBehaviour {
 		materialChange();
 		if (HP <= 0)
 		{
-			GetComponent<AudioSource>().clip = sounds[0];
+			audioCom.volume = mouseClick.mouseCLK.volume / 100;
+			audioCom.clip = sounds[0];
 			wave.totalCreeps--;
 			player.AddGold(goldGain);
-			GetComponent<AudioSource>().Play ();
-			float clipLength = (float) GetComponent<AudioSource>().clip.length;
+			audioCom.Play ();
+			float clipLength = (float) audioCom.clip.length;
 			Wait (clipLength);
 			Destroy(this.gameObject);
 		}
