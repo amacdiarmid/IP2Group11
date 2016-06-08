@@ -5,7 +5,6 @@ public class backgroundMusic : MonoBehaviour {
 
 	private int songNo;
 	public AudioClip[] song;
-	private int current;
 	public float volume;
 	public static backgroundMusic BKGMusic;
 	private AudioSource audioCom;
@@ -21,12 +20,12 @@ public class backgroundMusic : MonoBehaviour {
 		{
 			Destroy(this);
 		}
+		audioCom = this.gameObject.GetComponent<AudioSource>();
 	}
 
 	// Use this for initialization
 	void Start () {
 		DontDestroyOnLoad(this);
-		audioCom = this.gameObject.GetComponent<AudioSource>();
 		audioCom.clip = song[songNo];
 		audioCom.Play ();
 		StartCoroutine(songWait());

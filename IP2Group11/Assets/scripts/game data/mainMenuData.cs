@@ -24,6 +24,8 @@ public class mainMenuData : menuData
 	public Slider musicSlider;
 	public Text musicText;
 
+	private int hasPlayed;
+
 	// Use this for initialization
 	void Start()
 	{
@@ -35,19 +37,42 @@ public class mainMenuData : menuData
 		foreach (var item in webShow)
 		{
 			item.SetActive(true);
-		} 		
+		} 	
+		qualitySlide.value = 0;
+		masterSlide.value = 100;
+		SFXSlider.value = 100;
+		musicSlider.value = 100
 #endif
 
 #if !UNITY_WEBPLAYER || !UNITY_WEBGL
-		qualitySlide.value = PlayerPrefs.GetInt("qualityLevel");
-		masterSlide.value = PlayerPrefs.GetInt("masterVol");
-		SFXSlider.value = PlayerPrefs.GetInt("SFXVol");
-		musicSlider.value = PlayerPrefs.GetInt("musicVol");
+		hasPlayed = PlayerPrefs.GetInt("hasPlayed");
+		if (hasPlayed == 0)
+		{
+			qualitySlide.value = 0;
+			masterSlide.value = 100;
+			SFXSlider.value = 100;
+			musicSlider.value = 100;
+			masterText.text = "master volume: " + (int)masterSlide.value + " %";
+			SFXText.text = "SFX volume: " + (int)SFXSlider.value + " %";
+			musicText.text = "music volume: " + (int)musicSlider.value + " %";
+			qualityText.text = "quality setting: " + QualitySettings.names[QualitySettings.GetQualityLevel()];
+			hasPlayed = 1;
+			PlayerPrefs.SetInt("hasPlayed", hasPlayed);
+
+		}
+		else
+		{
+			qualitySlide.value = PlayerPrefs.GetInt("qualityLevel");
+			masterSlide.value = PlayerPrefs.GetInt("masterVol");
+			SFXSlider.value = PlayerPrefs.GetInt("SFXVol");
+			musicSlider.value = PlayerPrefs.GetInt("musicVol");
+			masterText.text = "master volume: " + (int)masterSlide.value + " %";
+			SFXText.text = "SFX volume: " + (int)SFXSlider.value + " %";
+			musicText.text = "music volume: " + (int)musicSlider.value + " %";
+			qualityText.text = "quality setting: " + QualitySettings.names[QualitySettings.GetQualityLevel()];
+		}
 #endif
-		masterText.text = "master volume: " + (int)masterSlide.value + " %";
-		SFXText.text = "SFX volume: " + (int)SFXSlider.value + " %";
-		musicText.text = "music volume: " + (int)musicSlider.value + " %";
-		qualityText.text = "quality setting: " + QualitySettings.names[QualitySettings.GetQualityLevel()];
+		
 	}
 
 	// Update is called once per frame

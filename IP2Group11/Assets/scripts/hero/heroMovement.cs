@@ -16,7 +16,6 @@ public class heroMovement : MonoBehaviour {
 	//if the player is moving or not
 	[HideInInspector] public bool move;
 	//used for moving the player 
-	private Vector3 movement;
 	private float distance;
 	private float startTime;
 	//the state machine for the animations of the player
